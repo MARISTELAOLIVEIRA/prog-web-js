@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 1 · Variáveis, Tipos e Operadores</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 1 de 8</p>
+    <h1 class="titulo-aula">Variáveis, Tipos de Dados e Operadores</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Explicar o que é uma variável e criar variáveis com <code>let</code> e <code>const</code>;</li>
+        <li>Identificar os principais tipos de dados do JavaScript;</li>
+        <li>Usar operadores aritméticos, de atribuição, de comparação e lógicos;</li>
+        <li>Entender a diferença entre <code>==</code> e <code>===</code>.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. O que é uma variável?</h2>
+      <p>
+        Pense em uma variável como uma <strong>caixa com etiqueta</strong>: você guarda um valor dentro dela e usa o nome
+        da etiqueta para acessar (ou trocar) esse valor depois. Em JavaScript, criamos variáveis com as palavras-chave
+        <code>let</code> e <code>const</code>.
+      </p>
+      <pre><code>let nome = "Maria";      // pode ser alterada depois
+const anoAtual = 2026;   // não pode ser reatribuída
+
+nome = "João";            // ok, "let" permite mudar o valor
+// anoAtual = 2027;        // erro! "const" não permite mudar</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> use <code>const</code> por padrão. Só use <code>let</code> quando você sabe que o valor
+        vai mudar (como um contador). Evite <code>var</code> — é a forma antiga e tem comportamentos confusos que o
+        <code>let</code>/<code>const</code> resolveram.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Tipos de dados</h2>
+      <p>Todo valor em JavaScript tem um tipo. Os tipos "primitivos" mais comuns são:</p>
+      <ul>
+        <li><code>string</code> — texto, sempre entre aspas: <code>"olá"</code>, <code>'oi'</code>, <code>`ei`</code></li>
+        <li><code>number</code> — números, inteiros ou decimais: <code>10</code>, <code>3.14</code></li>
+        <li><code>boolean</code> — verdadeiro ou falso: <code>true</code>, <code>false</code></li>
+        <li><code>undefined</code> — variável declarada mas sem valor ainda</li>
+        <li><code>null</code> — "nenhum valor", definido de propósito por quem escreveu o código</li>
+      </ul>
+      <p>
+        Use o operador <code>typeof</code> para descobrir o tipo de um valor: <code>typeof 10</code> retorna
+        <code>"number"</code>.
+      </p>
+      <div id="playground-tipos"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Operadores aritméticos e de atribuição</h2>
+      <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+        <tr style="text-align:left; border-bottom:1px solid var(--borda);"><th>Operador</th><th>Significado</th><th>Exemplo</th></tr>
+        <tr><td><code>+</code></td><td>soma (ou concatena texto)</td><td><code>2 + 3 // 5</code></td></tr>
+        <tr><td><code>-</code></td><td>subtração</td><td><code>5 - 2 // 3</code></td></tr>
+        <tr><td><code>*</code></td><td>multiplicação</td><td><code>4 * 2 // 8</code></td></tr>
+        <tr><td><code>/</code></td><td>divisão</td><td><code>10 / 4 // 2.5</code></td></tr>
+        <tr><td><code>%</code></td><td>resto da divisão (módulo)</td><td><code>10 % 3 // 1</code></td></tr>
+        <tr><td><code>**</code></td><td>potência</td><td><code>2 ** 3 // 8</code></td></tr>
+      </table>
+      <p>
+        Os operadores de atribuição combinam uma operação com o <code>=</code>: <code>x += 1</code> é o mesmo que
+        <code>x = x + 1</code>. Também existem <code>-=</code>, <code>*=</code>, <code>/=</code>.
+      </p>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Comparação: a armadilha do <code>==</code> vs <code>===</code></h2>
+      <p>
+        <code>==</code> compara valores <strong>convertendo os tipos</strong> automaticamente, o que gera resultados
+        confusos. <code>===</code> compara valor <strong>e</strong> tipo, sem conversão — por isso é sempre a
+        escolha recomendada.
+      </p>
+      <pre><code>console.log("10" == 10);   // true  (compara só o valor, converte o tipo)
+console.log("10" === 10);  // false (tipos diferentes: string vs number)
+console.log(10 === 10);    // true</code></pre>
+      <div class="atencao">
+        <strong>Atenção:</strong> use sempre <code>===</code> e <code>!==</code> no seu código. Isso evita bugs
+        difíceis de encontrar.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. Operadores lógicos</h2>
+      <ul>
+        <li><code>&&</code> — "E": verdadeiro só se os dois lados forem verdadeiros</li>
+        <li><code>||</code> — "OU": verdadeiro se pelo menos um lado for verdadeiro</li>
+        <li><code>!</code> — "NÃO": inverte o valor booleano</li>
+      </ul>
+      <pre><code>let idade = 20;
+console.log(idade >= 18 && idade <= 65); // true: maior de idade e não idoso
+console.log(idade < 18 || idade > 65);   // false</code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>6. Template literals: concatenando texto de forma fácil</h2>
+      <p>
+        Em vez de concatenar com <code>+</code>, use crases (<code>`</code>) e <code>$&#123;...&#125;</code> para
+        inserir variáveis dentro do texto:
+      </p>
+      <pre><code>let nome = "Ana";
+let idade = 22;
+
+// forma antiga
+console.log("Olá, " + nome + "! Você tem " + idade + " anos.");
+
+// template literal (recomendado)
+console.log(`Olá, ${nome}! Você tem ${idade} anos.`);</code></pre>
+      <div id="playground-template"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático</h2>
+      <div id="exercicio-saudacao"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo1"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../../index.html">← Voltar ao início</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../02-condicionais/index.html" class="botao botao--primario">Próximo módulo: Condicionais →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 1 de 8 · Variáveis, Tipos e Operadores · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-tipos",
+      `let nome = "Maria";
+let idade = 30;
+let ativo = true;
+let comentario;
+
+console.log(typeof nome);
+console.log(typeof idade);
+console.log(typeof ativo);
+console.log(typeof comentario);`,
+      "Descubra o tipo de cada variável"
+    );
+
+    criarPlayground(
+      "playground-template",
+      `let cidade = "Curitiba";
+let temperatura = 24;
+
+console.log(\`Hoje em \${cidade} a temperatura é de \${temperatura}°C.\`);`,
+      "Monte sua própria mensagem"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-saudacao",
+      enunciado: `
+        <p><strong>Desafio:</strong> complete a função <code>saudacao(nome, idade)</code> para que ela
+        <strong>retorne</strong> (use <code>return</code>) o texto exatamente no formato:</p>
+        <pre><code>"Olá, Ana! Você tem 22 anos."</code></pre>
+        <p>Use um template literal (crases) para montar o texto.</p>
+      `,
+      codigoInicial: `function saudacao(nome, idade) {
+  // escreva seu código aqui
+}`,
+      testes: [
+        { descricao: 'saudacao("Ana", 22) deve retornar "Olá, Ana! Você tem 22 anos."', expressao: 'saudacao("Ana", 22) === "Olá, Ana! Você tem 22 anos."' },
+        { descricao: 'saudacao("Pedro", 40) deve retornar "Olá, Pedro! Você tem 40 anos."', expressao: 'saudacao("Pedro", 40) === "Olá, Pedro! Você tem 40 anos."' },
+      ],
+    });
+
+    criarQuiz("quiz-modulo1", [
+      {
+        pergunta: "Qual palavra-chave você deve preferir para declarar uma variável que NÃO vai mudar de valor?",
+        alternativas: ["var", "let", "const", "static"],
+        correta: 2,
+      },
+      {
+        pergunta: 'Qual é o resultado de "5" === 5 ?',
+        alternativas: ["true", "false", "5", "undefined"],
+        correta: 1,
+      },
+      {
+        pergunta: "typeof true retorna qual valor?",
+        alternativas: ['"string"', '"boolean"', '"number"', '"true"'],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual operador retorna o RESTO de uma divisão?",
+        alternativas: ["/", "%", "**", "//"],
+        correta: 1,
+      },
+      {
+        pergunta: "O que a expressão `Olá, ${nome}` representa?",
+        alternativas: [
+          "Uma comparação entre Olá e nome",
+          "Um template literal, que insere o valor da variável nome no texto",
+          "Um erro de sintaxe sempre",
+          "Uma função chamada Olá",
+        ],
+        correta: 1,
+      },
+    ]);
+
+    configurarBotaoConcluir("01-variaveis");
+  </script>
+</body>
+</html>

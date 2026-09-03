@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 5 · Arrays e Objetos</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 5 de 8</p>
+    <h1 class="titulo-aula">Arrays e Objetos</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Criar e acessar itens de um array pelo índice;</li>
+        <li>Usar os métodos mais comuns de array: <code>push</code>, <code>pop</code>, <code>length</code>;</li>
+        <li>Criar objetos para representar dados com várias propriedades;</li>
+        <li>Acessar e alterar propriedades de um objeto.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Arrays: listas de valores</h2>
+      <p>
+        Um array guarda vários valores em uma única variável, em uma ordem definida. Cada posição tem um
+        <strong>índice</strong>, começando sempre em <code>0</code>.
+      </p>
+      <pre><code>let frutas = ["maçã", "banana", "uva"];
+
+console.log(frutas[0]); // "maçã"  (primeiro item, índice 0)
+console.log(frutas[2]); // "uva"   (terceiro item, índice 2)
+console.log(frutas.length); // 3   (quantidade de itens)</code></pre>
+      <div id="playground-array-basico"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Adicionando e removendo itens</h2>
+      <ul>
+        <li><code>push(valor)</code> — adiciona um item no final do array</li>
+        <li><code>pop()</code> — remove e devolve o último item do array</li>
+      </ul>
+      <pre><code>let numeros = [1, 2, 3];
+numeros.push(4);
+console.log(numeros); // [1, 2, 3, 4]
+
+let ultimo = numeros.pop();
+console.log(ultimo);  // 4
+console.log(numeros); // [1, 2, 3]</code></pre>
+      <div id="playground-array-metodos"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Objetos: dados com várias propriedades</h2>
+      <p>
+        Enquanto o array organiza valores por <strong>posição</strong>, o objeto organiza valores por
+        <strong>nome</strong> (chamado de "chave" ou "propriedade"). É ótimo para representar algo do mundo
+        real, como uma pessoa:
+      </p>
+      <pre><code>let pessoa = {
+  nome: "Fernanda",
+  idade: 28,
+  ativo: true,
+};
+
+console.log(pessoa.nome);   // "Fernanda"   (notação de ponto)
+console.log(pessoa["idade"]); // 28         (notação de colchetes)
+
+pessoa.idade = 29; // alterando uma propriedade
+console.log(pessoa.idade); // 29</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> use a notação de ponto (<code>objeto.propriedade</code>) na maioria dos casos.
+        Use colchetes (<code>objeto["propriedade"]</code>) quando o nome da propriedade estiver em uma variável
+        ou tiver espaços/caracteres especiais.
+      </div>
+      <div id="playground-objeto"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Arrays de objetos</h2>
+      <p>É muito comum combinar os dois: uma lista de objetos, como uma turma de alunos:</p>
+      <pre><code>let alunos = [
+  { nome: "Ana", nota: 8.5 },
+  { nome: "Bruno", nota: 6.0 },
+  { nome: "Carla", nota: 9.2 },
+];
+
+for (let i = 0; i < alunos.length; i++) {
+  console.log(alunos[i].nome + ": " + alunos[i].nota);
+}</code></pre>
+      <div id="playground-array-objetos"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático</h2>
+      <div id="exercicio-media"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo5"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../04-funcoes/index.html">← Módulo anterior: Funções</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../06-dom-eventos/index.html" class="botao botao--primario">Próximo módulo: DOM e Eventos →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 5 de 8 · Arrays e Objetos · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-array-basico",
+      `let frutas = ["maçã", "banana", "uva"];
+
+console.log(frutas[0]);
+console.log(frutas[2]);
+console.log(frutas.length);`,
+      "Adicione mais frutas e teste os índices"
+    );
+
+    criarPlayground(
+      "playground-array-metodos",
+      `let numeros = [1, 2, 3];
+numeros.push(4);
+console.log(numeros);
+
+let ultimo = numeros.pop();
+console.log(ultimo);
+console.log(numeros);`,
+      "Teste push e pop"
+    );
+
+    criarPlayground(
+      "playground-objeto",
+      `let pessoa = {
+  nome: "Fernanda",
+  idade: 28,
+  ativo: true,
+};
+
+console.log(pessoa.nome);
+console.log(pessoa["idade"]);
+
+pessoa.idade = 29;
+console.log(pessoa.idade);`,
+      "Adicione novas propriedades ao objeto"
+    );
+
+    criarPlayground(
+      "playground-array-objetos",
+      `let alunos = [
+  { nome: "Ana", nota: 8.5 },
+  { nome: "Bruno", nota: 6.0 },
+  { nome: "Carla", nota: 9.2 },
+];
+
+for (let i = 0; i < alunos.length; i++) {
+  console.log(alunos[i].nome + ": " + alunos[i].nota);
+}`,
+      "Adicione mais um aluno na lista"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-media",
+      enunciado: `
+        <p><strong>Desafio:</strong> complete a função <code>calcularMedia(notas)</code>, que recebe um
+        <strong>array de números</strong> e <strong>retorna</strong> a média (soma dividida pela quantidade
+        de notas). Use um laço <code>for</code> para percorrer o array.</p>
+      `,
+      codigoInicial: `function calcularMedia(notas) {
+  let soma = 0;
+  // escreva seu laço aqui para somar todas as notas
+
+  return soma / notas.length;
+}`,
+      testes: [
+        { descricao: "calcularMedia([10, 10, 10]) deve retornar 10", expressao: "calcularMedia([10, 10, 10]) === 10" },
+        { descricao: "calcularMedia([5, 7]) deve retornar 6", expressao: "calcularMedia([5, 7]) === 6" },
+        { descricao: "calcularMedia([0, 10]) deve retornar 5", expressao: "calcularMedia([0, 10]) === 5" },
+      ],
+    });
+
+    criarQuiz("quiz-modulo5", [
+      {
+        pergunta: "Qual é o índice do primeiro item de um array?",
+        alternativas: ["1", "0", "-1", "Depende do array"],
+        correta: 1,
+      },
+      {
+        pergunta: "O que `array.pop()` faz?",
+        alternativas: [
+          "Adiciona um item no início do array",
+          "Remove e devolve o último item do array",
+          "Devolve o tamanho do array",
+          "Ordena o array",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Como você acessa a propriedade `idade` de um objeto chamado `pessoa`?",
+        alternativas: ["pessoa->idade", "pessoa.idade", "pessoa::idade", "pessoa(idade)"],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual é a principal diferença entre array e objeto?",
+        alternativas: [
+          "Array organiza por posição (índice); objeto organiza por nome (propriedade)",
+          "Não existe diferença, são a mesma coisa",
+          "Objeto só guarda números, array só guarda texto",
+          "Array não pode ter mais de 3 itens",
+        ],
+        correta: 0,
+      },
+    ]);
+
+    configurarBotaoConcluir("05-arrays-objetos");
+  </script>
+</body>
+</html>

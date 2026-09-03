@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS - Maristela</title>
+  <link rel="icon" type="image/png" href="img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <script src="js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="index.html" class="cabecalho__marca"><img src="img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso Javascript Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="index.html" class="ativo">Início</a>
+          <a href="modulos/01-variaveis/index.html">Começar</a>
+        </nav>
+        <img src="img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="heroi">
+      <h1>Aprenda JavaScript de verdade, na prática</h1>
+      <p>
+        Um curso feito para acompanhar (e simplificar!) o conteúdo do <strong>NetAcad JavaScript Essentials 1</strong>,
+        com explicações diretas, editor de código ao vivo, exercícios com correção automática e quizzes em cada módulo.
+      </p>
+      <div class="progresso-geral">
+        <div class="progresso-geral__barra" id="barra-progresso"></div>
+      </div>
+      <p class="progresso-geral__texto" id="texto-progresso"></p>
+    </section>
+
+    <section class="grade-modulos" id="grade-modulos">
+      <!-- Os cartões de módulo são inseridos aqui pelo JavaScript -->
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <script src="js/progress.js"></script>
+  <script>
+    const DADOS_MODULOS = [
+      {
+        id: "01-variaveis",
+        titulo: "Variáveis, Tipos e Operadores",
+        desc: "Declare variáveis, entenda os tipos de dados e use operadores aritméticos e lógicos.",
+      },
+      {
+        id: "02-condicionais",
+        titulo: "Estruturas Condicionais",
+        desc: "Tome decisões no código com if, else e switch.",
+      },
+      {
+        id: "03-lacos",
+        titulo: "Laços de Repetição",
+        desc: "Repita ações com for, while e do...while.",
+      },
+      {
+        id: "04-funcoes",
+        titulo: "Funções",
+        desc: "Organize seu código em blocos reutilizáveis com parâmetros e retorno.",
+      },
+      {
+        id: "05-arrays-objetos",
+        titulo: "Arrays e Objetos",
+        desc: "Armazene e organize coleções de dados e estruturas complexas.",
+      },
+      {
+        id: "06-dom-eventos",
+        titulo: "DOM e Eventos",
+        desc: "Manipule elementos HTML e reaja a cliques, digitação e outros eventos.",
+      },
+      {
+        id: "07-formularios",
+        titulo: "Formulários e Validação",
+        desc: "Capture dados do usuário e valide-os antes de usar.",
+      },
+      {
+        id: "08-debug-boas-praticas",
+        titulo: "Debugging e Boas Práticas",
+        desc: "Encontre e corrija erros, e escreva um código mais limpo e legível.",
+      },
+    ];
+
+    const grade = document.getElementById("grade-modulos");
+    grade.innerHTML = DADOS_MODULOS.map((modulo, indice) => {
+      const concluido = moduloEstaConcluido(modulo.id);
+      return `
+        <a class="cartao-modulo" href="modulos/${modulo.id}/index.html">
+          ${concluido ? '<span class="selo-concluido">Concluído</span>' : ""}
+          <span class="cartao-modulo__numero">Módulo ${indice + 1}</span>
+          <h2 class="cartao-modulo__titulo">${modulo.titulo}</h2>
+          <p class="cartao-modulo__desc">${modulo.desc}</p>
+        </a>`;
+    }).join("");
+
+    renderizarProgressoGeral(
+      document.getElementById("barra-progresso"),
+      document.getElementById("texto-progresso")
+    );
+  </script>
+</body>
+</html>

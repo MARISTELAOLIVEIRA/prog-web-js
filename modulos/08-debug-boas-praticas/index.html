@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 8 · Debugging e Boas Práticas</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 8 de 8 · Último módulo!</p>
+    <h1 class="titulo-aula">Debugging e Boas Práticas</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Ler mensagens de erro do JavaScript e entender o que elas significam;</li>
+        <li>Usar <code>console.log</code> estrategicamente para investigar bugs;</li>
+        <li>Aplicar boas práticas de nomenclatura e organização de código;</li>
+        <li>Evitar armadilhas comuns de quem está aprendendo.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Aprendendo a ler mensagens de erro</h2>
+      <p>Os erros mais comuns em JavaScript têm nomes que já dão uma pista do problema:</p>
+      <ul>
+        <li><code>SyntaxError</code> — algo está escrito de forma incorreta (parêntese ou chave faltando, por exemplo)</li>
+        <li><code>ReferenceError</code> — você usou uma variável que não existe ou não foi declarada</li>
+        <li><code>TypeError</code> — você tentou fazer uma operação inválida para aquele tipo (ex: chamar algo que não é função)</li>
+      </ul>
+      <div id="playground-erro-referencia"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. console.log é seu melhor amigo</h2>
+      <p>
+        Quando o código não faz o que você espera, coloque <code>console.log</code> em pontos estratégicos
+        para ver os valores reais das variáveis durante a execução:
+      </p>
+      <pre><code>function calcularDesconto(preco, percentual) {
+  console.log("preco recebido:", preco);
+  console.log("percentual recebido:", percentual);
+
+  const desconto = preco * (percentual / 100);
+  console.log("valor do desconto:", desconto);
+
+  return preco - desconto;
+}
+
+console.log(calcularDesconto(100, 10));</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> depois de resolver o bug, remova (ou comente) os <code>console.log</code> de
+        depuração que você não precisa mais deixar no código final.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Desafio: encontre e corrija o bug</h2>
+      <p>
+        O código abaixo deveria somar todos os números de um array, mas tem um bug. Use <code>console.log</code>
+        para investigar e corrija o erro.
+      </p>
+      <div id="playground-encontre-bug"></div>
+      <div class="atencao">
+        <strong>Dica se você travar:</strong> confira o valor inicial da variável <code>soma</code> e os
+        limites do laço <code>for</code>.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Boas práticas de código</h2>
+      <ul>
+        <li><strong>Nomes claros:</strong> prefira <code>calcularMedia</code> a <code>calc</code> ou <code>x</code>.</li>
+        <li><strong>Use <code>const</code> por padrão</strong>, e <code>let</code> só quando o valor muda.</li>
+        <li><strong>Use sempre <code>===</code> e <code>!==</code></strong>, nunca <code>==</code>/<code>!=</code>.</li>
+        <li><strong>Indente o código de forma consistente</strong> — facilita muito a leitura.</li>
+        <li><strong>Evite repetir código</strong>: se você copiou e colou um trecho 3 vezes, considere criar uma função.</li>
+        <li><strong>Comente o "porquê", não o "o quê"</strong>: comentários devem explicar decisões, não repetir o código.</li>
+      </ul>
+      <pre><code>// Ruim: nome pouco claro e comentário óbvio
+let x = 10; // define x como 10
+
+// Bom: nome claro, sem comentário desnecessário
+let precoMaximoPermitido = 10;</code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício final: revisão geral do curso</h2>
+      <div id="exercicio-final"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo8"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../07-formularios/index.html">← Módulo anterior: Formulários</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../../index.html" class="botao botao--primario">🎉 Voltar ao início do curso</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 8 de 8 · Debugging e Boas Práticas · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-erro-referencia",
+      `console.log(numeroQueNaoExiste);
+// Experimente executar e leia a mensagem de erro no console abaixo.
+// Depois, declare a variável antes de usá-la e execute de novo.`,
+      "Execute e leia o erro"
+    );
+
+    criarPlayground(
+      "playground-encontre-bug",
+      `function somarTodos(numeros) {
+  let soma = 1; // <- há um bug aqui, veja o valor inicial
+
+  for (let i = 0; i <= numeros.length; i++) { // <- e outro bug aqui, no limite do laço
+    soma += numeros[i];
+  }
+
+  return soma;
+}
+
+console.log(somarTodos([1, 2, 3])); // deveria imprimir 6`,
+      "Encontre e corrija os dois bugs"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-final",
+      enunciado: `
+        <p><strong>Desafio final:</strong> complete a função <code>processarNotas(notas)</code> que recebe um
+        array de números (notas de 0 a 10) e <strong>retorna um objeto</strong> com o seguinte formato:</p>
+        <pre><code>{ media: 7.5, aprovados: 3, reprovados: 1 }</code></pre>
+        <p>Considere aprovado quem tirou nota <strong>maior ou igual a 6</strong>. Este exercício combina
+        laços, condicionais, arrays e objetos — tudo que você aprendeu no curso!</p>
+      `,
+      codigoInicial: `function processarNotas(notas) {
+  let soma = 0;
+  let aprovados = 0;
+  let reprovados = 0;
+
+  // escreva seu laço aqui: some as notas e conte aprovados/reprovados
+
+  return {
+    media: soma / notas.length,
+    aprovados: aprovados,
+    reprovados: reprovados,
+  };
+}`,
+      testes: [
+        {
+          descricao: "processarNotas([10, 10, 10, 10]) deve ter média 10 e 4 aprovados",
+          expressao: "processarNotas([10, 10, 10, 10]).media === 10 && processarNotas([10, 10, 10, 10]).aprovados === 4",
+        },
+        {
+          descricao: "processarNotas([4, 5]) deve ter 0 aprovados e 2 reprovados",
+          expressao: "processarNotas([4, 5]).aprovados === 0 && processarNotas([4, 5]).reprovados === 2",
+        },
+        {
+          descricao: "processarNotas([6, 4]) deve ter média 5",
+          expressao: "processarNotas([6, 4]).media === 5",
+        },
+        {
+          descricao: "processarNotas([6, 4]) deve ter 1 aprovado e 1 reprovado",
+          expressao: "processarNotas([6, 4]).aprovados === 1 && processarNotas([6, 4]).reprovados === 1",
+        },
+      ],
+    });
+
+    criarQuiz("quiz-modulo8", [
+      {
+        pergunta: "Qual tipo de erro indica que você usou uma variável que não foi declarada?",
+        alternativas: ["SyntaxError", "ReferenceError", "TypeError", "RangeError"],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual é uma boa prática ao nomear variáveis?",
+        alternativas: [
+          "Usar nomes curtos como x, y, z sempre",
+          "Usar nomes que descrevem claramente o conteúdo, como precoTotal",
+          "Usar sempre letras maiúsculas",
+          "Usar números aleatórios no nome",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Para que serve o `console.log` durante o desenvolvimento?",
+        alternativas: [
+          "Para deixar o código mais bonito",
+          "Para investigar o valor real das variáveis durante a execução e encontrar bugs",
+          "É obrigatório em todo projeto e deve ficar no código final",
+          "Serve apenas para mostrar mensagens de boas-vindas",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual destas opções é a boa prática recomendada neste curso?",
+        alternativas: ["Usar == no lugar de ===", "Usar var no lugar de let/const", "Usar === e const como padrão", "Evitar funções sempre que possível"],
+        correta: 2,
+      },
+    ]);
+
+    configurarBotaoConcluir("08-debug-boas-praticas");
+  </script>
+</body>
+</html>

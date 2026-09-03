@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 3 · Laços de Repetição</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 3 de 8</p>
+    <h1 class="titulo-aula">Laços de Repetição</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Repetir um bloco de código um número definido de vezes com <code>for</code>;</li>
+        <li>Repetir enquanto uma condição for verdadeira com <code>while</code> e <code>do...while</code>;</li>
+        <li>Usar <code>break</code> e <code>continue</code> para controlar um laço;</li>
+        <li>Evitar loops infinitos.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. for: quando você sabe quantas vezes repetir</h2>
+      <p>O laço <code>for</code> tem três partes separadas por ponto e vírgula: <strong>início</strong>, <strong>condição</strong> e <strong>incremento</strong>.</p>
+      <pre><code>for (let i = 1; i <= 5; i++) {
+  console.log("Contando: " + i);
+}
+// i começa em 1, repete enquanto i <= 5, e aumenta 1 a cada volta</code></pre>
+      <div id="playground-for"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. while: repete enquanto a condição for verdadeira</h2>
+      <p>Use quando não souber exatamente quantas repetições vão acontecer — importante lembrar de alterar a variável dentro do laço, senão ele nunca termina!</p>
+      <pre><code>let energia = 100;
+
+while (energia > 0) {
+  console.log("Energia restante: " + energia);
+  energia -= 25;
+}</code></pre>
+      <div class="atencao">
+        <strong>Atenção — loop infinito:</strong> se você esquecer de alterar a variável usada na condição
+        (como o <code>energia -= 25</code> acima), o laço nunca termina e trava o navegador. Sempre confira se a
+        condição vai se tornar falsa em algum momento.
+      </div>
+      <div id="playground-while"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. do...while: executa pelo menos uma vez</h2>
+      <p>Parecido com o <code>while</code>, mas testa a condição <strong>depois</strong> de executar o bloco — então ele sempre roda ao menos uma vez.</p>
+      <pre><code>let numero = 10;
+
+do {
+  console.log("Executou pelo menos uma vez. Número: " + numero);
+  numero++;
+} while (numero < 5); // condição falsa, mas já executou 1 vez</code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>4. break e continue</h2>
+      <ul>
+        <li><code>break</code> — interrompe o laço imediatamente</li>
+        <li><code>continue</code> — pula para a próxima repetição, sem executar o resto do bloco atual</li>
+      </ul>
+      <pre><code>for (let i = 1; i <= 10; i++) {
+  if (i === 6) break;          // para quando chegar em 6
+  if (i % 2 === 0) continue;   // pula números pares
+  console.log(i);              // imprime só ímpares até 5
+}</code></pre>
+      <div id="playground-break-continue"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. Percorrendo um array com for</h2>
+      <p>Um uso muito comum de <code>for</code> é percorrer todos os itens de um array, usando o índice:</p>
+      <pre><code>let frutas = ["maçã", "banana", "uva"];
+
+for (let i = 0; i < frutas.length; i++) {
+  console.log(i + ": " + frutas[i]);
+}</code></pre>
+      <div id="playground-array-for"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático</h2>
+      <div id="exercicio-soma"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo3"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../02-condicionais/index.html">← Módulo anterior: Condicionais</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../04-funcoes/index.html" class="botao botao--primario">Próximo módulo: Funções →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 3 de 8 · Laços de Repetição · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-for",
+      `for (let i = 1; i <= 5; i++) {
+  console.log("Contando: " + i);
+}`,
+      "Mude o limite do laço"
+    );
+
+    criarPlayground(
+      "playground-while",
+      `let energia = 100;
+
+while (energia > 0) {
+  console.log("Energia restante: " + energia);
+  energia -= 25;
+}`,
+      "Teste o while"
+    );
+
+    criarPlayground(
+      "playground-break-continue",
+      `for (let i = 1; i <= 10; i++) {
+  if (i === 6) break;
+  if (i % 2 === 0) continue;
+  console.log(i);
+}`,
+      "Brinque com break e continue"
+    );
+
+    criarPlayground(
+      "playground-array-for",
+      `let frutas = ["maçã", "banana", "uva"];
+
+for (let i = 0; i < frutas.length; i++) {
+  console.log(i + ": " + frutas[i]);
+}`,
+      "Adicione mais frutas ao array"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-soma",
+      enunciado: `
+        <p><strong>Desafio:</strong> complete a função <code>somarAte(n)</code> que usa um laço
+        (<code>for</code> ou <code>while</code>) para somar todos os números inteiros de 1 até <code>n</code>
+        e <strong>retornar</strong> o resultado.</p>
+        <p>Exemplo: <code>somarAte(4)</code> deve retornar <code>1 + 2 + 3 + 4 = 10</code>.</p>
+      `,
+      codigoInicial: `function somarAte(n) {
+  let soma = 0;
+  // escreva seu laço aqui
+
+  return soma;
+}`,
+      testes: [
+        { descricao: "somarAte(4) deve retornar 10", expressao: "somarAte(4) === 10" },
+        { descricao: "somarAte(1) deve retornar 1", expressao: "somarAte(1) === 1" },
+        { descricao: "somarAte(10) deve retornar 55", expressao: "somarAte(10) === 55" },
+      ],
+    });
+
+    criarQuiz("quiz-modulo3", [
+      {
+        pergunta: "Qual laço garante que o bloco execute pelo menos uma vez, mesmo que a condição seja falsa desde o início?",
+        alternativas: ["for", "while", "do...while", "switch"],
+        correta: 2,
+      },
+      {
+        pergunta: "O que faz o comando `continue` dentro de um laço?",
+        alternativas: [
+          "Encerra o laço imediatamente",
+          "Pula o restante do bloco atual e vai para a próxima repetição",
+          "Reinicia o laço do zero",
+          "Não faz nada em JavaScript",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "O que causa um loop infinito?",
+        alternativas: [
+          "Usar `for` em vez de `while`",
+          "A condição do laço nunca se tornar falsa",
+          "Usar `break` dentro do laço",
+          "Usar arrays dentro do laço",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Em `for (let i = 0; i < frutas.length; i++)`, o que `frutas.length` representa?",
+        alternativas: [
+          "O primeiro item do array",
+          "A quantidade de itens no array",
+          "O último índice válido do array",
+          "Um erro de digitação",
+        ],
+        correta: 1,
+      },
+    ]);
+
+    configurarBotaoConcluir("03-lacos");
+  </script>
+</body>
+</html>

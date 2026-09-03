@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 2 · Estruturas Condicionais</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 2 de 8</p>
+    <h1 class="titulo-aula">Estruturas Condicionais</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Usar <code>if</code>, <code>else if</code> e <code>else</code> para tomar decisões;</li>
+        <li>Usar <code>switch</code> quando houver muitos casos possíveis;</li>
+        <li>Usar o operador ternário para condições simples de uma linha.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. if / else</h2>
+      <p>
+        Uma estrutura condicional executa um bloco de código <strong>somente se</strong> uma condição for
+        verdadeira. A condição fica entre parênteses e o bloco entre chaves <code>{ }</code>.
+      </p>
+      <pre><code>let idade = 16;
+
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+} else {
+  console.log("Você é menor de idade.");
+}</code></pre>
+      <div id="playground-if-else"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. else if: várias condições em sequência</h2>
+      <p>Quando há mais de duas possibilidades, encadeamos com <code>else if</code>:</p>
+      <pre><code>let nota = 7.5;
+
+if (nota >= 9) {
+  console.log("Conceito A");
+} else if (nota >= 7) {
+  console.log("Conceito B");
+} else if (nota >= 5) {
+  console.log("Conceito C");
+} else {
+  console.log("Conceito D - reprovado");
+}</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> o JavaScript testa as condições <em>na ordem</em> e para na primeira que for
+        verdadeira. Por isso a ordem dos <code>else if</code> importa!
+      </div>
+      <div id="playground-else-if"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. switch: quando comparamos um valor com várias opções exatas</h2>
+      <p>
+        O <code>switch</code> é útil quando comparamos <strong>uma mesma variável</strong> com vários valores
+        possíveis, como no exemplo do dia da semana:
+      </p>
+      <pre><code>let diaDaSemana = 3;
+let nomeDoDia;
+
+switch (diaDaSemana) {
+  case 1:
+    nomeDoDia = "Domingo";
+    break;
+  case 2:
+    nomeDoDia = "Segunda-feira";
+    break;
+  case 3:
+    nomeDoDia = "Terça-feira";
+    break;
+  default:
+    nomeDoDia = "Dia inválido";
+}
+
+console.log(nomeDoDia);</code></pre>
+      <div class="atencao">
+        <strong>Atenção:</strong> não esqueça do <code>break</code>! Sem ele, o código continua executando os
+        próximos <code>case</code> mesmo depois de encontrar o valor certo (isso se chama "fall-through").
+      </div>
+      <div id="playground-switch"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Operador ternário: um if/else compacto</h2>
+      <p>Para decisões simples de uma linha, o operador ternário <code>condição ? valorSeVerdadeiro : valorSeFalso</code> é bem prático:</p>
+      <pre><code>let idade = 20;
+let status = idade >= 18 ? "adulto" : "menor de idade";
+console.log(status);</code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático</h2>
+      <div id="exercicio-classificacao"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo2"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../01-variaveis/index.html">← Módulo anterior: Variáveis</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../03-lacos/index.html" class="botao botao--primario">Próximo módulo: Laços →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 2 de 8 · Estruturas Condicionais · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-if-else",
+      `let idade = 16;
+
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+} else {
+  console.log("Você é menor de idade.");
+}`,
+      "Altere a idade e execute"
+    );
+
+    criarPlayground(
+      "playground-else-if",
+      `let nota = 7.5;
+
+if (nota >= 9) {
+  console.log("Conceito A");
+} else if (nota >= 7) {
+  console.log("Conceito B");
+} else if (nota >= 5) {
+  console.log("Conceito C");
+} else {
+  console.log("Conceito D - reprovado");
+}`,
+      "Teste diferentes notas"
+    );
+
+    criarPlayground(
+      "playground-switch",
+      `let diaDaSemana = 3;
+let nomeDoDia;
+
+switch (diaDaSemana) {
+  case 1:
+    nomeDoDia = "Domingo";
+    break;
+  case 2:
+    nomeDoDia = "Segunda-feira";
+    break;
+  case 3:
+    nomeDoDia = "Terça-feira";
+    break;
+  default:
+    nomeDoDia = "Dia inválido";
+}
+
+console.log(nomeDoDia);`,
+      "Mude o número do dia"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-classificacao",
+      enunciado: `
+        <p><strong>Desafio:</strong> complete a função <code>classificarTemperatura(graus)</code> que
+        <strong>retorna</strong> uma string de acordo com a regra:</p>
+        <ul>
+          <li>graus &lt; 10 → <code>"frio"</code></li>
+          <li>graus entre 10 e 25 (incluindo os dois) → <code>"agradável"</code></li>
+          <li>graus &gt; 25 → <code>"quente"</code></li>
+        </ul>
+      `,
+      codigoInicial: `function classificarTemperatura(graus) {
+  // escreva seu código aqui
+}`,
+      testes: [
+        { descricao: "classificarTemperatura(5) deve retornar \"frio\"", expressao: 'classificarTemperatura(5) === "frio"' },
+        { descricao: "classificarTemperatura(18) deve retornar \"agradável\"", expressao: 'classificarTemperatura(18) === "agradável"' },
+        { descricao: "classificarTemperatura(30) deve retornar \"quente\"", expressao: 'classificarTemperatura(30) === "quente"' },
+        { descricao: "classificarTemperatura(10) (limite) deve retornar \"agradável\"", expressao: 'classificarTemperatura(10) === "agradável"' },
+      ],
+    });
+
+    criarQuiz("quiz-modulo2", [
+      {
+        pergunta: "O que acontece se você esquecer o `break` dentro de um `case` do switch?",
+        alternativas: [
+          "O código não compila",
+          "O JavaScript continua executando os próximos casos (fall-through)",
+          "Nada, o break é opcional e não muda o comportamento",
+          "O switch para de funcionar",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual estrutura é mais indicada para comparar UMA variável com muitos valores exatos possíveis?",
+        alternativas: ["for", "while", "switch", "template literal"],
+        correta: 2,
+      },
+      {
+        pergunta: 'O que faz `idade >= 18 ? "adulto" : "menor"` ?',
+        alternativas: [
+          "Declara duas variáveis",
+          "É um operador ternário: retorna 'adulto' se a condição for verdadeira, senão 'menor'",
+          "Gera um erro de sintaxe",
+          "Compara duas strings",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Em uma cadeia de else if, o JavaScript executa:",
+        alternativas: [
+          "Todos os blocos cuja condição é verdadeira",
+          "Apenas o primeiro bloco cuja condição é verdadeira",
+          "Sempre o último bloco (else)",
+          "Nenhum bloco, senão houver switch",
+        ],
+        correta: 1,
+      },
+    ]);
+
+    configurarBotaoConcluir("02-condicionais");
+  </script>
+</body>
+</html>

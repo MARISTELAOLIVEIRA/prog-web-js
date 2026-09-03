@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 7 · Formulários e Validação</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 7 de 8</p>
+    <h1 class="titulo-aula">Formulários e Validação</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Ler o valor digitado em um <code>&lt;input&gt;</code>;</li>
+        <li>Impedir o recarregamento da página ao enviar um formulário com <code>preventDefault()</code>;</li>
+        <li>Validar dados antes de usá-los (campo vazio, tamanho mínimo, formato);</li>
+        <li>Exibir mensagens de erro para o usuário.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Lendo o valor de um campo de texto</h2>
+      <p>
+        Todo <code>&lt;input&gt;</code> tem uma propriedade <code>.value</code> com o texto digitado pelo
+        usuário:
+      </p>
+      <pre><code>// HTML: &lt;input id="campoNome" type="text"&gt;
+
+const campoNome = document.querySelector("#campoNome");
+console.log(campoNome.value); // o que o usuário digitou</code></pre>
+      <div id="playground-form-valor"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. preventDefault(): evitando o recarregamento da página</h2>
+      <p>
+        Por padrão, ao enviar (<code>submit</code>) um formulário, a página recarrega. Para controlar o envio
+        com JavaScript, chamamos <code>evento.preventDefault()</code> logo no início da função:
+      </p>
+      <pre><code>const formulario = document.querySelector("#meuFormulario");
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault(); // impede o recarregamento da página
+  console.log("Formulário enviado sem recarregar a página!");
+});</code></pre>
+      <div class="atencao">
+        <strong>Atenção:</strong> se você esquecer o <code>preventDefault()</code>, a página recarrega antes do
+        seu código terminar de rodar — e parecerá que "nada aconteceu".
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Validando dados do usuário</h2>
+      <p>Antes de usar os dados de um formulário, é fundamental validar. Alguns exemplos comuns:</p>
+      <pre><code>function validarNome(nome) {
+  if (nome.trim() === "") {
+    return "O nome não pode estar vazio.";
+  }
+  if (nome.trim().length < 3) {
+    return "O nome deve ter pelo menos 3 letras.";
+  }
+  return null; // null significa "sem erro"
+}
+
+console.log(validarNome(""));      // "O nome não pode estar vazio."
+console.log(validarNome("Al"));    // "O nome deve ter pelo menos 3 letras."
+console.log(validarNome("Alice")); // null</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> <code>string.trim()</code> remove espaços do início e do fim do texto — muito útil
+        para não deixar o usuário "enganar" a validação digitando só espaços.
+      </div>
+      <div id="playground-validacao"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Formulário completo: cadastro com validação e mensagens de erro</h2>
+      <p>
+        Preencha o formulário abaixo e clique em enviar. Tente também deixar campos vazios ou inválidos para
+        ver as mensagens de erro.
+      </p>
+      <div id="playground-form-completo"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático (sem interface, só lógica)</h2>
+      <div id="exercicio-validacao-email"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo7"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../06-dom-eventos/index.html">← Módulo anterior: DOM e Eventos</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../08-debug-boas-praticas/index.html" class="botao botao--primario">Próximo módulo: Debugging →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 7 de 8 · Formulários e Validação · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlaygroundDOM({
+      idContainer: "playground-form-valor",
+      titulo: "Digite algo e clique no botão",
+      htmlBase: `<input id="campoNome" type="text" placeholder="Digite seu nome" />
+<button id="botaoMostrar" style="margin-left:0.4rem;">Mostrar valor</button>`,
+      codigoInicial: `const campoNome = document.querySelector("#campoNome");
+const botaoMostrar = document.querySelector("#botaoMostrar");
+
+botaoMostrar.addEventListener("click", function () {
+  console.log("Você digitou: " + campoNome.value);
+});`,
+      altura: 90,
+    });
+
+    criarPlayground(
+      "playground-validacao",
+      `function validarNome(nome) {
+  if (nome.trim() === "") {
+    return "O nome não pode estar vazio.";
+  }
+  if (nome.trim().length < 3) {
+    return "O nome deve ter pelo menos 3 letras.";
+  }
+  return null;
+}
+
+console.log(validarNome(""));
+console.log(validarNome("Al"));
+console.log(validarNome("Alice"));`,
+      "Teste a função de validação"
+    );
+
+    criarPlaygroundDOM({
+      idContainer: "playground-form-completo",
+      titulo: "Formulário de cadastro",
+      htmlBase: `
+        <form id="formCadastro">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" />
+          <label for="email">E-mail</label>
+          <input id="email" type="text" />
+          <div id="erros" style="color:#dc2626;margin-top:0.6rem;font-size:0.9rem;"></div>
+          <button type="submit" style="margin-top:0.8rem;">Cadastrar</button>
+        </form>
+      `,
+      codigoInicial: `const formulario = document.querySelector("#formCadastro");
+const divErros = document.querySelector("#erros");
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+
+  const nome = document.querySelector("#nome").value.trim();
+  const email = document.querySelector("#email").value.trim();
+  const listaDeErros = [];
+
+  if (nome === "") {
+    listaDeErros.push("O nome é obrigatório.");
+  }
+  if (!email.includes("@")) {
+    listaDeErros.push("Digite um e-mail válido (precisa ter @).");
+  }
+
+  if (listaDeErros.length > 0) {
+    divErros.textContent = listaDeErros.join(" ");
+  } else {
+    divErros.textContent = "";
+    console.log("Cadastro enviado: " + nome + " - " + email);
+  }
+});`,
+      altura: 320,
+    });
+
+    criarExercicio({
+      idContainer: "exercicio-validacao-email",
+      enunciado: `
+        <p><strong>Desafio:</strong> complete a função <code>validarEmail(email)</code> que
+        <strong>retorna</strong> <code>true</code> se o texto contiver um <code>@</code> e um <code>.</code>
+        depois do <code>@</code>, e <code>false</code> caso contrário. (Você pode usar
+        <code>String.prototype.includes</code> e <code>String.prototype.indexOf</code>.)</p>
+      `,
+      codigoInicial: `function validarEmail(email) {
+  // escreva seu código aqui
+}`,
+      testes: [
+        { descricao: 'validarEmail("ana@exemplo.com") deve retornar true', expressao: 'validarEmail("ana@exemplo.com") === true' },
+        { descricao: 'validarEmail("semarroba.com") deve retornar false', expressao: 'validarEmail("semarroba.com") === false' },
+        { descricao: 'validarEmail("com@ponto") deve retornar false', expressao: 'validarEmail("com@ponto") === false' },
+      ],
+    });
+
+    criarQuiz("quiz-modulo7", [
+      {
+        pergunta: "O que `evento.preventDefault()` faz em um formulário?",
+        alternativas: [
+          "Envia o formulário mais rápido",
+          "Impede o comportamento padrão (recarregar a página) ao enviar o formulário",
+          "Valida automaticamente todos os campos",
+          "Apaga os valores digitados",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Como você acessa o texto digitado em um `<input>` selecionado em `campo`?",
+        alternativas: ["campo.text", "campo.value", "campo.innerHTML", "campo.data"],
+        correta: 1,
+      },
+      {
+        pergunta: 'O que `"  Ana  ".trim()` retorna?',
+        alternativas: ['"  Ana  "', '"Ana"', '"Ana  "', "undefined"],
+        correta: 1,
+      },
+      {
+        pergunta: "Por que validar os dados do formulário antes de usá-los?",
+        alternativas: [
+          "Para deixar o código mais lento de propósito",
+          "Para evitar erros e garantir que os dados estejam no formato esperado",
+          "Não é necessário validar, o navegador já faz tudo sozinho",
+          "Só é necessário se o formulário tiver mais de 5 campos",
+        ],
+        correta: 1,
+      },
+    ]);
+
+    configurarBotaoConcluir("07-formularios");
+  </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 6 · DOM e Eventos</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 6 de 8</p>
+    <h1 class="titulo-aula">DOM e Eventos</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Explicar o que é o DOM (Document Object Model);</li>
+        <li>Selecionar elementos HTML com <code>document.querySelector</code>;</li>
+        <li>Alterar texto, estilo e classes de elementos via JavaScript;</li>
+        <li>Reagir a eventos como clique e digitação com <code>addEventListener</code>.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. O que é o DOM?</h2>
+      <p>
+        Quando o navegador carrega uma página HTML, ele cria uma representação dela em memória chamada
+        <strong>DOM (Document Object Model)</strong> — uma "árvore" de elementos que o JavaScript pode ler e
+        modificar. É assim que conseguimos criar páginas <em>interativas</em>: sem o DOM, o JavaScript não
+        teria como "enxergar" ou alterar o HTML.
+      </p>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Selecionando elementos</h2>
+      <p>
+        <code>document.querySelector("seletor")</code> encontra o <strong>primeiro</strong> elemento que
+        combina com o seletor CSS informado (o mesmo tipo de seletor usado em arquivos <code>.css</code>):
+      </p>
+      <pre><code>// HTML: &lt;p id="mensagem"&gt;Texto original&lt;/p&gt;
+
+const paragrafo = document.querySelector("#mensagem"); // seleciona pelo id
+console.log(paragrafo.textContent); // "Texto original"
+
+paragrafo.textContent = "Texto alterado pelo JavaScript!";</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> use <code>#id</code> para selecionar por id, <code>.classe</code> para selecionar
+        por classe, e <code>tag</code> (como <code>"button"</code>) para selecionar por tipo de elemento —
+        exatamente como no CSS.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Experimente: alterando texto e estilo</h2>
+      <p>
+        Abaixo há uma página real dentro de uma "caixa". Edite o JavaScript à esquerda e clique em
+        <strong>Executar</strong> para ver o resultado na página.
+      </p>
+      <div id="playground-dom-texto"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Eventos: reagindo a ações do usuário</h2>
+      <p>
+        <code>addEventListener("evento", funcao)</code> registra uma função que será executada quando o
+        evento acontecer (como <code>"click"</code>, <code>"input"</code>, <code>"submit"</code>).
+      </p>
+      <pre><code>const botao = document.querySelector("#meuBotao");
+
+botao.addEventListener("click", function () {
+  console.log("O botão foi clicado!");
+});</code></pre>
+      <div id="playground-dom-clique"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. classList: adicionando e removendo classes CSS</h2>
+      <p>
+        Em vez de mudar estilos um a um, é comum alternar uma <strong>classe CSS</strong> inteira com
+        <code>classList.add</code>, <code>classList.remove</code> ou <code>classList.toggle</code>:
+      </p>
+      <pre><code>const caixa = document.querySelector("#caixa");
+
+caixa.classList.toggle("destaque"); // adiciona a classe se não tiver, remove se já tiver</code></pre>
+      <div id="playground-dom-classe"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Desafio final do módulo</h2>
+      <p>
+        Complete o código para que, ao clicar no botão, o contador exibido aumente 1 a cada clique.
+        (Dica: guarde o valor em uma variável fora da função e atualize o <code>textContent</code> a cada clique.)
+      </p>
+      <div id="playground-dom-contador"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo6"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../05-arrays-objetos/index.html">← Módulo anterior: Arrays e Objetos</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../07-formularios/index.html" class="botao botao--primario">Próximo módulo: Formulários →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 6 de 8 · DOM e Eventos · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlaygroundDOM({
+      idContainer: "playground-dom-texto",
+      titulo: "Altere o texto do parágrafo",
+      htmlBase: `<p id="mensagem">Texto original</p>`,
+      codigoInicial: `const paragrafo = document.querySelector("#mensagem");
+console.log(paragrafo.textContent);
+
+paragrafo.textContent = "Texto alterado pelo JavaScript!";
+paragrafo.style.color = "#4f46e5";
+paragrafo.style.fontWeight = "bold";`,
+      altura: 110,
+    });
+
+    criarPlaygroundDOM({
+      idContainer: "playground-dom-clique",
+      titulo: "Clique no botão e observe o console abaixo",
+      htmlBase: `<button id="meuBotao">Clique aqui</button>`,
+      codigoInicial: `const botao = document.querySelector("#meuBotao");
+
+botao.addEventListener("click", function () {
+  console.log("O botão foi clicado!");
+});`,
+      altura: 90,
+    });
+
+    criarPlaygroundDOM({
+      idContainer: "playground-dom-classe",
+      titulo: "Clique no botão para alternar a classe 'destaque'",
+      htmlBase: `<style>.destaque { background: #fde68a; border: 2px solid #d97706; }</style>
+<div id="caixa" style="padding:1rem;border-radius:8px;border:2px solid #c7cbe0;margin-bottom:0.6rem;">Esta é a caixa</div>
+<button id="botaoAlternar">Alternar destaque</button>`,
+      codigoInicial: `const caixa = document.querySelector("#caixa");
+const botao = document.querySelector("#botaoAlternar");
+
+botao.addEventListener("click", function () {
+  caixa.classList.toggle("destaque");
+});`,
+      altura: 150,
+    });
+
+    criarPlaygroundDOM({
+      idContainer: "playground-dom-contador",
+      titulo: "Desafio: contador de cliques",
+      htmlBase: `<p>Cliques: <span id="valorContador">0</span></p>
+<button id="botaoContar">Clique para contar</button>`,
+      codigoInicial: `let contador = 0;
+const valorContador = document.querySelector("#valorContador");
+const botaoContar = document.querySelector("#botaoContar");
+
+botaoContar.addEventListener("click", function () {
+  // escreva aqui: aumente o contador em 1 e atualize o texto na tela
+});`,
+      altura: 110,
+    });
+
+    criarQuiz("quiz-modulo6", [
+      {
+        pergunta: "O que é o DOM?",
+        alternativas: [
+          "Uma linguagem de programação",
+          "A representação em memória do HTML, que o JavaScript pode ler e alterar",
+          "Um tipo de banco de dados",
+          "Um framework de CSS",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: 'Qual seletor você usaria em `document.querySelector(...)` para selecionar um elemento com `id="titulo"`?',
+        alternativas: ['".titulo"', '"titulo"', '"#titulo"', '"*titulo"'],
+        correta: 2,
+      },
+      {
+        pergunta: "Qual método registra uma função para ser executada quando um botão é clicado?",
+        alternativas: [
+          "botao.onClick = funcao",
+          "botao.addEventListener(\"click\", funcao)",
+          "botao.evento(\"click\")",
+          "botao.click.add(funcao)",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "O que `elemento.classList.toggle(\"destaque\")` faz?",
+        alternativas: [
+          "Sempre adiciona a classe destaque",
+          "Sempre remove a classe destaque",
+          "Adiciona a classe se ela não existir, e remove se já existir",
+          "Apaga todas as classes do elemento",
+        ],
+        correta: 2,
+      },
+    ]);
+
+    configurarBotaoConcluir("06-dom-eventos");
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 4 · Funções</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha">Módulo 4 de 8</p>
+    <h1 class="titulo-aula">Funções</h1>
+
+    <div class="objetivos">
+      <h2>Ao final deste módulo, você será capaz de:</h2>
+      <ul>
+        <li>Criar funções com <code>function</code> e com arrow functions (<code>=&gt;</code>);</li>
+        <li>Usar parâmetros e valores padrão;</li>
+        <li>Retornar valores com <code>return</code>;</li>
+        <li>Entender a diferença entre escopo local e global.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Por que usar funções?</h2>
+      <p>
+        Uma função é um <strong>bloco de código reutilizável</strong>. Em vez de repetir o mesmo código várias
+        vezes, escrevemos uma vez dentro de uma função e a "chamamos" sempre que precisarmos.
+      </p>
+      <pre><code>function saudar(nome) {
+  console.log("Olá, " + nome + "!");
+}
+
+saudar("Carlos"); // Olá, Carlos!
+saudar("Beatriz"); // Olá, Beatriz!</code></pre>
+      <div id="playground-funcao-basica"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Parâmetros e retorno</h2>
+      <p>
+        <strong>Parâmetros</strong> são as "entradas" da função. <code>return</code> define a "saída" — o valor
+        que a função devolve para quem a chamou. Assim que o JavaScript encontra um <code>return</code>, a função
+        para de executar.
+      </p>
+      <pre><code>function somar(a, b) {
+  return a + b;
+}
+
+let resultado = somar(3, 4);
+console.log(resultado); // 7</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> uma função sem <code>return</code> devolve <code>undefined</code>. Isso é diferente
+        de usar <code>console.log</code>, que só mostra algo no console mas não devolve valor para ser usado depois.
+      </div>
+      <div id="playground-retorno"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Valores padrão para parâmetros</h2>
+      <p>Você pode definir um valor padrão, usado quando o argumento não é passado na chamada:</p>
+      <pre><code>function saudar(nome = "visitante") {
+  console.log("Olá, " + nome + "!");
+}
+
+saudar();          // Olá, visitante!
+saudar("Marcos");  // Olá, Marcos!</code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Arrow functions: outra forma de escrever funções</h2>
+      <p>
+        As <em>arrow functions</em> (funções de seta) são uma sintaxe mais curta, muito usada em JavaScript
+        moderno:
+      </p>
+      <pre><code>// Função tradicional
+function dobrar(numero) {
+  return numero * 2;
+}
+
+// Arrow function equivalente
+const dobrar2 = (numero) => {
+  return numero * 2;
+};
+
+// Arrow function ainda mais curta (retorno implícito, sem chaves)
+const dobrar3 = (numero) => numero * 2;
+
+console.log(dobrar(5), dobrar2(5), dobrar3(5)); // 10 10 10</code></pre>
+      <div id="playground-arrow"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. Escopo: onde uma variável "existe"</h2>
+      <p>
+        Variáveis criadas <strong>dentro</strong> de uma função (escopo local) só existem ali dentro. Variáveis
+        criadas <strong>fora</strong> de qualquer função (escopo global) podem ser usadas em qualquer lugar do
+        código.
+      </p>
+      <pre><code>let mensagemGlobal = "Eu existo em todo lugar";
+
+function testarEscopo() {
+  let mensagemLocal = "Eu só existo aqui dentro";
+  console.log(mensagemGlobal); // funciona
+  console.log(mensagemLocal);  // funciona
+}
+
+testarEscopo();
+console.log(mensagemGlobal);   // funciona
+// console.log(mensagemLocal); // ERRO: mensagemLocal não existe aqui fora</code></pre>
+      <div class="atencao">
+        <strong>Atenção:</strong> evite depender demais de variáveis globais. Prefira passar valores como
+        parâmetros e devolver resultados com <code>return</code> — isso deixa o código mais previsível.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>Exercício prático</h2>
+      <div id="exercicio-maior"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Quiz de fixação</h2>
+      <div id="quiz-modulo4"></div>
+    </section>
+
+    <div class="marcar-concluido">
+      <button type="button" class="botao botao--secundario" data-botao-concluir>Marcar módulo como concluído</button>
+      <div class="marcar-concluido__status" data-status-concluir></div>
+    </div>
+
+    <div class="navegacao-aula">
+      <div class="navegacao-aula__lado">
+        <a href="../03-lacos/index.html">← Módulo anterior: Laços</a>
+      </div>
+      <div class="navegacao-aula__lado" style="align-items:flex-end;">
+        <a href="../05-arrays-objetos/index.html" class="botao botao--primario">Próximo módulo: Arrays e Objetos →</a>
+      </div>
+    </div>
+  </main>
+
+  <p class="rodape">Módulo 4 de 8 · Funções · Profª Maristela</p>
+
+  <script src="../../js/progress.js"></script>
+  <script src="../../js/playground.js"></script>
+  <script src="../../js/quiz.js"></script>
+  <script>
+    criarPlayground(
+      "playground-funcao-basica",
+      `function saudar(nome) {
+  console.log("Olá, " + nome + "!");
+}
+
+saudar("Carlos");
+saudar("Beatriz");`,
+      "Chame a função com outros nomes"
+    );
+
+    criarPlayground(
+      "playground-retorno",
+      `function somar(a, b) {
+  return a + b;
+}
+
+let resultado = somar(3, 4);
+console.log(resultado);`,
+      "Teste com outros números"
+    );
+
+    criarPlayground(
+      "playground-arrow",
+      `function dobrar(numero) {
+  return numero * 2;
+}
+
+const dobrar2 = (numero) => {
+  return numero * 2;
+};
+
+const dobrar3 = (numero) => numero * 2;
+
+console.log(dobrar(5), dobrar2(5), dobrar3(5));`,
+      "Compare as três formas de escrever a função"
+    );
+
+    criarExercicio({
+      idContainer: "exercicio-maior",
+      enunciado: `
+        <p><strong>Desafio:</strong> escreva a função <code>maiorNumero(a, b, c)</code> que recebe três
+        números e <strong>retorna</strong> o maior deles. Você pode usar <code>if/else</code> ou
+        <code>Math.max</code>.</p>
+      `,
+      codigoInicial: `function maiorNumero(a, b, c) {
+  // escreva seu código aqui
+}`,
+      testes: [
+        { descricao: "maiorNumero(1, 2, 3) deve retornar 3", expressao: "maiorNumero(1, 2, 3) === 3" },
+        { descricao: "maiorNumero(10, 5, 2) deve retornar 10", expressao: "maiorNumero(10, 5, 2) === 10" },
+        { descricao: "maiorNumero(4, 9, 7) deve retornar 9", expressao: "maiorNumero(4, 9, 7) === 9" },
+        { descricao: "maiorNumero(5, 5, 5) deve retornar 5", expressao: "maiorNumero(5, 5, 5) === 5" },
+      ],
+    });
+
+    criarQuiz("quiz-modulo4", [
+      {
+        pergunta: "O que acontece quando o JavaScript encontra um `return` dentro de uma função?",
+        alternativas: [
+          "Ignora e continua executando o resto da função",
+          "Para a execução da função e devolve o valor indicado",
+          "Gera um erro",
+          "Reinicia a função",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual é a saída de uma função que NÃO tem `return`?",
+        alternativas: ["null", "0", "undefined", "Uma string vazia"],
+        correta: 2,
+      },
+      {
+        pergunta: "Uma variável criada dentro de uma função pode ser acessada fora dela?",
+        alternativas: [
+          "Sim, sempre",
+          "Não, ela tem escopo local e só existe dentro da função",
+          "Só se for `const`",
+          "Só em arrow functions",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual das opções é uma arrow function válida que dobra um número?",
+        alternativas: [
+          "function => numero * 2",
+          "const dobrar = (numero) => numero * 2;",
+          "arrow dobrar(numero) { return numero * 2 }",
+          "let dobrar == numero * 2",
+        ],
+        correta: 1,
+      },
+    ]);
+
+    configurarBotaoConcluir("04-funcoes");
+  </script>
+</body>
+</html>
