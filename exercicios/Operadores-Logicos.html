@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 4 - Entrada no Parque</title>
+</head>
+<body>
+
+  <h1>Pode entrar na montanha-russa?</h1>
+  <p id="resposta"></p>
+ 
+  <script>
+    // Variáveis de exemplo
+    let alturaEmMetros = 1.55;
+    let acompanhadoPelosPais = false;
+
+    // Precisa ter mais de 1.50m E (&&) estar acompanhado
+    if (alturaEmMetros >= 1.50 && acompanhadoPelosPais == true) {
+      document.getElementById("resposta").innerText = "Entrada permitida!";
+    } else {
+      document.getElementById("resposta").innerText = "Entrada não permitida. Verifique a altura ou acompanhante.";
+    }
+    // O operador && (E) garante que ambas as condições sejam verdadeiras para permitir a entrada.
+  </script>
+
+</body>
+</html>

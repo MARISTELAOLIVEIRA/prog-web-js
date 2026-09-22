@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 5 - Tabuada do 5</title>
+</head>
+<body>
+
+  <h1>Tabuada:</h1>
+  <!-- PARTE 1: Onde o resultado vai aparecer -->
+  <p id="resposta"></p>
+
+  <script>
+    // Variável para a tabuada do 5, usei o let para declarar a variável, mas poderia ser const também, já que não será alterada.
+    let numero = 5;
+    let resultado = "";
+
+    for (let i = 1; i <= 10; i++) {
+      resultado += numero + " x " + i + " = " + (numero * i) + "<br>";
+    }
+
+    // innerHTML permite usar a quebra de linha <br>
+    document.getElementById("resposta").innerHTML = resultado;
+    // O loop for é usado para repetir a multiplicação de 1 a 10, e o resultado é acumulado na variável resultado.
+  </script>
+
+</body>
+</html>

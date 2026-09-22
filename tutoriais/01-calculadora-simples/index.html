@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Simples</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+    }
+    .calc-container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, select, button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .resultado {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calc-container">
+    <h3>Calculadora</h3>
+    
+    <label for="num1">Primeiro número:</label>
+    <input type="number" id="num1" placeholder="Ex: 10">
+
+    <label for="operacao">Operação:</label>
+    <select id="operacao">
+      <option value="+">Soma (+)</option>
+      <option value="-">Subtração (-)</option>
+      <option value="*">Multiplicação (*)</option>
+      <option value="/">Divisão (/)</option>
+    </select>
+
+    <label for="num2">Segundo número:</label>
+    <input type="number" id="num2" placeholder="Ex: 5">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div class="resultado" id="resultado">Resultado: -</div>
+  </div>
+
+  <script>
+    function calcular() {
+      // 1. Captura e conversão dos valores
+      const n1 = parseFloat(document.getElementById('num1').value);
+      const n2 = parseFloat(document.getElementById('num2').value);
+      const operacao = document.getElementById('operacao').value;
+      const elementoResultado = document.getElementById('resultado');
+
+      // 2. Validação de campos vazios
+      if (isNaN(n1) || isNaN(n2)) {
+        elementoResultado.textContent = 'Erro: preencha ambos os campos.';
+        elementoResultado.style.color = 'red';
+        return;
+      }
+      // Definição da variável de resultado
+      let res;
+
+      // 3. Execução do cálculo usando switch-case
+      switch (operacao) {
+        case '+':
+          res = n1 + n2;
+          break;
+        case '-':
+          res = n1 - n2;
+          break;
+        case '*':
+          res = n1 * n2;
+          break;
+        case '/':
+          if (n2 === 0) {
+            elementoResultado.textContent = 'Erro: divisão por zero.';
+            elementoResultado.style.color = 'red';
+            return;
+          }
+          res = n1 / n2;
+          break;
+        default:
+          res = 'Operação inválida';
+      }
+
+      // 4. Exibição do resultado
+      elementoResultado.textContent = `Resultado: ${res}`;
+      elementoResultado.style.color = 'black';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado da Nota</title>
+</head>
+<body>
+
+  <h1>Resultado</h1>
+
+  <!-- O resultado vai aparecer aqui dentro -->
+  <p id="resposta"></p>
+
+  <script>
+    let nota = 7.5;
+    let resultado = "";
+
+    if (nota >= 9) {
+      resultado = "Conceito A";
+    } else if (nota >= 7) {
+      resultado = "Conceito B";
+    } else if (nota >= 5) {
+      resultado = "Conceito C";
+    } else {
+      resultado = "Conceito D - reprovado";
+    }
+
+    // Mostra o resultado direto na página
+    document.getElementById("resposta").innerText = resultado;
+
+    // Também imprime no console se quiserem olhar com F12
+    console.log(resultado);
+  </script>
+
+</body>
+</html>

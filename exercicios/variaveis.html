@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 2 - Maioridade</title>
+</head>
+<body>
+
+  <h1>Pode dirigir?</h1>
+  <p id="resposta"></p>
+
+  <script>
+    let idade = 16;
+
+    if (idade >= 18) {
+      document.getElementById("resposta").innerText = "Pode tirar a habilitação de motorista!";
+    } else {
+      document.getElementById("resposta").innerText = "Ainda não tem idade para dirigir.";
+    }
+    // O operador if verifica se a condição é verdadeira, e o else é executado caso a condição seja falsa.
+  </script>
+
+</body>
+</html>

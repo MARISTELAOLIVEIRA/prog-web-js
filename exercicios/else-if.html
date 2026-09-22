@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 3 - Conceito da Nota</title>
+</head>
+<body>
+
+  <h1>Classificação do Aluno:</h1>
+  <p id="resposta"></p>
+
+  <script>
+    // Variável de exemplo
+    let nota = 7.5;
+    // Estrutura condicional para classificar a nota
+    if (nota >= 9) {
+      document.getElementById("resposta").innerText = "Conceito A - Excelente!";
+    } else if (nota >= 7) {
+      document.getElementById("resposta").innerText = "Conceito B - Bom trabalho!";
+    } else if (nota >= 5) {
+      document.getElementById("resposta").innerText = "Conceito C - Recuperação.";
+    } else {
+      document.getElementById("resposta").innerText = "Conceito D - Reprovado.";
+    }
+    // O operador else if permite verificar múltiplas condições de forma sequencial, garantindo que apenas uma delas seja executada.
+  </script>
+
+</body>
+</html>
