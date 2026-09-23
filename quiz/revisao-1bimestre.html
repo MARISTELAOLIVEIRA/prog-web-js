@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz de Revisão · 1º Bimestre</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/quiz-revisao.css" />
+</head>
+<body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="../exercicios/index.html">Exercícios</a>
+          <a href="../exercicios/modelos.html">Modelos</a>
+          <a href="revisao-1bimestre.html" class="ativo">Quiz</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha"><a href="../index.html">Início</a> &rsaquo; Quiz de revisão</p>
+    <h1 class="titulo-aula">Quiz de Revisão · 1º Bimestre</h1>
+
+    <!-- TELA 1: nome completo (libera o quiz) -->
+    <section id="tela-entrada">
+      <div class="objetivos">
+        <h2>Antes de começar</h2>
+        <p>Este quiz revisa o que estudamos nos <strong>módulos 1, 2 e 3</strong>: variáveis, tipos e operadores, condicionais e laços de repetição.</p>
+        <ul class="rev-info">
+          <li>📝 20 questões</li>
+          <li>🔤 4 alternativas cada</li>
+          <li>⭐ Vale 1 ponto</li>
+          <li>🔀 Ordem diferente a cada tentativa</li>
+          <li>🔁 Você pode refazer</li>
+        </ul>
+      </div>
+
+      <div class="rev-cartao">
+        <form id="form-nome" class="rev-form" novalidate>
+          <label for="campo-nome">Digite seu nome completo para liberar o quiz:</label>
+          <input type="text" id="campo-nome" autocomplete="name" placeholder="Ex.: Maria da Silva" maxlength="80" />
+          <p id="erro-nome" class="rev-erro" role="alert"></p>
+          <button type="submit" class="botao botao--primario">Começar o quiz 🚀</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- TELA 2: questões -->
+    <section id="tela-quiz" hidden>
+      <div class="rev-topo">
+        <span id="quiz-contador"></span>
+        <span id="quiz-acertos"></span>
+      </div>
+      <div class="rev-barra"><div class="rev-barra__preenchida" id="quiz-barra"></div></div>
+
+      <div class="rev-cartao">
+        <span class="rev-modulo" id="quiz-modulo"></span>
+        <p class="rev-enunciado" id="quiz-enunciado"></p>
+        <pre id="quiz-codigo" hidden><code></code></pre>
+        <div class="rev-alternativas" id="quiz-alternativas"></div>
+        <div id="quiz-feedback" class="rev-feedback" aria-live="polite" hidden></div>
+        <div class="rev-acoes">
+          <button type="button" id="quiz-proxima" class="botao botao--primario" hidden></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 3: resultado -->
+    <section id="tela-resultado" class="rev-resultado" hidden>
+      <div class="rev-cartao">
+        <div class="rev-resultado__emoji" id="res-emoji"></div>
+        <h2 class="rev-resultado__nivel" id="res-nivel"></h2>
+        <p class="rev-resultado__nome" id="res-nome"></p>
+        <p id="res-mensagem"></p>
+
+        <div class="rev-placar">
+          <div><strong id="res-acertos"></strong><span>acertos</span></div>
+          <div><strong id="res-percentual"></strong><span>de aproveitamento</span></div>
+          <div><strong id="res-pontos"></strong><span>pontos do quiz</span></div>
+        </div>
+
+        <canvas id="res-certificado" class="rev-previa" aria-label="Imagem de conclusão do quiz"></canvas>
+
+        <div class="rev-acoes">
+          <button type="button" id="res-salvar" class="botao botao--sucesso">💾 Salvar imagem da conclusão</button>
+          <button type="button" id="res-de-novo" class="botao botao--secundario">🔁 Tentar de novo</button>
+        </div>
+      </div>
+
+      <div class="rev-cartao rev-revisao" id="res-revisao"></div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <script src="../js/questoes-revisao.js"></script>
+  <script src="../js/quiz-revisao.js"></script>
+</body>
+</html>
