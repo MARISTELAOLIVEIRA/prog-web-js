@@ -5,7 +5,7 @@
 <h1 align="center">Curso Interativo de HTML, CSS e JavaScript</h1>
 
 <p align="center">
-  <strong>Tema visual cyberpunk</strong> · verde neon · placa de circuito animada 🟢⚡
+  <strong>Tema visual cyberpunk</strong> · verde neon · chuva de zeros e uns animada 🟢⚡
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 Curso feito para acompanhar (e simplificar!) o conteúdo do **NetAcad JavaScript Essentials 1**, pensado para a
 disciplina de **Programação Web 1**. Nada de slides estáticos: cada módulo tem teoria direta ao ponto, um editor
 de código que roda de verdade no navegador, exercícios com correção automática e quiz de fixação — tudo isso
-dentro de uma "placa de circuito" neon animada. 😎
+com um fundo neon animado estilo Matrix. 😎
 
 ## ✨ Destaques
 
@@ -33,8 +33,8 @@ dentro de uma "placa de circuito" neon animada. 😎
 - ❓ **Quiz de múltipla escolha** em cada módulo, com correção visual (verde = certo, magenta = errado).
 - 💾 **Progresso salvo no navegador** — o botão "Marcar módulo como concluído" atualiza a barra de progresso da
   página inicial via `localStorage`.
-- ⚡ **Fundo animado estilo placa de circuito** — trilhas com corrente elétrica fluindo, nós pulsando e
-  dígitos binários (0 e 1) caindo pela tela, tudo em CSS + SVG puro (sem bibliotecas externas).
+- ⚡ **Fundo animado estilo Matrix** — colunas de zeros e uns caindo pela tela, em `<canvas>` puro (sem bibliotecas
+  externas). Dá para ajustar tamanho, velocidade e opacidade no início de [js/circuito-fundo.js](js/circuito-fundo.js).
 
 ## 🧩 Módulos
 
@@ -62,12 +62,12 @@ dentro de uma "placa de circuito" neon animada. 😎
 CursoJavascript/
 ├── index.html                  # página inicial (lista de módulos + progresso geral)
 ├── css/
-│   └── style.css               # tema visual (cores, fontes, placa de circuito, animações)
+│   └── style.css               # tema visual (cores, fontes, componentes)
 ├── js/
 │   ├── playground.js           # editor de código ao vivo + exercícios com correção automática
 │   ├── quiz.js                 # motor dos quizzes de múltipla escolha
 │   ├── progress.js             # progresso do aluno (localStorage)
-│   └── circuito-fundo.js       # injeta o fundo animado (trilhas + binário)
+│   └── circuito-fundo.js       # fundo animado estilo Matrix (zeros e uns caindo)
 ├── img/
 │   ├── EstrelaLogo.png         # logo do curso
 │   └── memoji.png              # avatar exibido no cabeçalho

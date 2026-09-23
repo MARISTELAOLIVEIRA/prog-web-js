@@ -1,15 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Exercício 2 - Maioridade</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercício 2 · Maioridade</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="index.html" class="ativo">Exercícios</a>
+          <a href="modelos.html">Modelos</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
 
-  <h1>Pode dirigir?</h1>
-  <p id="resposta"></p>
+  <main>
+    <p class="trilha"><a href="index.html">Exercícios</a> &rsaquo; Exercício 2</p>
+    <h1 class="titulo-aula">Maioridade</h1>
 
-  <script>
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <p>Guardar um valor em uma variável e usar <code>if</code> e <code>else</code> para tomar uma decisão.</p>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Veja funcionando</h2>
+      <p>Este é o resultado do código. Ele foi escrito com JavaScript e roda agora, nesta página:</p>
+      <div class="dica">
+        <h3>Pode dirigir?</h3>
+        <p id="resposta"></p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Leia o código</h2>
+      <h3>O HTML essencial</h3>
+      <p>O JavaScript precisa de um lugar para escrever. Aqui é um parágrafo com <code>id="resposta"</code>:</p>
+<pre><code>&lt;p id=&quot;resposta&quot;&gt;&lt;/p&gt;</code></pre>
+      <h3>O JavaScript</h3>
+      <p>Este é o código real desta página, exatamente como está rodando:</p>
+      <pre><code id="codigo-js"></code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Passo a passo</h2>
+      <div class="dica"><strong>1. Criar a variável:</strong> <code>let idade = 16;</code> cria uma "caixinha" chamada <code>idade</code> e guarda o número 16 dentro dela.</div>
+      <div class="dica"><strong>2. Fazer a pergunta:</strong> <code>if (idade &gt;= 18)</code> pergunta: a idade é maior ou igual a 18? A resposta é sempre <strong>verdadeiro</strong> ou <strong>falso</strong>.</div>
+      <div class="dica"><strong>3. Escolher o caminho:</strong> Se for verdadeiro, roda o bloco do <code>if</code>. Se for falso, roda o bloco do <code>else</code>. Nunca os dois.</div>
+      <div class="dica"><strong>4. Mostrar na tela:</strong> A linha com <code>document.getElementById("resposta").innerText</code> escreve a mensagem no parágrafo da página. Isso é o <strong>DOM</strong>, que vamos estudar mais à frente. Por enquanto, basta saber que ela mostra o resultado.</div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Agora é com você!</h2>
+      <div class="dica">
+        <strong>Como testar com o console:</strong> na página, aperte <strong>F12</strong> (ou clique com o botão
+        direito e escolha <em>Inspecionar</em>) e abra a aba <strong>Console</strong>. Tudo que você escrever com
+        <code>console.log(...)</code> aparece ali. É a melhor forma de "espiar" o que o código está fazendo.
+      </div>
+      <p>Abra este arquivo no seu editor e faça as mudanças, <strong>uma de cada vez</strong>. Salve e atualize a página para ver o resultado.</p>
+      <div class="objetivos">
+        <ul>
+        <li><strong>Desafio 1 (fácil):</strong> Logo depois de <code>let idade = 16;</code>, escreva <code>console.log(idade);</code>, salve, atualize e olhe o console.</li>
+        <li><strong>Desafio 2 (fácil):</strong> Mude o valor de <code>idade</code> para 20. O que aparece na tela e no console?</li>
+        <li><strong>Desafio 3 (fácil):</strong> Mude as duas mensagens para frases suas.</li>
+        <li><strong>Desafio 4 (médio):</strong> Crie uma variável <code>nome</code> e coloque o nome na mensagem usando crases: <code>`${nome} pode tirar a habilitação!`</code></li>
+        <li><strong>Desafio 5 (médio):</strong> Teste com <code>idade = 18</code>. Por que a mensagem é de "pode dirigir"? O que mudaria se você trocasse <code>&gt;=</code> por <code>&gt;</code>?</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <!-- O bloco abaixo é o exercício. O id serve para mostrar o código na seção 2. -->
+  <script id="script-exercicio">
     let idade = 16;
 
     if (idade >= 18) {
@@ -19,6 +93,7 @@
     }
     // O operador if verifica se a condição é verdadeira, e o else é executado caso a condição seja falsa.
   </script>
-
+  <script src="../js/exibir-codigo.js"></script>
+  <script>exibirCodigo("script-exercicio", "codigo-js");</script>
 </body>
 </html>

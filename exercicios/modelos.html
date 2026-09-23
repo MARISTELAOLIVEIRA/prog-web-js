@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelos · Curso JS Interativo</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .botao { text-decoration: none; display: inline-block; }
+  </style>
+</head>
+<body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="index.html">Exercícios</a>
+          <a href="modelos.html" class="ativo">Modelos</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha"><a href="index.html">Exercícios</a> &rsaquo; Modelos</p>
+    <h1 class="titulo-aula">Modelos</h1>
+
+    <div class="objetivos">
+      <h2>Como usar</h2>
+      <ol>
+        <li>Clique em <strong>Copiar código</strong> (ou em <strong>Baixar arquivo</strong>).</li>
+        <li>No editor, crie um arquivo novo, cole o código e salve com a extensão <code>.html</code>, por exemplo <code>aula.html</code>.</li>
+        <li>Abra o arquivo no navegador (dois cliques nele) e aperte <strong>F12</strong> para ver o Console.</li>
+        <li>Mude o código, salve e atualize a página (<strong>F5</strong>) para ver o resultado.</li>
+      </ol>
+    </div>
+
+    <section class="bloco">
+      <h2>Modelo 1 · Console</h2>
+      <p>Use este primeiro. Ele só usa <code>console.log</code>, então você testa tudo pelo Console do navegador (F12).</p>
+      <pre><code id="modelo-console">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Minha Aula&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- PARTE 1: Onde o resultado vai aparecer --&gt;
+  &lt;h2&gt; Abra as ferramentas para desenvolvedores do navegador&lt;/h2&gt;
+    &lt;!-- PARTE 2: A lógica JavaScript --&gt;
+  &lt;script&gt;
+    // Lógica aqui.
+    console.log(&quot;Olá, turma!&quot;);
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>
+        <button class="botao botao--primario" type="button" onclick="copiarCodigo('modelo-console', this)">Copiar código</button>
+        <a class="botao botao--secundario" href="modelo2.html" download>Baixar arquivo</a>
+      </p>
+        <div class="dica"><strong>Parte 1:</strong> Um título simples na página. O aluno não precisa mexer nele.</div>
+        <div class="dica"><strong>Parte 2:</strong> O bloco <code>&lt;script&gt;</code> é onde você escreve o JavaScript.</div>
+        <div class="dica"><strong>console.log:</strong> Escreve o valor no Console. Para ver, abra a página, aperte <strong>F12</strong> e escolha a aba <strong>Console</strong>.</div>
+    </section>
+
+    <section class="bloco">
+      <h2>Modelo 2 · Mostrar na tela</h2>
+      <p>Para quando estudarmos o DOM. Além do console, este modelo escreve o resultado na própria página.</p>
+      <pre><code id="modelo-dom">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Minha Aula&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- PARTE 1: Onde o resultado vai aparecer --&gt;
+  &lt;h2 id=&quot;tela&quot;&gt;Aguardando...&lt;/h2&gt;
+
+  &lt;!-- PARTE 2: A lógica JavaScript --&gt;
+  &lt;script&gt;
+    // Lógica aqui...
+    let mensagem = &quot;Olá, turma!&quot;;
+
+    // PARTE 3: O &#x27;empurrão&#x27; para a tela, detalhe, o innerText é o que vai aparecer na tela, 
+    // Se fosse innerHTML, poderia colocar tags HTML
+    document.getElementById(&quot;tela&quot;).innerText = mensagem;
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>
+        <button class="botao botao--primario" type="button" onclick="copiarCodigo('modelo-dom', this)">Copiar código</button>
+        <a class="botao botao--secundario" href="modelo.html" download>Baixar arquivo</a>
+      </p>
+        <div class="dica"><strong>Parte 1:</strong> O <code>&lt;h2 id="tela"&gt;</code> é o lugar onde o resultado vai aparecer. O <code>id</code> é o nome dele.</div>
+        <div class="dica"><strong>Parte 2:</strong> A variável <code>mensagem</code> guarda o texto no JavaScript.</div>
+        <div class="dica"><strong>Parte 3:</strong> <code>document.getElementById("tela").innerText = mensagem;</code> coloca o texto no <code>h2</code>. Com <code>innerHTML</code> daria para usar tags HTML.</div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <script>
+    function copiarCodigo(id, botao) {
+      const texto = document.getElementById(id).textContent;
+      const avisar = () => {
+        const original = botao.textContent;
+        botao.textContent = "Copiado!";
+        setTimeout(() => (botao.textContent = original), 1500);
+      };
+      // Copia com a API moderna; se o navegador não permitir, usa um método antigo
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(texto).then(avisar);
+        return;
+      }
+      const area = document.createElement("textarea");
+      area.value = texto;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+      avisar();
+    }
+  </script>
+</body>
+</html>

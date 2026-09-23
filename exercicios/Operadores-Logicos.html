@@ -1,15 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Exercício 4 - Entrada no Parque</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercício 4 · Entrada no Parque</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="index.html" class="ativo">Exercícios</a>
+          <a href="modelos.html">Modelos</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
 
-  <h1>Pode entrar na montanha-russa?</h1>
-  <p id="resposta"></p>
- 
-  <script>
+  <main>
+    <p class="trilha"><a href="index.html">Exercícios</a> &rsaquo; Exercício 4</p>
+    <h1 class="titulo-aula">Entrada no Parque</h1>
+
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <p>Combinar duas condições com o operador <code>&amp;&amp;</code> (E).</p>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Veja funcionando</h2>
+      <p>Este é o resultado do código. Ele foi escrito com JavaScript e roda agora, nesta página:</p>
+      <div class="dica">
+        <h3>Pode entrar na montanha-russa?</h3>
+        <p id="resposta"></p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Leia o código</h2>
+      <h3>O HTML essencial</h3>
+      <p>O JavaScript precisa de um lugar para escrever. Aqui é um parágrafo com <code>id="resposta"</code>:</p>
+<pre><code>&lt;p id=&quot;resposta&quot;&gt;&lt;/p&gt;</code></pre>
+      <h3>O JavaScript</h3>
+      <p>Este é o código real desta página, exatamente como está rodando:</p>
+      <pre><code id="codigo-js"></code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Passo a passo</h2>
+      <div class="dica"><strong>1. Duas variáveis:</strong> <code>alturaEmMetros</code> guarda um número e <code>acompanhadoPelosPais</code> guarda <code>true</code> ou <code>false</code> (verdadeiro ou falso).</div>
+      <div class="dica"><strong>2. O operador &amp;&amp;:</strong> <code>&amp;&amp;</code> significa <strong>E</strong>. A condição só é verdadeira se <strong>as duas</strong> partes forem verdadeiras.</div>
+      <div class="dica"><strong>3. Comparar com ==:</strong> <code>acompanhadoPelosPais == true</code> verifica se o valor é verdadeiro. Repare: um <code>=</code> guarda valor, dois <code>==</code> comparam.</div>
+      <div class="dica"><strong>4. Resultado:</strong> Com altura 1.55 e sem acompanhante, a segunda parte é falsa. Então a condição inteira é falsa e roda o <code>else</code>.</div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Agora é com você!</h2>
+      <div class="dica">
+        <strong>Como testar com o console:</strong> na página, aperte <strong>F12</strong> (ou clique com o botão
+        direito e escolha <em>Inspecionar</em>) e abra a aba <strong>Console</strong>. Tudo que você escrever com
+        <code>console.log(...)</code> aparece ali. É a melhor forma de "espiar" o que o código está fazendo.
+      </div>
+      <p>Abra este arquivo no seu editor e faça as mudanças, <strong>uma de cada vez</strong>. Salve e atualize a página para ver o resultado.</p>
+      <div class="objetivos">
+        <ul>
+        <li><strong>Desafio 1 (fácil):</strong> Escreva <code>console.log(alturaEmMetros &gt;= 1.50);</code> antes do <code>if</code>. O console mostra <code>true</code> ou <code>false</code>: é a resposta da primeira parte da condição.</li>
+        <li><strong>Desafio 2 (fácil):</strong> Mude <code>acompanhadoPelosPais</code> para <code>true</code>. A entrada foi permitida?</li>
+        <li><strong>Desafio 3 (fácil):</strong> Deixe o acompanhante <code>true</code> e mude a altura para 1.20. O que acontece?</li>
+        <li><strong>Desafio 4 (médio):</strong> Troque <code>&amp;&amp;</code> por <code>||</code> (OU). Quando a entrada passa a ser permitida agora?</li>
+        <li><strong>Desafio 5 (médio):</strong> Crie a variável <code>temIngresso</code> e exija também que ela seja <code>true</code> para entrar (três condições com <code>&amp;&amp;</code>).</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <!-- O bloco abaixo é o exercício. O id serve para mostrar o código na seção 2. -->
+  <script id="script-exercicio">
     // Variáveis de exemplo
     let alturaEmMetros = 1.55;
     let acompanhadoPelosPais = false;
@@ -22,6 +96,7 @@
     }
     // O operador && (E) garante que ambas as condições sejam verdadeiras para permitir a entrada.
   </script>
-
+  <script src="../js/exibir-codigo.js"></script>
+  <script>exibirCodigo("script-exercicio", "codigo-js");</script>
 </body>
 </html>

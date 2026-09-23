@@ -1,17 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Resultado da Nota</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercício 3 · versão 2 · Resultado da Nota</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="index.html" class="ativo">Exercícios</a>
+          <a href="modelos.html">Modelos</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
 
-  <h1>Resultado</h1>
+  <main>
+    <p class="trilha"><a href="index.html">Exercícios</a> &rsaquo; Exercício 3 · versão 2</p>
+    <h1 class="titulo-aula">Resultado da Nota</h1>
 
-  <!-- O resultado vai aparecer aqui dentro -->
-  <p id="resposta"></p>
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <p>Guardar o resultado em uma variável antes de mostrá-lo, e conhecer o <code>console.log</code>.</p>
+    </div>
 
-  <script>
+    <section class="bloco">
+      <h2>1. Veja funcionando</h2>
+      <p>Este é o resultado do código. Ele foi escrito com JavaScript e roda agora, nesta página:</p>
+      <div class="dica">
+        <h3>Resultado</h3>
+        <p id="resposta"></p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Leia o código</h2>
+      <h3>O HTML essencial</h3>
+      <p>O JavaScript precisa de um lugar para escrever. Aqui é um parágrafo com <code>id="resposta"</code>:</p>
+<pre><code>&lt;p id=&quot;resposta&quot;&gt;&lt;/p&gt;</code></pre>
+      <h3>O JavaScript</h3>
+      <p>Este é o código real desta página, exatamente como está rodando:</p>
+      <pre><code id="codigo-js"></code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Passo a passo</h2>
+      <div class="dica"><strong>1. Variável vazia:</strong> <code>let resultado = "";</code> cria uma variável de texto que começa vazia. Cada bloco do <code>if</code> vai preenchê-la.</div>
+      <div class="dica"><strong>2. Decidir o conceito:</strong> O <code>else if</code> funciona igual ao exercício anterior, mas em vez de escrever na tela, só guarda o texto em <code>resultado</code>.</div>
+      <div class="dica"><strong>3. Mostrar uma vez só:</strong> No final, uma única linha coloca <code>resultado</code> na tela. Isso deixa o código mais organizado.</div>
+      <div class="dica"><strong>4. O console:</strong> <code>console.log(resultado)</code> escreve o valor no console do navegador. Ele é uma ferramenta para <strong>você</strong> conferir o código, o aluno que abre a página não vê.</div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Agora é com você!</h2>
+      <div class="dica">
+        <strong>Como testar com o console:</strong> na página, aperte <strong>F12</strong> (ou clique com o botão
+        direito e escolha <em>Inspecionar</em>) e abra a aba <strong>Console</strong>. Tudo que você escrever com
+        <code>console.log(...)</code> aparece ali. É a melhor forma de "espiar" o que o código está fazendo.
+      </div>
+      <p>Abra este arquivo no seu editor e faça as mudanças, <strong>uma de cada vez</strong>. Salve e atualize a página para ver o resultado.</p>
+      <div class="objetivos">
+        <ul>
+        <li><strong>Desafio 1 (fácil):</strong> Abra o console: aperte <strong>F12</strong> (ou clique com o botão direito, <em>Inspecionar</em>) e escolha a aba <strong>Console</strong>. Você deve ver o conceito lá.</li>
+        <li><strong>Desafio 2 (fácil):</strong> Mude a <code>nota</code> e atualize a página. Olhe a tela e o console.</li>
+        <li><strong>Desafio 3 (médio):</strong> Adicione <code>console.log(nota);</code> antes do <code>if</code> para ver a nota no console.</li>
+        </ul>
+      </div>
+      <p><a href="else-if.html">&larr; Voltar ao Exercício 3</a></p>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <!-- O bloco abaixo é o exercício. O id serve para mostrar o código na seção 2. -->
+  <script id="script-exercicio">
     let nota = 7.5;
     let resultado = "";
 
@@ -31,6 +102,7 @@
     // Também imprime no console se quiserem olhar com F12
     console.log(resultado);
   </script>
-
+  <script src="../js/exibir-codigo.js"></script>
+  <script>exibirCodigo("script-exercicio", "codigo-js");</script>
 </body>
 </html>

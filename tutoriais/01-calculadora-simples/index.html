@@ -1,59 +1,170 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora Simples</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 1 · Calculadora Simples</title>
+  <link rel="icon" type="image/png" href="../../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
   <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      padding-top: 40px;
-    }
     .calc-container {
-      border: 1px solid #ccc;
+      border: 1px solid var(--borda-neon);
+      background: var(--fundo-card);
       padding: 20px;
-      border-radius: 8px;
-      width: 280px;
+      border-radius: var(--raio);
+      max-width: 320px;
+      margin: 1.2rem 0;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-    input, select, button {
+    .calc-container input, .calc-container select, .calc-container button {
       padding: 8px;
       font-size: 16px;
+      font-family: inherit;
+      color: var(--texto);
+      background: var(--fundo);
+      border: 1px solid var(--borda);
+      border-radius: 6px;
     }
-    .resultado {
+    .calc-container button {
+      cursor: pointer;
+      color: var(--texto-invertido);
+      background: var(--cor-primaria);
+      font-weight: 700;
+    }
+    .calc-container .resultado {
       font-weight: bold;
       margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <script src="../../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../../index.html" class="cabecalho__marca"><img src="../../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../../index.html">Início</a>
+          <a href="../tutoriais.html" class="ativo">Tutoriais</a>
+          <a href="../../exercicios/index.html">Exercícios</a>
+          <a href="../../exercicios/modelos.html">Modelos</a>
+        </nav>
+        <img src="../../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
 
-  <div class="calc-container">
-    <h3>Calculadora</h3>
-    
-    <label for="num1">Primeiro número:</label>
-    <input type="number" id="num1" placeholder="Ex: 10">
+  <main>
+    <p class="trilha"><a href="../tutoriais.html">Tutoriais</a> &rsaquo; Tutorial 1</p>
+    <h1 class="titulo-aula">Calculadora Simples</h1>
 
-    <label for="operacao">Operação:</label>
-    <select id="operacao">
-      <option value="+">Soma (+)</option>
-      <option value="-">Subtração (-)</option>
-      <option value="*">Multiplicação (*)</option>
-      <option value="/">Divisão (/)</option>
-    </select>
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <p>Ler valores de campos, validar dados, usar <code>switch</code> e mostrar um resultado na tela.</p>
+    </div>
 
-    <label for="num2">Segundo número:</label>
-    <input type="number" id="num2" placeholder="Ex: 5">
+    <section class="bloco">
+      <h2>1. Experimente</h2>
+      <p>Digite dois números, escolha uma operação e clique em Calcular.</p>
 
-    <button onclick="calcular()">Calcular</button>
+      <div class="calc-container">
+        <h3>Calculadora</h3>
 
-    <div class="resultado" id="resultado">Resultado: -</div>
-  </div>
+        <label for="num1">Primeiro número:</label>
+        <input type="number" id="num1" placeholder="Ex: 10">
 
-  <script>
+        <label for="operacao">Operação:</label>
+        <select id="operacao">
+          <option value="+">Soma (+)</option>
+          <option value="-">Subtração (-)</option>
+          <option value="*">Multiplicação (*)</option>
+          <option value="/">Divisão (/)</option>
+        </select>
+
+        <label for="num2">Segundo número:</label>
+        <input type="number" id="num2" placeholder="Ex: 5">
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div class="resultado" id="resultado">Resultado: -</div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Leia o código</h2>
+
+      <h3>O HTML (o que aparece na tela)</h3>
+<pre><code>&lt;input type="number" id="num1"&gt;
+
+&lt;select id="operacao"&gt;
+  &lt;option value="+"&gt;Soma (+)&lt;/option&gt;
+  &lt;option value="-"&gt;Subtração (-)&lt;/option&gt;
+  &lt;option value="*"&gt;Multiplicação (*)&lt;/option&gt;
+  &lt;option value="/"&gt;Divisão (/)&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;input type="number" id="num2"&gt;
+
+&lt;button onclick="calcular()"&gt;Calcular&lt;/button&gt;
+
+&lt;div id="resultado"&gt;Resultado: -&lt;/div&gt;</code></pre>
+      <div class="dica">
+        Cada elemento tem um <strong>id</strong>. É pelo id que o JavaScript encontra o elemento na página.
+        O botão chama a função <code>calcular()</code> quando é clicado.
+      </div>
+
+      <h3>O JavaScript (o que faz a conta)</h3>
+      <p>Este é o código real desta página, exatamente como está rodando:</p>
+      <pre><code id="codigo-js"></code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Passo a passo</h2>
+      <div class="dica">
+        <strong>1. Captura:</strong> <code>document.getElementById('num1').value</code> lê o que foi digitado
+        (isso é o <strong>DOM</strong>, que vamos estudar mais à frente). Tudo que vem de um campo é texto,
+        então o <code>parseFloat</code> converte para número.
+      </div>
+      <div class="dica">
+        <strong>2. Validação:</strong> se algum campo estiver vazio, <code>isNaN</code> é verdadeiro. Aí o
+        <code>if</code> mostra um erro e o <code>return</code> encerra a função.
+      </div>
+      <div class="dica">
+        <strong>3. Cálculo:</strong> o <code>switch</code> compara a operação escolhida com cada
+        <code>case</code> e executa só o que combina. O <code>break</code> impede de continuar para o próximo.
+      </div>
+      <div class="dica">
+        <strong>4. Resultado:</strong> <code>textContent</code> coloca o texto na tela e
+        <code>style.color</code> muda a cor.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Agora é com você!</h2>
+      <div class="dica">
+        <strong>Como testar com o console:</strong> na página, aperte <strong>F12</strong> (ou clique com o botão
+        direito e escolha <em>Inspecionar</em>) e abra a aba <strong>Console</strong>. Tudo que você escrever com
+        <code>console.log(...)</code> aparece ali.
+      </div>
+      <p>Abra este arquivo no seu editor e faça as mudanças, <strong>uma de cada vez</strong>. Salve e atualize a página para testar.</p>
+      <div class="objetivos">
+        <ul>
+          <li><strong>Desafio 0 (fácil):</strong> logo depois de calcular <code>n1</code> e <code>n2</code>, escreva <code>console.log(n1, n2);</code>. Digite números na calculadora, clique em Calcular e veja no console o que o código recebeu.</li>
+          <li><strong>Desafio 1 (fácil):</strong> mude a cor da mensagem de erro de <code>'red'</code> para outra cor.</li>
+          <li><strong>Desafio 2 (fácil):</strong> mude o texto <code>'Resultado: '</code> para outra frase, como <code>'A resposta é: '</code>.</li>
+          <li><strong>Desafio 3 (médio):</strong> adicione a operação <strong>Resto da divisão (%)</strong>. Você vai precisar de uma nova <code>&lt;option&gt;</code> no HTML e de um novo <code>case</code> no <code>switch</code>.</li>
+          <li><strong>Desafio 4 (médio):</strong> adicione a operação <strong>Potência</strong>, usando <code>n1 ** n2</code>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <!-- O bloco abaixo é a calculadora. O id serve para mostrar o código na seção 2. -->
+  <script id="script-calculadora">
     function calcular() {
       // 1. Captura e conversão dos valores
       const n1 = parseFloat(document.getElementById('num1').value);
@@ -95,9 +206,10 @@
 
       // 4. Exibição do resultado
       elementoResultado.textContent = `Resultado: ${res}`;
-      elementoResultado.style.color = 'black';
+      elementoResultado.style.color = '';
     }
   </script>
-
+  <script src="../../js/exibir-codigo.js"></script>
+  <script>exibirCodigo("script-calculadora", "codigo-js");</script>
 </body>
 </html>

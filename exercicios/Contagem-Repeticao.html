@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Exercício 5 - Tabuada do 5</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercício 5 · Tabuada do 5</title>
+  <link rel="icon" type="image/png" href="../img/EstrelaLogo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <script src="../js/circuito-fundo.js"></script>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a href="../index.html" class="cabecalho__marca"><img src="../img/EstrelaLogo.png" alt="Logo" class="logo" /> Curso JS Interativo</a>
+      <div class="cabecalho__direita">
+        <nav>
+          <a href="../index.html">Início</a>
+          <a href="../tutoriais/tutoriais.html">Tutoriais</a>
+          <a href="index.html" class="ativo">Exercícios</a>
+          <a href="modelos.html">Modelos</a>
+        </nav>
+        <img src="../img/memoji.png" alt="Foto de perfil" class="cabecalho__avatar" />
+      </div>
+    </div>
+  </header>
 
-  <h1>Tabuada:</h1>
-  <!-- PARTE 1: Onde o resultado vai aparecer -->
-  <p id="resposta"></p>
+  <main>
+    <p class="trilha"><a href="index.html">Exercícios</a> &rsaquo; Exercício 5</p>
+    <h1 class="titulo-aula">Tabuada do 5</h1>
 
-  <script>
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <p>Repetir uma ação várias vezes com o laço <code>for</code>.</p>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Veja funcionando</h2>
+      <p>Este é o resultado do código. Ele foi escrito com JavaScript e roda agora, nesta página:</p>
+      <div class="dica">
+        <h3>Tabuada:</h3>
+        <p id="resposta"></p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Leia o código</h2>
+      <h3>O HTML essencial</h3>
+      <p>O JavaScript precisa de um lugar para escrever. Aqui é um parágrafo com <code>id="resposta"</code>:</p>
+<pre><code>&lt;p id=&quot;resposta&quot;&gt;&lt;/p&gt;</code></pre>
+      <h3>O JavaScript</h3>
+      <p>Este é o código real desta página, exatamente como está rodando:</p>
+      <pre><code id="codigo-js"></code></pre>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Passo a passo</h2>
+      <div class="dica"><strong>1. As variáveis:</strong> <code>numero</code> é o número da tabuada. <code>resultado</code> começa como texto vazio e vai juntando as linhas.</div>
+      <div class="dica"><strong>2. O laço for:</strong> <code>for (let i = 1; i &lt;= 10; i++)</code> tem 3 partes: começa com <code>i = 1</code>, continua <strong>enquanto</strong> <code>i &lt;= 10</code>, e soma 1 a <code>i</code> a cada volta.</div>
+      <div class="dica"><strong>3. Acumular:</strong> <code>resultado += ...</code> acrescenta uma linha nova ao texto a cada volta, sem apagar as anteriores. São 10 voltas, 10 linhas.</div>
+      <div class="dica"><strong>4. Mostrar na tela:</strong> Na página, o texto vai para o parágrafo com <code>innerHTML</code> (parte do DOM, que veremos depois). Ele é usado porque o texto tem <code>&lt;br&gt;</code>, a quebra de linha do HTML.</div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Agora é com você!</h2>
+      <div class="dica">
+        <strong>Como testar com o console:</strong> na página, aperte <strong>F12</strong> (ou clique com o botão
+        direito e escolha <em>Inspecionar</em>) e abra a aba <strong>Console</strong>. Tudo que você escrever com
+        <code>console.log(...)</code> aparece ali. É a melhor forma de "espiar" o que o código está fazendo.
+      </div>
+      <p>Abra este arquivo no seu editor e faça as mudanças, <strong>uma de cada vez</strong>. Salve e atualize a página para ver o resultado.</p>
+      <div class="objetivos">
+        <ul>
+        <li><strong>Desafio 1 (fácil):</strong> Mude <code>numero</code> para 7 e veja a tabuada do 7.</li>
+        <li><strong>Desafio 2 (fácil):</strong> Mude <code>i &lt;= 10</code> para <code>i &lt;= 20</code>. Quantas linhas aparecem?</li>
+        <li><strong>Desafio 3 (fácil):</strong> Dentro do <code>for</code>, escreva <code>console.log(i);</code>. O console mostra o valor de <code>i</code> a cada volta: de 1 até 10.</li>
+        <li><strong>Desafio 4 (médio):</strong> Faça a tabuada de trás para frente, de 10 até 1. Dica: comece com <code>i = 10</code>, continue enquanto <code>i &gt;= 1</code> e use <code>i--</code>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <p class="rodape">Curso criado para a disciplina de Programação Web 1 · HTML, CSS e JavaScript · Profª Maristela</p>
+
+  <!-- O bloco abaixo é o exercício. O id serve para mostrar o código na seção 2. -->
+  <script id="script-exercicio">
     // Variável para a tabuada do 5, usei o let para declarar a variável, mas poderia ser const também, já que não será alterada.
     let numero = 5;
     let resultado = "";
@@ -23,6 +95,7 @@
     document.getElementById("resposta").innerHTML = resultado;
     // O loop for é usado para repetir a multiplicação de 1 a 10, e o resultado é acumulado na variável resultado.
   </script>
-
+  <script src="../js/exibir-codigo.js"></script>
+  <script>exibirCodigo("script-exercicio", "codigo-js");</script>
 </body>
 </html>

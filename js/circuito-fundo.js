@@ -1,69 +1,108 @@
 /* ===================================================================
    circuito-fundo.js
-   Injeta uma placa de circuito animada (SVG) fixa atrás do conteúdo,
-   simulando energia elétrica fluindo pelas trilhas.
+   Fundo animado estilo "Matrix": colunas de zeros e uns caindo pela tela.
+   (O nome do arquivo foi mantido para não precisar alterar as páginas.)
+
+   Para ajustar o efeito, mude os valores em CONFIG:
+   - tamanho: tamanho de cada dígito, em pixels
+   - velocidade: quanto maior, mais rápido caem as colunas (em linhas por quadro)
+   - rastro: quanto maior, mais rápido o rastro some (0.05 = rastro longo)
+   - densidade: de 0 a 1, porcentagem de colunas que recebem chuva
+   - opacidade: de 0 a 1, o quanto o efeito aparece atrás do conteúdo
    =================================================================== */
 
 (function () {
-  const svgNS = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("class", "fundo-energia");
-  svg.setAttribute("viewBox", "0 0 100 100");
-  svg.setAttribute("preserveAspectRatio", "none");
-  svg.setAttribute("aria-hidden", "true");
+  const CONFIG = {
+    tamanho: 24,
+    velocidade: 0.2,
+    rastro: 0.06,
+    densidade: 0.4,
+    opacidade: 0.55,
+  };
 
-  // cada trilha: desenho do caminho + duração/atraso, para o fluxo não parecer sincronizado
-  const trilhas = [
-    { d: "M0 8 H30 V20 H70 V8 H100", duracao: "4s", atraso: "0s" },
-    { d: "M0 92 H20 V78 H55 V92 H100", duracao: "5s", atraso: "1.2s" },
-    { d: "M85 0 V25 H60 V55 H85 V100", duracao: "6s", atraso: "0.5s" },
-    { d: "M15 0 V15", duracao: "3s", atraso: "2s" },
-    { d: "M0 45 H12 V60 H0", duracao: "3.8s", atraso: "0.8s" },
-    { d: "M45 55 V100", duracao: "4.5s", atraso: "1.6s" },
-    { d: "M100 60 H90 V40 H100", duracao: "5.5s", atraso: "0.2s" },
-    { d: "M30 20 V45 H0", duracao: "4.2s", atraso: "2.4s" },
-  ];
+  const COR_FUNDO = "#050807";
+  const COR_CABECA = "#7dffc4";
 
-  trilhas.forEach((trilha) => {
-    const path = document.createElementNS(svgNS, "path");
-    path.setAttribute("d", trilha.d);
-    path.style.animationDuration = trilha.duracao;
-    path.style.animationDelay = trilha.atraso;
-    svg.appendChild(path);
-  });
+  const canvas = document.createElement("canvas");
+  canvas.className = "fundo-matriz";
+  canvas.setAttribute("aria-hidden", "true");
+  canvas.style.opacity = CONFIG.opacidade;
+  document.body.prepend(canvas);
 
-  // pontos de solda que "pulsam" quando a corrente passa
-  const pontos = [
-    [30, 8], [70, 8], [70, 20], [20, 92], [20, 78], [55, 78], [55, 92],
-    [85, 25], [60, 25], [60, 55], [85, 55], [15, 15], [90, 40], [90, 60],
-    [12, 45], [12, 60], [30, 45],
-  ];
-  pontos.forEach(([cx, cy], indice) => {
-    const circulo = document.createElementNS(svgNS, "circle");
-    circulo.setAttribute("cx", cx);
-    circulo.setAttribute("cy", cy);
-    circulo.setAttribute("r", 0.8);
-    circulo.style.animationDelay = indice * 0.3 + "s";
-    svg.appendChild(circulo);
-  });
+  const ctx = canvas.getContext("2d");
+  let colunas = [];
+  let largura = 0;
+  let altura = 0;
 
-  document.body.prepend(svg);
+  function ajustarTamanho() {
+    const escala = window.devicePixelRatio || 1;
+    largura = window.innerWidth;
+    altura = window.innerHeight;
+    canvas.width = largura * escala;
+    canvas.height = altura * escala;
+    ctx.setTransform(escala, 0, 0, escala, 0, 0);
+    ctx.fillStyle = COR_FUNDO;
+    ctx.fillRect(0, 0, largura, altura);
 
-  // dígitos binários pequenos "caindo" pela tela, como código fluindo
-  const binario = document.createElement("div");
-  binario.className = "fundo-binario";
-  binario.setAttribute("aria-hidden", "true");
-
-  const totalDigitos = 28;
-  for (let i = 0; i < totalDigitos; i++) {
-    const digito = document.createElement("span");
-    digito.textContent = Math.random() < 0.5 ? "0" : "1";
-    digito.style.left = Math.random() * 100 + "%";
-    digito.style.animationDuration = (7 + Math.random() * 9).toFixed(1) + "s";
-    digito.style.animationDelay = (Math.random() * 10).toFixed(1) + "s";
-    digito.style.opacity = (0.25 + Math.random() * 0.35).toFixed(2);
-    binario.appendChild(digito);
+    // uma posição (em linhas) por coluna; null = coluna sem chuva
+    const total = Math.ceil(largura / CONFIG.tamanho);
+    colunas = Array.from({ length: total }, () =>
+      Math.random() < CONFIG.densidade ? -Math.random() * (altura / CONFIG.tamanho) : null
+    );
   }
 
-  document.body.prepend(binario);
+  function digitoAleatorio() {
+    return Math.random() < 0.5 ? "0" : "1";
+  }
+
+  function desenhar() {
+    // camada escura semitransparente: faz o rastro ir sumindo aos poucos
+    ctx.fillStyle = `rgba(5, 8, 7, ${CONFIG.rastro})`;
+    ctx.fillRect(0, 0, largura, altura);
+
+    ctx.font = `${CONFIG.tamanho}px "Share Tech Mono", monospace`;
+    ctx.textBaseline = "top";
+
+    colunas.forEach((linha, i) => {
+      if (linha === null) return;
+      const proxima = linha + CONFIG.velocidade;
+
+      // só desenha quando a coluna chega a uma nova linha: cada dígito é desenhado uma única vez,
+      // por isso ele fica nítido e dá para ler que é 0 ou 1
+      if (Math.floor(proxima) > Math.floor(linha)) {
+        const x = i * CONFIG.tamanho;
+        const y = Math.floor(proxima) * CONFIG.tamanho;
+        ctx.fillStyle = COR_CABECA; // a "ponta" da coluna é mais clara e depois vai esverdeando
+        ctx.fillText(digitoAleatorio(), x, y);
+      }
+
+      // ao passar da tela, a coluna volta ao topo em um momento aleatório
+      if (proxima * CONFIG.tamanho > altura && Math.random() > 0.98) {
+        colunas[i] = -Math.random() * 10;
+      } else {
+        colunas[i] = proxima;
+      }
+    });
+  }
+
+  ajustarTamanho();
+  window.addEventListener("resize", ajustarTamanho);
+
+  // Quem prefere menos movimento (configuração do sistema) vê só a imagem parada
+  const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (semMovimento) {
+    for (let n = 0; n < 250; n++) desenhar();
+    return;
+  }
+
+  // limita a ~30 quadros por segundo para não pesar no computador dos alunos
+  let ultimo = 0;
+  function animar(agora) {
+    if (agora - ultimo > 33) {
+      desenhar();
+      ultimo = agora;
+    }
+    requestAnimationFrame(animar);
+  }
+  requestAnimationFrame(animar);
 })();
