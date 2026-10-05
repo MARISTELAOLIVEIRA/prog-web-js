@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -76,6 +77,7 @@
         </div>
         <h1>Escreveu duas vezes? Vira função.</h1>
         <p class="subtitulo">Cadastro de Alunos, parte I: organizando o código em blocos reutilizáveis.</p>
+
       </div>
     </section>
 
@@ -151,6 +153,34 @@
               <p>Depois do <code>return</code>, a função para.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">function</span> <span class="fn">calcularMedia</span>(<span class="var">n1</span>, <span class="var">n2</span>, <span class="var">n3</span>) {</span><span class="linha"><span class="num">2</span>  <span class="tag">return</span> (<span class="var">n1</span> + <span class="var">n2</span> + <span class="var">n3</span>) / <span class="str">3</span>;</span><span class="linha"><span class="num">3</span>}</span><span class="linha"><span class="num">4</span></span><span class="linha"><span class="num">5</span><span class="tag">function</span> <span class="fn">verificarSituacao</span>(<span class="var">media</span>) {</span><span class="linha"><span class="num">6</span>  <span class="tag">return</span> <span class="var">media</span> &gt;= <span class="str">6</span> ? <span class="str">&quot;Aprovado&quot;</span> : <span class="str">&quot;Recuperação&quot;</span>;</span><span class="linha"><span class="num">7</span>}</span><span class="linha"><span class="num">8</span></span><span class="linha"><span class="num">9</span><span class="tag">const</span> <span class="var">media</span> = <span class="fn">calcularMedia</span>(<span class="str">8</span>, <span class="str">7</span>, <span class="str">9</span>);   <span class="com">// 8</span></span><span class="linha"><span class="num">10</span><span class="fn">console.log</span>(<span class="fn">verificarSituacao</span>(<span class="var">media</span>));  <span class="com">// Aprovado</span></span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Cadastrar um aluno sem repetir código</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Secretaria da escola</p>
+            <p><strong>Objetivo:</strong> Cadastrar alunos com nome e e-mail válidos, sempre do mesmo jeito.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A secretaria informa o nome e o e-mail.</li>
+              <li>O sistema confere se o nome não está vazio.</li>
+              <li>Confere se o e-mail tem @.</li>
+              <li>Confirma o cadastro.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>O mesmo conferir e-mail aparece também na tela de editar aluno: vira uma função usada nos dois lugares.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Quais passos viram funções? Que parâmetros e que retorno cada uma tem?</li>
+              <li>Se a regra do e-mail mudar, quantos lugares do código vocês alteram?</li>
+            </ol>
           </div>
         </section>
 

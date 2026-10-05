@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -76,6 +77,7 @@
         </div>
         <h1>A loja precisa de uma calculadora esperta</h1>
         <p class="subtitulo">Operadores aritméticos, relacionais e lógicos resolvendo um problema de verdade.</p>
+
       </div>
     </section>
 
@@ -146,6 +148,35 @@
               <p>É assim que nascem as regras de negócio.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">total</span> = <span class="str">180</span>;</span><span class="linha"><span class="num">2</span><span class="tag">const</span> <span class="var">aVista</span> = <span class="tag">true</span>;</span><span class="linha"><span class="num">3</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">freteGratis</span> = <span class="var">total</span> &gt;= <span class="str">150</span>;            <span class="com">// true</span></span><span class="linha"><span class="num">5</span><span class="tag">const</span> <span class="var">ganhaDesconto</span> = <span class="var">aVista</span> &amp;&amp; <span class="var">total</span> &gt; <span class="str">100</span>; <span class="com">// true</span></span><span class="linha"><span class="num">6</span><span class="tag">const</span> <span class="var">temBrinde</span> = <span class="var">total</span> &gt; <span class="str">500</span> || <span class="var">aVista</span>;     <span class="com">// true</span></span><span class="linha"><span class="num">7</span><span class="fn">console.log</span>(!<span class="var">freteGratis</span>);                   <span class="com">// false</span></span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Calcular o total da compra</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Caixa da loja</p>
+            <p><strong>Objetivo:</strong> Saber o total com desconto e o troco.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>O caixa informa o preço e a quantidade.</li>
+              <li>O sistema calcula o subtotal.</li>
+              <li>Aplica o desconto de pagamento à vista.</li>
+              <li>Informa o valor pago e o sistema mostra o troco.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>O valor pago é menor que o total: o sistema avisa quanto falta.</li>
+              <li>A quantidade é zero: o total é zero, sem desconto.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Que operadores aparecem em cada passo?</li>
+              <li>Em que ordem o JavaScript faz as contas, se ninguém puser parênteses?</li>
+            </ol>
           </div>
         </section>
 

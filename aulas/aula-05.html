@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -76,6 +77,7 @@
         </div>
         <h1>Como um sistema toma decisões?</h1>
         <p class="subtitulo">if, else e switch decidindo quem passa, com as regras de verdade da faculdade.</p>
+
       </div>
     </section>
 
@@ -147,6 +149,35 @@
               <p class="dica cuidado"><strong>Cuidado:</strong> esqueceu o <code>break</code>? O código continua executando os casos de baixo.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">opcao</span> = <span class="fn">prompt</span>(<span class="str">&quot;1 média, 2 situação, 3 frequência&quot;</span>);</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="tag">switch</span> (<span class="var">opcao</span>) {</span><span class="linha"><span class="num">4</span>  <span class="tag">case</span> <span class="str">&quot;1&quot;</span>:</span><span class="linha"><span class="num">5</span>    <span class="fn">console.log</span>(<span class="str">&quot;Consultando a média...&quot;</span>);</span><span class="linha"><span class="num">6</span>    <span class="tag">break</span>;</span><span class="linha"><span class="num">7</span>  <span class="tag">case</span> <span class="str">&quot;2&quot;</span>:</span><span class="linha"><span class="num">8</span>    <span class="fn">console.log</span>(<span class="str">&quot;Consultando a situação...&quot;</span>);</span><span class="linha"><span class="num">9</span>    <span class="tag">break</span>;</span><span class="linha"><span class="num">10</span>  <span class="tag">case</span> <span class="str">&quot;3&quot;</span>:</span><span class="linha"><span class="num">11</span>    <span class="fn">console.log</span>(<span class="str">&quot;Consultando a frequência...&quot;</span>);</span><span class="linha"><span class="num">12</span>    <span class="tag">break</span>;</span><span class="linha"><span class="num">13</span>  <span class="tag">default</span>:</span><span class="linha"><span class="num">14</span>    <span class="fn">console.log</span>(<span class="str">&quot;Opção inválida&quot;</span>);</span><span class="linha"><span class="num">15</span>}</span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Ver a situação do aluno</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Professora</p>
+            <p><strong>Objetivo:</strong> Saber se o aluno foi aprovado, está de recuperação final ou foi reprovado por falta.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A professora informa a média e a frequência.</li>
+              <li>O sistema confere a frequência mínima de 75%.</li>
+              <li>Confere a média mínima de 6,0.</li>
+              <li>Mostra a situação.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>Frequência abaixo de 75%: reprovado por falta, qualquer que seja a média.</li>
+              <li>A média vem com vírgula ("7,5"): o sistema precisa converter antes de comparar.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Que regra precisa ser testada primeiro? Por quê?</li>
+              <li>Quantos testes diferentes provam que o sistema está certo?</li>
+            </ol>
           </div>
         </section>
 

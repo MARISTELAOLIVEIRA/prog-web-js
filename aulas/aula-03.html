@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -76,6 +77,7 @@
         </div>
         <h1>Onde o programa guarda as informações?</h1>
         <p class="subtitulo">Variáveis e tipos de dados: as caixinhas da memória.</p>
+
       </div>
     </section>
 
@@ -140,6 +142,34 @@
               <p class="dica cuidado"><strong>Cuidado:</strong> <code>"19" + 1</code> dá <code>"191"</code>, porque junta textos. <code>Number("19") + 1</code> dá <code>20</code>.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">texto</span> = <span class="fn">prompt</span>(<span class="str">&quot;Quantos anos você tem?&quot;</span>);</span><span class="linha"><span class="num">2</span><span class="tag">const</span> <span class="var">idade</span> = <span class="fn">Number</span>(<span class="var">texto</span>);</span><span class="linha"><span class="num">3</span></span><span class="linha"><span class="num">4</span><span class="fn">console.log</span>(<span class="var">texto</span> + <span class="str">1</span>);    <span class="com">// &quot;191&quot;  (juntou textos)</span></span><span class="linha"><span class="num">5</span><span class="fn">console.log</span>(<span class="var">idade</span> + <span class="str">1</span>);    <span class="com">// 20     (somou números)</span></span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="fn">parseInt</span>(<span class="str">&quot;7.9&quot;</span>);     <span class="com">// 7</span></span><span class="linha"><span class="num">8</span><span class="fn">parseFloat</span>(<span class="str">&quot;7.9&quot;</span>);   <span class="com">// 7.9</span></span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Preencher a ficha de cadastro</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Secretaria da escola</p>
+            <p><strong>Objetivo:</strong> Guardar os dados de um aluno novo.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A secretaria informa o nome do aluno.</li>
+              <li>Informa a idade.</li>
+              <li>Informa se a matrícula está ativa.</li>
+              <li>O sistema mostra a ficha conferida na tela.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>A idade é digitada como texto ("dezoito"): o sistema precisa perceber que não é número.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Que variável guarda cada dado? Qual é o tipo de cada uma (string, number, boolean)?</li>
+              <li>Quais desses dados podem mudar depois e quais não? (let ou const?)</li>
+            </ol>
           </div>
         </section>
 

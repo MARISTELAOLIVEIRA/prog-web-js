@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -76,6 +77,7 @@
         </div>
         <h1>Funções mais curtas e a prática que vale nota</h1>
         <p class="subtitulo">Arrow functions, escopo de variáveis e a atividade avaliativa do 1º bimestre.</p>
+
       </div>
     </section>
 
@@ -127,6 +129,34 @@
               <p><code>let</code> e <code>const</code> respeitam o bloco. O <code>var</code> não, e é por isso que ele causa tanta confusão.</p>
             </div>
             <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">turma</span> = <span class="str">&quot;ADS&quot;</span>;           <span class="com">// global</span></span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="tag">function</span> <span class="fn">mostrar</span>() {</span><span class="linha"><span class="num">4</span>  <span class="tag">const</span> <span class="var">sala</span> = <span class="str">&quot;Lab 3&quot;</span>;        <span class="com">// de função</span></span><span class="linha"><span class="num">5</span>  <span class="tag">if</span> (<span class="tag">true</span>) {</span><span class="linha"><span class="num">6</span>    <span class="tag">let</span> <span class="var">hora</span> = <span class="str">&quot;19h&quot;</span>;          <span class="com">// de bloco</span></span><span class="linha"><span class="num">7</span>    <span class="fn">console.log</span>(<span class="var">turma</span>, <span class="var">sala</span>, <span class="var">hora</span>);</span><span class="linha"><span class="num">8</span>  }</span><span class="linha"><span class="num">9</span>  <span class="com">// console.log(hora);  // erro: hora não existe aqui</span></span><span class="linha"><span class="num">10</span>}</span><span class="linha"><span class="num">11</span><span class="fn">mostrar</span>();</span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Aplicar desconto na mensalidade</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Secretaria financeira</p>
+            <p><strong>Objetivo:</strong> Calcular a mensalidade com o desconto certo para cada aluno.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A secretaria escolhe o aluno.</li>
+              <li>O sistema identifica o tipo de desconto (pontualidade, irmãos ou bolsa).</li>
+              <li>Calcula a mensalidade final.</li>
+              <li>Mostra o valor.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>O aluno não tem desconto: a mensalidade fica cheia.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Cada desconto pode ser uma arrow function curta. Como ficariam?</li>
+              <li>Onde a variável do valor final deve existir: dentro ou fora da função? (escopo)</li>
+            </ol>
           </div>
         </section>
 
