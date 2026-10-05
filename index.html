@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/css/estilo.css">
   <link rel="stylesheet" href="assets/css/disciplina.css">
+  <link rel="stylesheet" href="assets/css/neon.css">
   <link rel="stylesheet" href="assets/css/aula.css">
 </head>
 <body>
@@ -57,6 +58,7 @@
 
     <!-- ===================== ABERTURA ===================== -->
     <section class="abertura">
+      <canvas class="chuva-matrix" aria-hidden="true"></canvas>
       <div class="envolve abertura-grade">
         <div>
           <!-- EDITE AQUI: curso e nome curto da disciplina -->
@@ -68,7 +70,7 @@
 
           <!-- EDITE AQUI: nome oficial da disciplina e o título de boas-vindas -->
           <p class="nome-oficial etiqueta ouro" data-revela style="--i:1">Programação Web em JavaScript</p>
-          <h1 data-revela style="--i:1">Bem-vindos à programação em JavaScript</h1>
+          <h1 data-revela style="--i:1">Bem-vindos à programação em <span class="neon">JavaScript</span></h1>
           <p class="subtitulo" data-revela style="--i:2">A linguagem que faz a página reagir, do primeiro console.log ao projeto completo.</p>
           <p class="chamada" data-revela style="--i:3">
             O HTML dá a estrutura, o CSS dá o estilo e o JavaScript dá vida. Aqui a gente ensina a página a
@@ -84,7 +86,7 @@
 
         <!-- EDITE AQUI: logo da linguagem e janela de código de boas-vindas -->
         <div class="vitrine" data-revela style="--i:2">
-        <span class="tec logo-flutua" title="JavaScript"><img src="assets/img/tec/javascript.svg" alt="JavaScript" width="32" height="32"></span>
+        <span class="tec logo-flutua neon-halo" title="JavaScript"><img src="assets/img/tec/javascript.svg" alt="JavaScript" width="32" height="32"></span>
         <div class="janela">
           <div class="janela-barra">
             <span class="semaforo" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -620,5 +622,6 @@
   </svg>
 
   <script src="assets/js/aulas.js"></script>
+  <script src="assets/js/matrix.js"></script>
 </body>
 </html>
