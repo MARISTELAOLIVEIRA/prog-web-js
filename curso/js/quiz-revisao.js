@@ -431,7 +431,7 @@
       ctx.fillText("QUIZ DE REVISÃO · 1º BIMESTRE", 240, 145);
       ctx.fillStyle = "#9fd8bd";
       ctx.font = `400 22px ${texto}`;
-      ctx.fillText("Programação Web 1 · JavaScript · Módulos 1 a 3", 240, 185);
+      ctx.fillText("Programação Web em JavaScript · Módulos 1 a 3", 240, 185);
 
       ctx.textAlign = "center";
       ctx.fillStyle = "#9fd8bd";
