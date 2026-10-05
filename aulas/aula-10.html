@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- EDITE AQUI: número e tema da aula -->
+  <title>Aula 10: Arrays · Web em JavaScript · Stela</title>
+  <meta name="description" content="Aula 10 de Programação Web em JavaScript: arrays, do problema das 40 notas ao map, filter e reduce.">
+
+  <link rel="icon" href="../assets/img/estrela.webp">
+  <script src="../assets/js/placa.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/disciplina.css">
+  <link rel="stylesheet" href="../assets/css/aula.css">
+</head>
+<body>
+
+  <!-- ===================== BARRA DO TOPO (igual em todos os sites) ===================== -->
+  <header class="barra">
+    <div class="envolve">
+      <a class="marca" href="/">
+        <img src="../assets/img/estrela.webp" alt="" width="26" height="24">
+        Stela
+      </a>
+      <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Partes da aula">
+        <a href="../#aulas">← Todas as aulas</a>
+        <a href="#conceitos">Conceitos</a>
+        <a href="#atividade">Atividade</a>
+        <a href="#materiais">Materiais</a>
+        <a href="#entrega">Entrega</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <button type="button" id="btn-fonte" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button type="button" id="btn-movimento" aria-pressed="false">
+          <svg class="pausar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="tocar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+          <span class="rotulo">Pausar animações</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===================== CABEÇALHO DA AULA ===================== -->
+    <section class="aula-cab">
+      <div class="envolve">
+        <p class="trilha-migalhas">
+          <a href="/">Stela</a> <span aria-hidden="true">/</span>
+          <a href="../">JavaScript</a> <span aria-hidden="true">/</span>
+          <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
+          <span>Aula 10</span>
+        </p>
+
+        <!-- EDITE AQUI: número, tipo de aula, unidade, título e datas -->
+        <div class="aula-etiquetas">
+          <span class="etiqueta ouro">Aula 10</span>
+          <span class="etiqueta">Situação-problema</span>
+          <span class="etiqueta">Unidade 4</span>
+        </div>
+        <h1>Como guardar as notas de 40 alunos?</h1>
+        <p class="subtitulo">Arrays: uma lista inteira de dados dentro de uma variável só.</p>
+
+        <div class="datas">
+          <span class="data">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+            <strong>Turma A</strong> terça, 13/10
+          </span>
+          <span class="data">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+            <strong>Turma B</strong> quarta, 14/10
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESUMO ===================== -->
+    <section class="bloco faixa alt" aria-label="Resumo da aula">
+      <div class="envolve">
+        <div class="resumo">
+          <div class="cartao">
+            <span class="olho">Objetivo do dia</span>
+            <p>Guardar, percorrer, buscar e transformar listas de dados com arrays.</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Antes da aula</span>
+            <p>Ler sobre arrays na bibliografia básica. Se der, dê uma olhada no módulo 5 do curso.</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Como conta ponto</span>
+            <p>Resolução dos exercícios no laboratório, com commit no GitHub.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bloco">
+      <div class="envolve aula-corpo">
+
+        <!-- ===================== O PROBLEMA ===================== -->
+        <section class="parte" id="problema">
+          <div class="cab">
+            <span class="olho">P1 · o problema</span>
+            <h2>Uma variável para cada aluno? Não vai dar.</h2>
+            <p>
+              Começamos com a correção comentada da prova. Depois, um desafio: a turma tem 40 alunos e precisamos
+              guardar a nota de cada um. Com o que vimos até agora, ficaria assim:
+            </p>
+          </div>
+
+          <div class="janela">
+            <div class="janela-barra">
+              <span class="semaforo" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="janela-titulo">notas-do-jeito-dificil.js</span>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">let</span> <span class="var">nota1</span> = <span class="str">8.5</span>;</span><span class="linha"><span class="num">2</span><span class="tag">let</span> <span class="var">nota2</span> = <span class="str">7</span>;</span><span class="linha"><span class="num">3</span><span class="tag">let</span> <span class="var">nota3</span> = <span class="str">9.2</span>;</span><span class="linha"><span class="num">4</span><span class="com">// ... mais 37 variáveis</span></span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="com">// e a média? somar as 40 na mão?</span></span><span class="linha"><span class="num">7</span><span class="tag">let</span> <span class="var">media</span> = (<span class="var">nota1</span> + <span class="var">nota2</span> + <span class="var">nota3</span> <span class="com">/* + ... */</span>) / <span class="str">40</span>;</span></code></pre>
+          </div>
+          <p class="dica" style="margin-top:1.2rem">
+            <strong>Spoiler:</strong> tem jeito melhor. Uma variável só, guardando a lista inteira. Isso é um array.
+          </p>
+        </section>
+
+        <!-- ===================== CONCEITOS ===================== -->
+        <section class="parte" id="conceitos">
+          <div class="cab">
+            <span class="olho">C1–C5 · conceitos</span>
+            <h2>Cinco peças para dominar arrays</h2>
+          </div>
+
+          <!-- conceito 1 -->
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>Criando um array</h3>
+              <p>Um array é uma lista entre colchetes, com os itens separados por vírgula. Cada item tem uma posição, o <strong>índice</strong>.</p>
+              <p>O primeiro item fica na posição <code>0</code>, não na 1. A propriedade <code>length</code> diz quantos itens a lista tem.</p>
+              <p class="dica cuidado"><strong>Pegadinha clássica:</strong> se o array tem 4 itens, o último está no índice 3.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">8.5</span>, <span class="str">7</span>, <span class="str">9.2</span>, <span class="str">6.8</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="fn">console.log</span>(<span class="var">notas</span>[<span class="str">0</span>]);     <span class="com">// 8.5  (o primeiro)</span></span><span class="linha"><span class="num">4</span><span class="fn">console.log</span>(<span class="var">notas</span>.<span class="var">length</span>);  <span class="com">// 4</span></span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="var">notas</span>[<span class="str">1</span>] = <span class="str">7.5</span>;           <span class="com">// trocando a 2ª nota</span></span><span class="linha"><span class="num">7</span><span class="fn">console.log</span>(<span class="var">notas</span>);     <span class="com">// [8.5, 7.5, 9.2, 6.8]</span></span></code></pre>
+          </div>
+
+          <!-- conceito 2 -->
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Percorrendo a lista</h3>
+              <p>Percorrer é visitar item por item. Você já conhece o <code>for</code> da aula de laços. Agora ganha dois atalhos:</p>
+              <p><code>for...of</code> entrega cada item direto, sem índice. <code>forEach()</code> chama uma função para cada item.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="com">// o for de sempre, com índice</span></span><span class="linha"><span class="num">2</span><span class="tag">for</span> (<span class="tag">let</span> <span class="var">i</span> = <span class="str">0</span>; <span class="var">i</span> &lt; <span class="var">notas</span>.<span class="var">length</span>; <span class="var">i</span>++) {</span><span class="linha"><span class="num">3</span>  <span class="fn">console.log</span>(<span class="var">i</span>, <span class="var">notas</span>[<span class="var">i</span>]);</span><span class="linha"><span class="num">4</span>}</span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="com">// for...of: item por item</span></span><span class="linha"><span class="num">7</span><span class="tag">for</span> (<span class="tag">const</span> <span class="var">nota</span> <span class="tag">of</span> <span class="var">notas</span>) {</span><span class="linha"><span class="num">8</span>  <span class="fn">console.log</span>(<span class="var">nota</span>);</span><span class="linha"><span class="num">9</span>}</span><span class="linha"><span class="num">10</span></span><span class="linha"><span class="num">11</span><span class="com">// forEach: uma função para cada item</span></span><span class="linha"><span class="num">12</span><span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nota</span>) =&gt; <span class="fn">console.log</span>(<span class="var">nota</span>));</span></code></pre>
+          </div>
+
+          <!-- conceito 3 -->
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Colocando e tirando itens</h3>
+              <p>A lista não é fixa: dá para colocar e tirar itens no começo, no fim ou no meio.</p>
+              <div class="tabela-rola">
+                <table class="metodos">
+                  <thead><tr><th>Método</th><th>O que faz</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>push()</code></td><td>coloca no fim</td></tr>
+                    <tr><td><code>pop()</code></td><td>tira do fim</td></tr>
+                    <tr><td><code>unshift()</code></td><td>coloca no começo</td></tr>
+                    <tr><td><code>shift()</code></td><td>tira do começo</td></tr>
+                    <tr><td><code>splice()</code></td><td>tira ou coloca no meio</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">alunos</span> = [<span class="str">"Ana"</span>, <span class="str">"Bruno"</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="var">alunos</span>.<span class="fn">push</span>(<span class="str">"Caio"</span>);      <span class="com">// ["Ana", "Bruno", "Caio"]</span></span><span class="linha"><span class="num">4</span><span class="var">alunos</span>.<span class="fn">unshift</span>(<span class="str">"Duda"</span>);   <span class="com">// ["Duda", "Ana", "Bruno", "Caio"]</span></span><span class="linha"><span class="num">5</span><span class="var">alunos</span>.<span class="fn">pop</span>();            <span class="com">// tira "Caio"</span></span><span class="linha"><span class="num">6</span><span class="var">alunos</span>.<span class="fn">shift</span>();          <span class="com">// tira "Duda"</span></span><span class="linha"><span class="num">7</span></span><span class="linha"><span class="num">8</span><span class="com">// splice(posição, quantos tirar, o que colocar)</span></span><span class="linha"><span class="num">9</span><span class="var">alunos</span>.<span class="fn">splice</span>(<span class="str">1</span>, <span class="str">0</span>, <span class="str">"Bia"</span>); <span class="com">// ["Ana", "Bia", "Bruno"]</span></span></code></pre>
+          </div>
+
+          <!-- conceito 4 -->
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C4</span>
+              <h3>Buscando e ordenando</h3>
+              <p><code>indexOf()</code> diz em que posição está um item (ou <code>-1</code>, se não achar). <code>includes()</code> responde só sim ou não. <code>find()</code> devolve o primeiro item que passa num teste.</p>
+              <p><code>sort()</code> coloca a lista em ordem.</p>
+              <p class="dica cuidado"><strong>Cuidado com o sort em números:</strong> sozinho, ele ordena como texto, e <code>10</code> fica antes de <code>9</code>. Para números, passe a regra: <code>(a, b) =&gt; a - b</code>.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="var">alunos</span>.<span class="fn">indexOf</span>(<span class="str">"Bia"</span>);     <span class="com">// 1</span></span><span class="linha"><span class="num">2</span><span class="var">alunos</span>.<span class="fn">includes</span>(<span class="str">"Zé"</span>);    <span class="com">// false</span></span><span class="linha"><span class="num">3</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">10</span>, <span class="str">9</span>, <span class="str">5.5</span>, <span class="str">7</span>];</span><span class="linha"><span class="num">5</span><span class="var">notas</span>.<span class="fn">find</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &lt; <span class="str">6</span>);  <span class="com">// 5.5</span></span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="var">notas</span>.<span class="fn">sort</span>();                <span class="com">// [10, 5.5, 7, 9]  ← ordem de texto!</span></span><span class="linha"><span class="num">8</span><span class="var">notas</span>.<span class="fn">sort</span>((<span class="var">a</span>, <span class="var">b</span>) =&gt; <span class="var">a</span> - <span class="var">b</span>); <span class="com">// [5.5, 7, 9, 10]  ← agora sim</span></span></code></pre>
+          </div>
+
+          <!-- conceito 5 -->
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C5</span>
+              <h3>Transformando: map, filter e reduce</h3>
+              <p>Os três métodos mais usados no dia a dia. Nenhum deles muda a lista original: cada um devolve um resultado novo.</p>
+              <p><code>map()</code> transforma cada item. <code>filter()</code> escolhe alguns itens. <code>reduce()</code> junta tudo num valor só.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">8.5</span>, <span class="str">5</span>, <span class="str">9.2</span>, <span class="str">6</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="com">// map: ponto extra para todo mundo</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">comBonus</span> = <span class="var">notas</span>.<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> + <span class="str">1</span>);</span><span class="linha"><span class="num">5</span><span class="com">// [9.5, 6, 10.2, 7]</span></span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="com">// filter: só quem passou</span></span><span class="linha"><span class="num">8</span><span class="tag">const</span> <span class="var">aprovados</span> = <span class="var">notas</span>.<span class="fn">filter</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt;= <span class="str">6</span>);</span><span class="linha"><span class="num">9</span><span class="com">// [8.5, 9.2, 6]</span></span><span class="linha"><span class="num">10</span></span><span class="linha"><span class="num">11</span><span class="com">// reduce: soma tudo, depois tira a média</span></span><span class="linha"><span class="num">12</span><span class="tag">const</span> <span class="var">soma</span> = <span class="var">notas</span>.<span class="fn">reduce</span>((<span class="var">total</span>, <span class="var">n</span>) =&gt; <span class="var">total</span> + <span class="var">n</span>, <span class="str">0</span>);</span><span class="linha"><span class="num">13</span><span class="fn">console.log</span>(<span class="var">soma</span> / <span class="var">notas</span>.<span class="var">length</span>); <span class="com">// 7.175</span></span></code></pre>
+          </div>
+
+          <div class="cartoes-visuais" aria-label="Resumo visual de map, filter e reduce">
+            <div class="cartao cartao-visual">
+              <span class="olho">map</span>
+              <h3>Transforma cada item</h3>
+              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ ×2 →</span><span class="lista">[2, 4, 6]</span></div>
+              <p>Mesma quantidade de itens, cada um mudado.</p>
+            </div>
+            <div class="cartao cartao-visual">
+              <span class="olho">filter</span>
+              <h3>Escolhe alguns</h3>
+              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ ≥ 2 →</span><span class="lista">[2, 3]</span></div>
+              <p>Pode sair com menos itens, nunca com mais.</p>
+            </div>
+            <div class="cartao cartao-visual">
+              <span class="olho">reduce</span>
+              <h3>Junta tudo num valor</h3>
+              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ soma →</span><span class="lista">6</span></div>
+              <p>Entra uma lista, sai um resultado só.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ATIVIDADE ===================== -->
+        <section class="parte" id="atividade">
+          <div class="cab">
+            <span class="olho">A1 · atividade</span>
+            <h2>Mão na massa: a lista da turma</h2>
+            <p>
+              Use a lista de alunos do seu Cadastro de Alunos (aula 7) ou crie uma nova. Vá marcando os passos:
+              o que você marcar fica salvo neste navegador.
+            </p>
+          </div>
+
+          <div class="cartao">
+            <div class="progresso-atividade" data-progresso="passos-aula-10">
+              <span class="contagem">0 de 9</span>
+              <span class="barra-progresso"><span></span></span>
+            </div>
+            <ol class="checklist" id="passos-aula-10">
+              <li><label><input type="checkbox"><span>Crie o arquivo <code>aula10.js</code> no seu repositório <code>programacao-web-js</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie um array <code>alunos</code> com 5 nomes e um array <code>notas</code> com as 5 notas, na mesma ordem.</span></label></li>
+              <li><label><input type="checkbox"><span>Mostre no console quantos alunos a turma tem, usando <code>length</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Percorra a lista com <code>for...of</code> e mostre cada nome.</span></label></li>
+              <li><label><input type="checkbox"><span>Coloque um aluno novo com <code>push()</code> e tire o último com <code>pop()</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Use <code>filter()</code> para separar as notas maiores ou iguais a 6.</span></label></li>
+              <li><label><input type="checkbox"><span>Use <code>reduce()</code> para calcular a média da turma.</span></label></li>
+              <li><label><input type="checkbox"><span>Ordene as notas da maior para a menor com <code>sort()</code>. Lembre da regra para números.</span></label></li>
+              <li><label><input type="checkbox"><span>Faça o commit e o push no GitHub.</span></label></li>
+            </ol>
+          </div>
+
+          <p class="dica" style="margin-top:1rem">
+            <strong>Em grupo:</strong> no Whiteboard da turma, cada grupo desenha um cartão mostrando o que
+            <code>map</code>, <code>filter</code> e <code>reduce</code> fazem com uma lista de exemplo.
+          </p>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>Arrays fora da tela</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">M</span>
+              <h3>Matemática</h3>
+              <p>Média, maior e menor nota são estatística. O <code>reduce</code> faz a mesma soma que você faria na calculadora, só que para 40 ou 4 mil números.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">E</span>
+              <h3>Eletrônica</h3>
+              <p>Um ESP32 lendo um sensor de temperatura a cada minuto guarda as leituras num array. No fim do dia, é só calcular a média.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">A</span>
+              <h3>Arte</h3>
+              <p>Uma paleta de cores também é um array: <code>["#d6b25e", "#9fd0b7", "#12261d"]</code>. Muitos sites geram paletas assim.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== DESAFIO EXTRA ===================== -->
+        <section class="parte" id="desafio">
+          <div class="cab">
+            <span class="olho">D1 · desafio extra</span>
+            <h2>Terminou antes? Tem mais.</h2>
+            <p>
+              Descubra a maior e a menor nota da turma <strong>sem usar <code>sort()</code></strong>. Primeiro tente com
+              <code>reduce()</code>. Depois pesquise o que faz <code>Math.max(...notas)</code> e compare.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===================== MATERIAIS ===================== -->
+        <section class="parte" id="materiais">
+          <div class="cab">
+            <span class="olho">J1 · materiais</span>
+            <h2>Para estudar e praticar</h2>
+          </div>
+          <div class="repos">
+            <a class="repo luz" href="../curso/modulos/05-arrays-objetos/index.html">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/módulo 5</span>
+              <h4>Arrays e objetos no curso interativo</h4>
+              <p>Explicação, editor de código ao vivo e quiz sobre o tema de hoje.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta verde">praticar</span></span>
+            </a>
+            <a class="repo luz" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>MDN Web Docs</span>
+              <h4>Referência completa de Array</h4>
+              <p>Todos os métodos, com exemplos, em português. A documentação que os profissionais usam.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#9fd0b7"><i></i>Documentação</span><span class="etiqueta">consulta</span></span>
+            </a>
+            <div class="repo">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>bibliografia</span>
+              <h4>Estruturas de dados e algoritmos com JavaScript</h4>
+              <p>GRONER, Loiane. Novatec, 2021. E-book na biblioteca. Os capítulos sobre arrays caem como uma luva.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#d6b25e"><i></i>Livro</span><span class="etiqueta">leitura</span></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ENTREGA ===================== -->
+        <section class="parte" id="entrega">
+          <div class="cartao entrega">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            <div>
+              <span class="olho">E1 · entrega</span>
+              <h3>Commit do <code>aula10.js</code> no seu repositório</h3>
+              <p>Até o fim da aula. Na próxima, a gente usa esses arrays para montar objetos e JSON no Cadastro de Alunos.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== NAVEGAÇÃO ENTRE AULAS ===================== -->
+        <nav class="nav-aulas" aria-label="Outras aulas">
+          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página existir; <span> enquanto não existir -->
+          <span>
+            <span class="olho">← aula anterior</span>
+            <strong>Aula 9: Avaliação do 1º bimestre</strong>
+          </span>
+          <span class="proxima">
+            <span class="olho">próxima aula →</span>
+            <strong>Aula 11: Objetos e JSON</strong>
+          </span>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="envolve">
+      <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
+        <span><a href="../">Programação Web em JavaScript</a> · Feito com ♥ e sucata eletrônica.</span>
+        <span>console.log("bons estudos!");</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ícone de repositório (Octicons, licença MIT) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-repo" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></symbol>
+  </svg>
+
+  <script src="../assets/js/aulas.js"></script>
+</body>
+</html>
