@@ -18,7 +18,7 @@
 ---
 
 Curso feito para acompanhar (e simplificar!) o conteúdo do **NetAcad JavaScript Essentials 1**, pensado para a
-disciplina de **Programação Web 1**. Nada de slides estáticos: cada módulo tem teoria direta ao ponto, um editor
+disciplina de **Programação Web em JavaScript**. Nada de slides estáticos: cada módulo tem teoria direta ao ponto, um editor
 de código que roda de verdade no navegador, exercícios com correção automática e quiz de fixação — tudo isso
 com um fundo neon animado estilo Matrix. 😎
 
@@ -95,6 +95,6 @@ CursoJavascript/
 ---
 
 <p align="center">
-  Criado para a disciplina de <strong>Programação Web 1</strong> · HTML, CSS e JavaScript<br />
+  Criado para a disciplina de <strong>Programação Web em JavaScript</strong> · HTML, CSS e JavaScript<br />
   <strong>Profª Maristela</strong>
 </p>
