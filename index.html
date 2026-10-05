@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/css/estilo.css">
   <link rel="stylesheet" href="assets/css/disciplina.css">
+  <link rel="stylesheet" href="assets/css/aula.css">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
       <nav class="nav" id="menu" aria-label="Seções da disciplina">
         <a href="#linguagem">O JavaScript</a>
         <a href="#ementa">Ementa</a>
-        <a href="#conteudo">Conteúdo</a>
+        <a href="#aulas">Aulas</a>
         <a href="#avaliacao">Avaliação</a>
         <a href="#atividades">Atividades</a>
         <a href="#entregas">Entregas</a>
@@ -282,8 +283,98 @@
       </div>
     </section>
 
-    <!-- ===================== COMO AS AULAS FUNCIONAM ===================== -->
+    <!-- ===================== AULAS ===================== -->
+    <!--
+      EDITE AQUI: uma linha por aula, com as datas das turmas em data-a e data-b (AAAA-MM-DD).
+      O aulas.js destaca sozinho a próxima aula. Quando a página da aula existir, coloque o link no título
+      (<a href="aulas/aula-NN.html">) e a etiqueta "abrir a aula →" no fim da linha de datas.
+    -->
     <section class="bloco alt" id="aulas">
+      <div class="envolve">
+        <div class="cab" data-revela>
+          <span class="olho">A1–A18 · aulas</span>
+          <h2>Dezoito encontros, uma trilha</h2>
+          <p>Cada aula tem a sua página, com os conceitos, a atividade e o que entregar. A próxima aula aparece destacada.</p>
+        </div>
+        <ol class="log lista-aulas" data-revela>
+          <li class="commit" data-a="2026-08-11" data-b="2026-08-12">
+            <div class="commit-linha"><h3>Conhecendo a disciplina</h3><span class="hash">A01</span></div>
+            <div class="meta"><span>Turma A: 11/08</span> · <span>Turma B: 12/08</span> · <span>Apresentação vivencial</span></div>
+          </li>
+          <li class="commit" data-a="2026-08-18" data-b="2026-08-19">
+            <div class="commit-linha"><h3>Como os sites executam comandos?</h3><span class="hash">A02</span></div>
+            <div class="meta"><span>Turma A: 18/08</span> · <span>Turma B: 19/08</span> · <span>Situação-problema</span></div>
+          </li>
+          <li class="commit" data-a="2026-08-25" data-b="2026-08-26">
+            <div class="commit-linha"><h3>Variáveis e tipos de dados: guardando informações</h3><span class="hash">A03</span></div>
+            <div class="meta"><span>Turma A: 25/08</span> · <span>Turma B: 26/08</span> · <span>Laboratório de práticas</span></div>
+          </li>
+          <li class="commit" data-a="2026-09-01" data-b="2026-09-02">
+            <div class="commit-linha"><h3>Desenvolvendo uma calculadora inteligente</h3><span class="hash">A04</span></div>
+            <div class="meta"><span>Turma A: 01/09</span> · <span>Turma B: 02/09</span> · <span>Aprendizagem baseada em problemas</span></div>
+          </li>
+          <li class="commit" data-a="2026-09-08" data-b="2026-09-09">
+            <div class="commit-linha"><h3>Como um sistema toma decisões?</h3><span class="hash">A05</span></div>
+            <div class="meta"><span>Turma A: 08/09</span> · <span>Turma B: 09/09</span> · <span>Situação-problema</span></div>
+          </li>
+          <li class="commit" data-a="2026-09-15" data-b="2026-09-16">
+            <div class="commit-linha"><h3>Repetindo tarefas automaticamente</h3><span class="hash">A06</span></div>
+            <div class="meta"><span>Turma A: 15/09</span> · <span>Turma B: 16/09</span> · <span>Aprendizagem em ação</span></div>
+          </li>
+          <li class="commit" data-a="2026-09-22" data-b="2026-09-23">
+            <div class="commit-linha"><h3>Cadastro de Alunos, parte I: organizando o código com funções</h3><span class="hash">A07</span></div>
+            <div class="meta"><span>Turma A: 22/09</span> · <span>Turma B: 23/09</span> · <span>Projeto</span></div>
+          </li>
+          <li class="commit" data-a="2026-09-29" data-b="2026-09-30">
+            <div class="commit-linha"><h3>Arrow functions, escopo e avaliação prática do 1º bimestre</h3><span class="hash">A08</span></div>
+            <div class="meta"><span>Turma A: 29/09</span> · <span>Turma B: 30/09</span> · <span>Amostra de trabalho</span></div>
+          </li>
+          <li class="commit" data-a="2026-10-06" data-b="2026-10-07">
+            <div class="commit-linha"><h3>Avaliação do 1º bimestre</h3><span class="hash">A09</span></div>
+            <div class="meta"><span>Turma A: 06/10</span> · <span>Turma B: 07/10</span> · <span>Avaliação</span></div>
+          </li>
+          <li class="commit" data-a="2026-10-13" data-b="2026-10-14">
+            <div class="commit-linha"><h3><a href="aulas/aula-10.html">Como organizar grandes volumes de dados? Arrays</a></h3><span class="hash">A10</span></div>
+            <div class="meta"><span>Turma A: 13/10</span> · <span>Turma B: 14/10</span> · <span>Situação-problema</span> <a class="etiqueta ouro" href="aulas/aula-10.html">abrir a aula →</a></div>
+          </li>
+          <li class="commit" data-a="2026-10-20" data-b="2026-10-21">
+            <div class="commit-linha"><h3>Cadastro de Alunos, parte II: objetos e JSON</h3><span class="hash">A11</span></div>
+            <div class="meta"><span>Turma A: 20/10</span> · <span>Turma B: 21/10</span> · <span>Projeto</span></div>
+          </li>
+          <li class="commit" data-a="2026-10-27" data-b="2026-10-28">
+            <div class="commit-linha"><h3>Conhecendo o DOM</h3><span class="hash">A12</span></div>
+            <div class="meta"><span>Turma A: 27/10</span> · <span>Turma B: 28/10 (Jornada Interdisciplinar)</span> · <span>Laboratório de práticas</span></div>
+          </li>
+          <li class="commit" data-a="2026-11-03" data-b="2026-11-04">
+            <div class="commit-linha"><h3>Tornando páginas interativas: eventos</h3><span class="hash">A13</span></div>
+            <div class="meta"><span>Turma A: 03/11</span> · <span>Turma B: 04/11</span> · <span>Projeto</span></div>
+          </li>
+          <li class="commit" data-a="2026-11-10" data-b="2026-11-11">
+            <div class="commit-linha"><h3>Frameworks JavaScript: seminários relâmpago</h3><span class="hash">A14</span></div>
+            <div class="meta"><span>Turma A: 10/11</span> · <span>Turma B: 11/11</span> · <span>Pesquisa e seminário</span></div>
+          </li>
+          <li class="commit" data-a="2026-11-17" data-b="2026-11-18">
+            <div class="commit-linha"><h3>React, Node.js e publicação no GitHub Pages</h3><span class="hash">A15</span></div>
+            <div class="meta"><span>Turma A: 17/11</span> · <span>Turma B: 18/11</span> · <span>Laboratório de práticas</span></div>
+          </li>
+          <li class="commit" data-a="2026-11-24" data-b="2026-11-25">
+            <div class="commit-linha"><h3>Apresentação final dos projetos</h3><span class="hash">A16</span></div>
+            <div class="meta"><span>Turma A: 24/11</span> · <span>Turma B: 25/11</span> · <span>Exposição prática</span></div>
+          </li>
+          <li class="commit" data-a="2026-12-01" data-b="2026-12-02">
+            <div class="commit-linha"><h3>Devolutiva, recuperação de entregas e portfólio</h3><span class="hash">A17</span></div>
+            <div class="meta"><span>Turma A: 01/12</span> · <span>Turma B: 02/12</span> · <span>Devolutiva</span></div>
+          </li>
+          <li class="commit" data-a="2026-12-08" data-b="2026-12-09">
+            <div class="commit-linha"><h3>Semana de prova final e encerramento</h3><span class="hash">A18</span></div>
+            <div class="meta"><span>Turma A: 08/12</span> · <span>Turma B: 09/12</span> · <span>Encerramento</span></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== COMO AS AULAS FUNCIONAM ===================== -->
+    <section class="bloco" id="metodo">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">M1 · metodologia</span>
@@ -326,7 +417,7 @@
     </section>
 
     <!-- ===================== AVALIAÇÃO (opcional) ===================== -->
-    <section class="bloco" id="avaliacao">
+    <section class="bloco alt" id="avaliacao">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">A1 · avaliação</span>
@@ -361,7 +452,7 @@
     </section>
 
     <!-- ===================== ATIVIDADES E MATERIAIS ===================== -->
-    <section class="bloco alt" id="atividades">
+    <section class="bloco" id="atividades">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">J1 · conectores</span>
@@ -406,7 +497,7 @@
     </section>
 
     <!-- ===================== PRÓXIMAS ENTREGAS ===================== -->
-    <section class="bloco" id="entregas">
+    <section class="bloco alt" id="entregas">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">T1 · prazos</span>
@@ -434,7 +525,7 @@
     </section>
 
     <!-- ===================== BIBLIOGRAFIA (opcional) ===================== -->
-    <section class="bloco alt" id="bibliografia">
+    <section class="bloco" id="bibliografia">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">B1 · bibliografia</span>
@@ -481,6 +572,7 @@
             <li><a href="#linguagem">Raio-X do JavaScript</a></li>
             <li><a href="#ementa">Ementa e objetivos</a></li>
             <li><a href="#conteudo">Conteúdo programático</a></li>
+            <li><a href="#aulas">Aulas</a></li>
             <li><a href="#avaliacao">Avaliação</a></li>
             <li><a href="#atividades">Atividades e materiais</a></li>
             <li><a href="#bibliografia">Bibliografia</a></li>
@@ -524,5 +616,6 @@
     <symbol id="ic-repo" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></symbol>
   </svg>
 
+  <script src="assets/js/aulas.js"></script>
 </body>
 </html>
