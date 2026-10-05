@@ -33,8 +33,9 @@ com um fundo neon animado estilo Matrix. 😎
 - ❓ **Quiz de múltipla escolha** em cada módulo, com correção visual (verde = certo, magenta = errado).
 - 💾 **Progresso salvo no navegador** — o botão "Marcar módulo como concluído" atualiza a barra de progresso da
   página inicial via `localStorage`.
-- ⚡ **Fundo animado estilo Matrix** — colunas de zeros e uns caindo pela tela, em `<canvas>` puro (sem bibliotecas
-  externas). Dá para ajustar tamanho, velocidade e opacidade no início de [js/circuito-fundo.js](js/circuito-fundo.js).
+- ⚡ **Fundo animado estilo Matrix** — colunas de zeros e uns caindo no topo da página, em `<canvas>` puro (sem bibliotecas
+  externas). É a mesma chuva do site da disciplina: [assets/js/matrix.js](assets/js/matrix.js). Para com o botão
+  "Pausar animações" da barra do topo.
 
 ## 🧩 Módulos
 
@@ -62,15 +63,14 @@ com um fundo neon animado estilo Matrix. 😎
 CursoJavascript/
 ├── index.html                  # página inicial (lista de módulos + progresso geral)
 ├── css/
-│   └── style.css               # tema visual (cores, fontes, componentes)
+│   └── style.css               # componentes do curso (as cores e fontes vêm do assets/css do site)
 ├── js/
 │   ├── playground.js           # editor de código ao vivo + exercícios com correção automática
 │   ├── quiz.js                 # motor dos quizzes de múltipla escolha
-│   ├── progress.js             # progresso do aluno (localStorage)
-│   └── circuito-fundo.js       # fundo animado estilo Matrix (zeros e uns caindo)
+│   └── progress.js             # progresso do aluno (localStorage)
 ├── img/
-│   ├── EstrelaLogo.png         # logo do curso
-│   └── memoji.png              # avatar exibido no cabeçalho
+│   ├── EstrelaLogo.png         # logo usado no certificado do quiz
+│   └── memoji.png              # avatar (não aparece mais na barra do topo)
 └── modulos/
     ├── 01-variaveis/index.html
     ├── 02-condicionais/index.html
@@ -87,7 +87,8 @@ CursoJavascript/
 - **Teoria/texto de um módulo:** edite o HTML dentro da respectiva pasta em `modulos/`.
 - **Perguntas do quiz:** procure `criarQuiz("quiz-moduloX", [...])` no final do arquivo do módulo.
 - **Exercícios com correção automática:** procure `criarExercicio({...})` e ajuste enunciado, código inicial e testes.
-- **Cores/tema:** as variáveis estão todas no topo do [css/style.css](css/style.css) (`:root { ... }`).
+- **Cores/tema:** o curso usa o visual comum dos sites da Stela (`assets/css/estilo.css` e `assets/css/neon.css`,
+  com tema claro e escuro). O topo do [css/style.css](css/style.css) só traduz essas cores para os nomes do curso.
 - **Novo módulo:** copie a estrutura de uma pasta existente, adicione o link em `index.html` (lista
   `DADOS_MODULOS`) e em `js/progress.js` (lista `MODULOS_DO_CURSO`).
 
