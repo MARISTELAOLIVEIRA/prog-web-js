@@ -36,6 +36,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
         <a href="#entrega">Entrega</a>
@@ -219,6 +220,35 @@
               <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ soma →</span><span class="lista">6</span></div>
               <p>Entra uma lista, sai um resultado só.</p>
             </div>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Lançar as notas da turma de uma vez</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Professora</p>
+            <p><strong>Objetivo:</strong> Guardar as notas de todos os alunos e ver a média da turma, a maior e a menor nota.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A professora lança a nota de cada aluno, uma depois da outra.</li>
+              <li>O sistema guarda todas as notas numa lista só.</li>
+              <li>Mostra quantas notas foram lançadas.</li>
+              <li>Mostra a média da turma, a maior e a menor nota.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>A professora lançou uma nota errada: o sistema troca a nota daquela posição da lista.</li>
+              <li>Um aluno saiu da turma: o sistema tira a nota dele da lista.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Que método de array resolve cada passo (push, length, reduce, Math.max)?</li>
+              <li>Por que 40 variáveis (nota1, nota2...) não resolveriam esse caso?</li>
+            </ol>
           </div>
         </section>
 
