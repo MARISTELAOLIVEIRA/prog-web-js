@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 2 · Calculadora com HTML, CSS e JavaScript</title>
+  <link rel="icon" href="../../../assets/img/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="../../../assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png" />
+  <script src="../../../assets/js/placa.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="../../../assets/css/estilo.css" />
+  <link rel="stylesheet" href="../../../assets/css/disciplina.css" />
+  <link rel="stylesheet" href="../../../assets/css/neon.css" />
+  <link rel="stylesheet" href="../../css/style.css?v=4" />
+</head>
+<body>
+  <div class="chuva-curso" aria-hidden="true"><canvas class="chuva-matrix"></canvas></div>
+  <!-- ===================== BARRA DO TOPO (igual em todos os sites) ===================== -->
+  <header class="barra">
+    <div class="envolve">
+      <div class="marcas">
+        <a class="marca" href="/" title="Portal da Stela">
+          <img src="../../../assets/img/estrela.webp" alt="" width="26" height="24" />
+          <span class="marca-texto">Stela</span>
+        </a>
+        <a class="marca-disc" href="../../../" title="Página inicial da disciplina">JS</a>
+        <a class="marca-disc" href="../../index.html" title="Início do curso interativo">Curso</a>
+      </div>
+      <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Seções do curso">
+        <a href="../../index.html">Início</a>
+        <a href="../../index.html#grade-modulos">Módulos</a>
+        <a href="../../tutoriais/tutoriais.html" aria-current="page">Tutoriais</a>
+        <a href="../../exercicios/index.html">Exercícios</a>
+        <a href="../../exercicios/modelos.html">Modelos</a>
+        <a href="../../quiz/revisao-1bimestre.html">Quiz</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <button type="button" id="btn-fonte" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button type="button" id="btn-movimento" aria-pressed="false">
+          <svg class="pausar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="tocar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+          <span class="rotulo">Pausar animações</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="trilha"><a href="../tutoriais.html">Tutoriais</a> &rsaquo; Tutorial 2</p>
+    <h1 class="titulo-aula">Calculadora com HTML, CSS e JavaScript</h1>
+
+    <div class="objetivos">
+      <h2>O que você vai praticar</h2>
+      <ul>
+        <li>Montar um projeto com os três arquivos: <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code>;</li>
+        <li>Dar cara de aplicativo à calculadora com CSS;</li>
+        <li>Ler os campos, fazer a conta com <code>switch</code> e mostrar o resultado na página;</li>
+        <li>Avisar os erros na tela: campo vazio e divisão por zero.</li>
+      </ul>
+    </div>
+
+    <section class="bloco">
+      <h2>1. Experimente</h2>
+      <p>
+        Esta é a pasta do projeto, como você vê no VS Code. Use a calculadora lá embaixo: digite dois números,
+        escolha a operação e clique em Calcular. Depois, passeie pelas abas e veja quem faz o quê.
+      </p>
+      <div id="projeto-calculadora"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>2. Os três arquivos, um de cada vez</h2>
+
+      <h3>index.html: a estrutura</h3>
+      <ul>
+        <li>O <code>&lt;link&gt;</code> no <code>&lt;head&gt;</code> chama o <code>estilo.css</code>, e o <code>&lt;script&gt;</code> no fim do <code>&lt;body&gt;</code> chama o <code>script.js</code>.</li>
+        <li>Os dois números são <code>&lt;input type="number"&gt;</code>. O <code>step="any"</code> aceita números com vírgula, como 2,5.</li>
+        <li>A operação é um <code>&lt;select&gt;</code>: cada <code>&lt;option&gt;</code> tem um <code>value</code> (o que o JavaScript lê) e um texto (o que o usuário vê).</li>
+        <li>Cada campo tem um <code>&lt;label for&gt;</code> ligado ao seu <code>id</code>.</li>
+        <li>O resultado aparece no <code>&lt;p id="resultado"&gt;</code>. O <code>aria-live="polite"</code> faz o leitor de tela anunciar cada conta.</li>
+      </ul>
+
+      <h3>estilo.css: a aparência</h3>
+      <ul>
+        <li>O <code>body</code> usa <code>display: grid</code> e <code>place-items: center</code> para pôr a calculadora no meio da tela.</li>
+        <li>A classe <code>.calculadora</code> é o "corpo" do aparelho: fundo escuro, cantos arredondados e sombra. O <code>max-width</code> deixa ela encolher no celular.</li>
+        <li><code>input:focus</code> e <code>select:focus</code> acendem o campo onde está o cursor.</li>
+        <li><code>.resultado.erro</code> pinta o visor de vermelho. Quem liga essa classe é o JavaScript.</li>
+      </ul>
+
+      <h3>script.js: o comportamento</h3>
+      <ul>
+        <li><code>document.querySelector()</code> acha cada elemento pelo <code>id</code>, igualzinho ao seletor do CSS.</li>
+        <li>A função <code>calcular()</code> recebe os dois números e a operação e devolve a conta, com <code>switch</code>.</li>
+        <li>A função <code>formatar()</code> usa <code>toLocaleString("pt-BR")</code> para mostrar o número do jeito brasileiro: 2,5 em vez de 2.5.</li>
+        <li>O evento <code>submit</code> junta tudo quando o usuário clica em Calcular (ou aperta Enter).</li>
+      </ul>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Do clique ao resultado, passo a passo</h2>
+      <div class="dica">
+        <strong>1. Evento:</strong> o clique em Calcular dispara o <code>submit</code> do formulário. O
+        <code>preventDefault()</code> segura a página, que senão recarregaria.
+      </div>
+      <div class="dica">
+        <strong>2. Validação:</strong> se algum campo está vazio, a função mostra o aviso e o <code>return</code> para
+        tudo ali. Cuidado: <code>Number("")</code> dá <code>0</code>, por isso conferimos o texto do campo antes.
+      </div>
+      <div class="dica">
+        <strong>3. Conversão:</strong> tudo o que vem de um campo é texto. O <code>Number()</code> transforma em número.
+        Sem ele, <code>"2" + "3"</code> dá <code>"23"</code>.
+      </div>
+      <div class="dica">
+        <strong>4. Cálculo:</strong> o <code>switch</code> compara a operação com cada <code>case</code> e devolve só a
+        conta que combina. Dividir por zero é barrado antes, com um aviso.
+      </div>
+      <div class="dica">
+        <strong>5. Resultado:</strong> o <code>textContent</code> escreve a conta no visor e o <code>classList</code>
+        liga ou desliga a classe <code>erro</code>, para o CSS cuidar da cor.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Fora da tela: STEAM</h2>
+      <div class="camadas">
+        <div class="camada camada--html">
+          <strong>Eletrônica</strong>
+          <p>A calculadora de bolso faz o mesmo caminho: as teclas são a entrada, o chip faz a conta e o visor mostra. Aqui, o formulário, o script.js e o parágrafo do resultado.</p>
+        </div>
+        <div class="camada camada--css">
+          <strong>Matemática</strong>
+          <p>Some 0,1 + 0,2 na calculadora: dá 0,3. Sem o <code>formatar()</code>, daria 0.30000000000000004, porque o computador guarda números em binário.</p>
+        </div>
+        <div class="camada camada--js">
+          <strong>Arte</strong>
+          <p>A calculadora é sua: troque as cores no estilo.css, mude o formato do botão, dê a ela a cara de uma calculadora retrô.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. Agora é com você: duas operações novas</h2>
+      <div id="exercicio-calculadora"></div>
+      <div class="objetivos">
+        <h2>Desafios extras (sem correção automática)</h2>
+        <ul>
+          <li><strong>Desafio 1 (fácil):</strong> no <code>estilo.css</code>, troque a cor do botão e do visor.</li>
+          <li><strong>Desafio 2 (médio):</strong> crie um botão Limpar, com <code>type="reset"</code>, que apaga os campos. Faça o visor voltar para "Resultado: –".</li>
+          <li><strong>Desafio 3 (difícil):</strong> guarde cada conta num array e mostre o histórico numa lista <code>&lt;ul&gt;</code> embaixo do visor.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (igual em todos os sites) ===================== -->
+  <footer class="rodape">
+    <div class="envolve">
+      <div class="rodape-grade">
+        <div class="rodape-marca">
+          <img src="../../../assets/img/coracao.webp" alt="" width="40" height="38" />
+          <strong>Curso Interativo de JavaScript</strong>
+          <span>Parte da disciplina Programação Web em JavaScript, do curso de ADS da Faculdade de Tecnologia e Inovação Senac DF.</span>
+        </div>
+
+        <nav aria-label="Neste curso">
+          <h2>Neste curso</h2>
+          <ul>
+            <li><a href="../../index.html">Início do curso</a></li>
+            <li><a href="../../modulos/01-variaveis/index.html">Começar pelo módulo 1</a></li>
+            <li><a href="../../tutoriais/tutoriais.html">Tutoriais</a></li>
+            <li><a href="../../exercicios/index.html">Exercícios</a></li>
+            <li><a href="../../exercicios/modelos.html">Modelos</a></li>
+            <li><a href="../../quiz/revisao-1bimestre.html">Quiz de revisão</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Na disciplina">
+          <h2>Na disciplina</h2>
+          <ul>
+            <li><a href="../../../">Página inicial</a></li>
+            <li><a href="../../../#ementa">Ementa e objetivos</a></li>
+            <li><a href="../../../#aulas">Aulas</a></li>
+            <li><a href="../../../#avaliacao">Avaliação</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Professora">
+          <h2>Professora</h2>
+          <ul>
+            <li><a href="/">Portal da Stela</a></li>
+            <li><a href="/#cursos">Cursos e turmas</a></li>
+            <li><a href="/#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="rodape-fim">
+        <span>Curso criado para a disciplina de Programação Web em JavaScript · HTML, CSS e JavaScript · Profª Maristela</span>
+        <span>console.log("bons estudos!");</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/playground.js?v=4"></script>
+  <script>
+    // monta o index.html completo, como o aluno escreve no VS Code
+    function paginaCompleta(titulo, corpo) {
+      const recuado = corpo.split("\n").map((linha) => (linha ? "  " + linha : linha)).join("\n");
+      return "<!DOCTYPE html>\n" +
+        "<html lang=\"pt-br\">\n" +
+        "<head>\n" +
+        "  <meta charset=\"UTF-8\">\n" +
+        "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+        "  <title>" + titulo + "</title>\n" +
+        "  <link rel=\"stylesheet\" href=\"estilo.css\">\n" +
+        "</head>\n" +
+        "<body>\n" +
+        recuado + "\n\n" +
+        "  <script src=\"script.js\"><\/script>\n" +
+        "</body>\n" +
+        "</html>\n";
+    }
+
+    const htmlCalculadora = `<main class="calculadora">
+  <h1>Calculadora</h1>
+
+  <form id="formCalculadora">
+    <label for="numero1">Primeiro número</label>
+    <input id="numero1" type="number" step="any" placeholder="Ex.: 10">
+
+    <label for="operacao">Operação</label>
+    <select id="operacao">
+      <option value="+">Soma (+)</option>
+      <option value="-">Subtração (−)</option>
+      <option value="*">Multiplicação (×)</option>
+      <option value="/">Divisão (÷)</option>
+    </select>
+
+    <label for="numero2">Segundo número</label>
+    <input id="numero2" type="number" step="any" placeholder="Ex.: 5">
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <p id="resultado" class="resultado" aria-live="polite">Resultado: –</p>
+</main>`;
+
+    const cssCalculadora = `body {
+  margin: 0;
+  padding: 16px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background: #eef2f0;
+}
+
+.calculadora {
+  width: 100%;
+  max-width: 300px; /* cresce até 300px e encolhe no celular */
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 16px;
+  background: #1a1a2e;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 4px;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #3a3a5a;
+  border-radius: 8px;
+}
+
+input:focus,
+select:focus {
+  border-color: #39ff88;
+  outline: 3px solid rgba(57, 255, 136, 0.35);
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 999px;
+  background: #39ff88;
+  color: #1a1a2e;
+  cursor: pointer;
+}
+
+.resultado {
+  margin: 16px 0 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: #2a2a44;
+  font-size: 18px;
+  text-align: center;
+}
+
+.resultado.erro {
+  background: #5a1f33;
+  color: #ffd0dc;
+}`;
+
+    const jsCalculadora = `const formulario = document.querySelector("#formCalculadora");
+const campoNumero1 = document.querySelector("#numero1");
+const campoNumero2 = document.querySelector("#numero2");
+const campoOperacao = document.querySelector("#operacao");
+const resultado = document.querySelector("#resultado");
+
+// faz a conta escolhida e devolve o resultado
+function calcular(n1, operacao, n2) {
+  switch (operacao) {
+    case "+":
+      return n1 + n2;
+    case "-":
+      return n1 - n2;
+    case "*":
+      return n1 * n2;
+    case "/":
+      return n1 / n2;
+    default:
+      return NaN;
+  }
+}
+
+// mostra o número do jeito brasileiro: 2,5 em vez de 2.5
+function formatar(numero) {
+  return numero.toLocaleString("pt-BR", { maximumFractionDigits: 4 });
+}
+
+function mostrarErro(mensagem) {
+  resultado.textContent = mensagem;
+  resultado.classList.add("erro");
+}
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault(); // não deixa a página recarregar
+
+  // campo vazio vira 0 no Number(), por isso conferimos o texto antes
+  if (campoNumero1.value === "" || campoNumero2.value === "") {
+    mostrarErro("Preencha os dois números.");
+    return;
+  }
+
+  // o que vem do campo é texto: Number() transforma em número
+  const n1 = Number(campoNumero1.value);
+  const n2 = Number(campoNumero2.value);
+  const operacao = campoOperacao.value;
+
+  if (operacao === "/" && n2 === 0) {
+    mostrarErro("Não dá para dividir por zero.");
+    return;
+  }
+
+  const conta = calcular(n1, operacao, n2);
+  if (isNaN(conta)) {
+    mostrarErro("Escolha uma operação.");
+    return;
+  }
+
+  resultado.textContent = formatar(n1) + " " + operacao + " " + formatar(n2) + " = " + formatar(conta);
+  resultado.classList.remove("erro");
+});`;
+
+    const arquivosCalculadora = {
+      "index.html": paginaCompleta("Calculadora", htmlCalculadora),
+      "estilo.css": cssCalculadora,
+      "script.js": jsCalculadora,
+    };
+
+    criarProjetoVS({
+      idContainer: "projeto-calculadora",
+      titulo: "Projeto: calculadora",
+      pasta: "calculadora",
+      abaInicial: "html",
+      alturaEditor: 360,
+      altura: 470,
+      arquivos: arquivosCalculadora,
+    });
+
+    criarExercicioVS({
+      idContainer: "exercicio-calculadora",
+      titulo: "Exercício: calculadora com resto e potência",
+      pasta: "calculadora",
+      abaInicial: "html",
+      alturaEditor: 360,
+      altura: 470,
+      enunciado: `
+        <p><strong>Desafio:</strong> ensine duas operações novas à calculadora. Cada uma mexe em dois arquivos:</p>
+        <ol>
+          <li>No <code>index.html</code>, acrescente duas <code>&lt;option&gt;</code> no <code>&lt;select&gt;</code>:
+          <strong>Resto da divisão</strong>, com <code>value="%"</code>, e <strong>Potência</strong>, com <code>value="**"</code>.</li>
+          <li>No <code>script.js</code>, acrescente um <code>case</code> para cada uma na função <code>calcular()</code>.
+          O resto usa <code>n1 % n2</code> e a potência usa <code>n1 ** n2</code>.</li>
+        </ol>
+        <p>Teste na calculadora e, quando estiver funcionando, clique em <strong>Verificar</strong>.</p>
+      `,
+      arquivos: arquivosCalculadora,
+      ajudantes: `
+        function __calcular(a, operacao, b) {
+          document.querySelector("#numero1").value = a;
+          document.querySelector("#numero2").value = b;
+          document.querySelector("#operacao").value = operacao;
+          document.querySelector("#formCalculadora").dispatchEvent(new Event("submit", { cancelable: true }));
+          return document.querySelector("#resultado").textContent.trim();
+        }
+      `,
+      testes: [
+        { descricao: 'O <select> tem a opção com value="%"', expressao: '!!document.querySelector(\'#operacao option[value="%"]\')' },
+        { descricao: "10 % 3 mostra = 1 no visor", expressao: '__calcular("10", "%", "3").endsWith("= 1")' },
+        { descricao: 'O <select> tem a opção com value="**"', expressao: '!!document.querySelector(\'#operacao option[value="**"]\')' },
+        { descricao: "2 ** 3 mostra = 8 no visor", expressao: '__calcular("2", "**", "3").endsWith("= 8")' },
+        { descricao: "A soma continua funcionando: 2 + 3 = 5", expressao: '__calcular("2", "+", "3").endsWith("= 5")' },
+      ],
+    });
+  </script>
+  <script src="../../../assets/js/matrix.js"></script>
+</body>
+</html>
