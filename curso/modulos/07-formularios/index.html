@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../../../assets/css/estilo.css" />
   <link rel="stylesheet" href="../../../assets/css/disciplina.css" />
   <link rel="stylesheet" href="../../../assets/css/neon.css" />
-  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/style.css?v=4" />
 </head>
 <body>
   <div class="chuva-curso" aria-hidden="true"><canvas class="chuva-matrix"></canvas></div>
@@ -60,78 +60,203 @@
     <div class="objetivos">
       <h2>Ao final deste módulo, você será capaz de:</h2>
       <ul>
-        <li>Ler o valor digitado em um <code>&lt;input&gt;</code>;</li>
-        <li>Impedir o recarregamento da página ao enviar um formulário com <code>preventDefault()</code>;</li>
-        <li>Validar dados antes de usá-los (campo vazio, tamanho mínimo, formato);</li>
-        <li>Exibir mensagens de erro para o usuário.</li>
+        <li>Montar um formulário em HTML, com <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code> e botão;</li>
+        <li>Dar cara de site ao formulário com CSS;</li>
+        <li>Ler o que o usuário digitou e responder na própria página;</li>
+        <li>Usar os eventos <code>submit</code> e <code>input</code>;</li>
+        <li>Validar os dados e mostrar o erro na tela, com CSS e JavaScript trabalhando juntos.</li>
       </ul>
     </div>
 
     <section class="bloco">
-      <h2>1. Lendo o valor de um campo de texto</h2>
+      <h2>1. Uma página, três camadas</h2>
       <p>
-        Todo <code>&lt;input&gt;</code> tem uma propriedade <code>.value</code> com o texto digitado pelo
-        usuário:
+        Até aqui, o JavaScript morou no console. Agora ele vai para onde o usuário está: a página. E toda página
+        de verdade tem três camadas, cada uma no seu trabalho:
       </p>
-      <pre><code>// HTML: &lt;input id="campoNome" type="text"&gt;
+      <div class="camadas">
+        <div class="camada camada--html">
+          <strong>HTML · estrutura</strong>
+          <p>O que existe na página: títulos, campos, botões. É a placa com os componentes soldados.</p>
+        </div>
+        <div class="camada camada--css">
+          <strong>CSS · aparência</strong>
+          <p>Como cada coisa aparece: cor, tamanho, espaço. É o acabamento da placa.</p>
+        </div>
+        <div class="camada camada--js">
+          <strong>JavaScript · comportamento</strong>
+          <p>O que acontece quando o usuário age. É a corrente passando pelo circuito.</p>
+        </div>
+      </div>
 
-const campoNome = document.querySelector("#campoNome");
-console.log(campoNome.value); // o que o usuário digitou</code></pre>
-      <div id="playground-form-valor"></div>
-    </section>
-
-    <section class="bloco">
-      <h2>2. preventDefault(): evitando o recarregamento da página</h2>
+      <h3>O arquivo completo: index.html</h3>
       <p>
-        Por padrão, ao enviar (<code>submit</code>) um formulário, a página recarrega. Para controlar o envio
-        com JavaScript, chamamos <code>evento.preventDefault()</code> logo no início da função:
+        No VS Code, o projeto é uma pasta com três arquivos: <code>index.html</code>, <code>estilo.css</code> e
+        <code>script.js</code>. Quem chama os outros dois é o HTML:
       </p>
-      <pre><code>const formulario = document.querySelector("#meuFormulario");
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Meu primeiro formulário&lt;/title&gt;
+  &lt;link rel="stylesheet" href="estilo.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form id="formCadastro"&gt;
+    &lt;label for="nome"&gt;Nome&lt;/label&gt;
+    &lt;input id="nome" name="nome" type="text"&gt;
 
-formulario.addEventListener("submit", function (evento) {
-  evento.preventDefault(); // impede o recarregamento da página
-  console.log("Formulário enviado sem recarregar a página!");
-});</code></pre>
-      <div class="atencao">
-        <strong>Atenção:</strong> se você esquecer o <code>preventDefault()</code>, a página recarrega antes do
-        seu código terminar de rodar — e parecerá que "nada aconteceu".
+    &lt;button type="submit"&gt;Cadastrar&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <ul>
+        <li><code>&lt;!DOCTYPE html&gt;</code> avisa o navegador que a página é HTML moderno.</li>
+        <li><code>&lt;head&gt;</code> é a parte que não aparece: o <code>&lt;meta charset&gt;</code> garante os acentos, o <code>&lt;title&gt;</code> é o nome na aba do navegador e o <code>&lt;link&gt;</code> chama o <code>estilo.css</code>.</li>
+        <li><code>&lt;body&gt;</code> é tudo o que aparece na tela.</li>
+        <li>O <code>&lt;script&gt;</code> fica no fim do <code>&lt;body&gt;</code>: assim o <code>script.js</code> só roda depois que o HTML já existe.</li>
+      </ul>
+
+      <h3>Dentro do body: o formulário</h3>
+      <ul>
+        <li><code>&lt;form&gt;</code> agrupa os campos e sabe ser enviado.</li>
+        <li><code>&lt;label&gt;</code> é o texto do campo. O <code>for="nome"</code> liga o rótulo ao campo com <code>id="nome"</code>: clicar no texto põe o cursor no campo, e o leitor de tela lê os dois juntos.</li>
+        <li><code>&lt;input&gt;</code> é o campo. O <code>type</code> muda o jeito de digitar: <code>text</code>, <code>email</code>, <code>number</code>, <code>password</code>…</li>
+        <li><code>&lt;button type="submit"&gt;</code> envia o formulário.</li>
+      </ul>
+      <p>
+        O editor abaixo funciona como o VS Code: cada aba é um arquivo da pasta do projeto. A página embaixo é o
+        <code>index.html</code> aberto no navegador, e ela atualiza sozinha enquanto você digita.
+      </p>
+      <div id="playground-form-html"></div>
+      <div class="dica">
+        <strong>Experimente:</strong> troque <code>type="text"</code> por <code>type="password"</code> e veja o que
+        acontece. Depois, acrescente um campo E-mail, com o seu <code>&lt;label&gt;</code> e o seu <code>&lt;input&gt;</code>.
       </div>
     </section>
 
     <section class="bloco">
-      <h2>3. Validando dados do usuário</h2>
-      <p>Antes de usar os dados de um formulário, é fundamental validar. Alguns exemplos comuns:</p>
-      <pre><code>function validarNome(nome) {
-  if (nome.trim() === "") {
-    return "O nome não pode estar vazio.";
-  }
-  if (nome.trim().length < 3) {
-    return "O nome deve ter pelo menos 3 letras.";
-  }
-  return null; // null significa "sem erro"
+      <h2>2. CSS: o formulário com cara de site</h2>
+      <p>
+        O HTML sozinho funciona, mas parece site de 1998. O CSS escolhe os elementos por <strong>seletores</strong>
+        e diz como eles aparecem:
+      </p>
+      <pre><code>label {          /* todos os labels */
+  display: block;
+  font-weight: bold;
 }
 
-console.log(validarNome(""));      // "O nome não pode estar vazio."
-console.log(validarNome("Al"));    // "O nome deve ter pelo menos 3 letras."
-console.log(validarNome("Alice")); // null</code></pre>
+.campo {         /* quem tem class="campo" */
+  padding: 8px;
+  border: 2px solid #c7cbe0;
+  border-radius: 8px;
+}
+
+.campo:focus {   /* o campo com o cursor dentro */
+  border-color: #2e7d5b;
+  outline: 3px solid #b9e4cf;
+}
+
+.campo.erro {    /* o JavaScript liga esta classe quando der erro */
+  border-color: #c22450;
+}</code></pre>
       <div class="dica">
-        <strong>Dica:</strong> <code>string.trim()</code> remove espaços do início e do fim do texto — muito útil
-        para não deixar o usuário "enganar" a validação digitando só espaços.
+        <strong>Cada camada no seu trabalho:</strong> a classe <code>.erro</code> ainda não faz nada sozinha. Daqui a
+        pouco o JavaScript liga e desliga essa classe, e o CSS cuida da cor.
+      </div>
+      <div id="playground-form-css"></div>
+      <div class="dica">
+        <strong>Experimente:</strong> deixe o botão verde, mude a cor do campo com o cursor (<code>:focus</code>) e
+        acrescente <code>class="campo erro"</code> no input do <code>index.html</code> para ver o vermelho. Por último, apague a
+        linha do <code>&lt;link&gt;</code> no <code>index.html</code>: o visual some, porque o HTML parou de chamar o
+        <code>estilo.css</code>.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>3. Ler o campo e responder na página</h2>
+      <p>
+        Para conversar com o HTML, o JavaScript precisa achar o elemento. O <code>document.querySelector()</code>
+        procura pelo seletor, igualzinho ao CSS: <code>#nome</code> é o elemento com <code>id="nome"</code>.
+      </p>
+      <pre><code>const campoNome = document.querySelector("#nome");
+const mensagem = document.querySelector("#mensagem");
+
+// .value: o texto que o usuário digitou no campo
+// .textContent: o texto que aparece dentro do elemento
+mensagem.textContent = "Olá, " + campoNome.value + "!";</code></pre>
+      <div class="dica">
+        <strong>Repare:</strong> nada de console. A resposta aparece na página, onde o usuário está olhando.
+      </div>
+      <div id="playground-form-valor"></div>
+      <div class="dica">
+        <strong>Experimente:</strong> mostre o nome em letras maiúsculas com <code>.toUpperCase()</code>.
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>4. Eventos: submit e input</h2>
+      <p>Evento é o aviso de que algo aconteceu na página. Dois deles são os melhores amigos do formulário:</p>
+      <ul>
+        <li><code>submit</code>: o formulário foi enviado (clique no botão ou Enter dentro de um campo).</li>
+        <li><code>input</code>: o conteúdo do campo mudou. Dispara a cada letra digitada.</li>
+      </ul>
+      <pre><code>formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault(); // não deixa a página recarregar
+  mensagem.textContent = "Recebido, " + campoNome.value + "!";
+});
+
+campoBio.addEventListener("input", function () {
+  contador.textContent = campoBio.value.length + " de 80 letras";
+});</code></pre>
+      <div class="atencao">
+        <strong>Atenção:</strong> sem o <code>preventDefault()</code>, o navegador envia o formulário do jeito antigo e
+        recarrega a página. A sua mensagem some antes de você ver. Teste: apague essa linha no <code>script.js</code> abaixo e envie.
+      </div>
+      <div id="playground-eventos"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>5. Validar e mostrar o erro na tela</h2>
+      <p>
+        O usuário digita de tudo: espaço em branco, nome de uma letra, e-mail sem arroba. Antes de usar o dado,
+        confira. Se der erro, o JavaScript escreve o aviso na página e liga a classe <code>.erro</code>; o CSS pinta
+        o campo de vermelho.
+      </p>
+      <pre><code>function validarNome(nome) {
+  if (nome.trim() === "") {
+    return "Escreva o seu nome.";
+  }
+  if (nome.trim().length &lt; 3) {
+    return "O nome precisa de pelo menos 3 letras.";
+  }
+  return ""; // texto vazio: sem erro
+}</code></pre>
+      <div class="dica">
+        <strong>Dica:</strong> <code>trim()</code> tira os espaços do começo e do fim. Assim ninguém passa na validação
+        digitando só espaço. E o <code>aria-live="polite"</code> no parágrafo da mensagem faz o leitor de tela anunciar
+        o aviso assim que ele aparece.
       </div>
       <div id="playground-validacao"></div>
     </section>
 
     <section class="bloco">
-      <h2>4. Formulário completo: cadastro com validação e mensagens de erro</h2>
+      <h2>6. Formulário completo: Cadastro de Alunos</h2>
       <p>
-        Preencha o formulário abaixo e clique em enviar. Tente também deixar campos vazios ou inválidos para
-        ver as mensagens de erro.
+        Agora tudo junto, no projeto da disciplina. A regra é a do Sistema de Aprovação: média 6,0 e pelo menos
+        75% de frequência. Cada aluno cadastrado entra numa lista, na própria página.
       </p>
       <div id="playground-form-completo"></div>
+      <div class="dica">
+        <strong>Experimente:</strong> mostre embaixo da lista quantos alunos estão aprovados. O <code>filter()</code>
+        do array <code>turma</code> resolve.
+      </div>
     </section>
 
     <section class="bloco">
-      <h2>Exercício prático (sem interface, só lógica)</h2>
+      <h2>Exercício: plugue a validação de e-mail no formulário</h2>
       <div id="exercicio-validacao-email"></div>
     </section>
 
@@ -205,129 +330,452 @@ console.log(validarNome("Alice")); // null</code></pre>
   </footer>
 
   <script src="../../js/progress.js"></script>
-  <script src="../../js/playground.js"></script>
+  <script src="../../js/playground.js?v=4"></script>
   <script src="../../js/quiz.js"></script>
   <script>
-    criarPlaygroundDOM({
-      idContainer: "playground-form-valor",
-      titulo: "Digite algo e clique no botão",
-      htmlBase: `<input id="campoNome" type="text" placeholder="Digite seu nome" />
-<button id="botaoMostrar" style="margin-left:0.4rem;">Mostrar valor</button>`,
-      codigoInicial: `const campoNome = document.querySelector("#campoNome");
-const botaoMostrar = document.querySelector("#botaoMostrar");
+    // monta o index.html completo, como o aluno escreve no VS Code:
+    // o <link> chama o estilo.css e o <script> no fim do <body> chama o script.js
+    function paginaCompleta(titulo, corpo) {
+      const recuado = corpo.split("\n").map((linha) => (linha ? "  " + linha : linha)).join("\n");
+      return "<!DOCTYPE html>\n" +
+        "<html lang=\"pt-br\">\n" +
+        "<head>\n" +
+        "  <meta charset=\"UTF-8\">\n" +
+        "  <title>" + titulo + "</title>\n" +
+        "  <link rel=\"stylesheet\" href=\"estilo.css\">\n" +
+        "</head>\n" +
+        "<body>\n" +
+        recuado + "\n\n" +
+        "  <script src=\"script.js\"><\/script>\n" +
+        "</body>\n" +
+        "</html>\n";
+    }
 
-botaoMostrar.addEventListener("click", function () {
-  console.log("Você digitou: " + campoNome.value);
-});`,
-      altura: 90,
-    });
-
-    criarPlayground(
-      "playground-validacao",
-      `function validarNome(nome) {
-  if (nome.trim() === "") {
-    return "O nome não pode estar vazio.";
-  }
-  if (nome.trim().length < 3) {
-    return "O nome deve ter pelo menos 3 letras.";
-  }
-  return null;
+    // estilos que se repetem nos exemplos: o aluno vê e edita na aba CSS
+    const cssFormulario = `body {
+  font-family: Arial, sans-serif;
 }
 
-console.log(validarNome(""));
-console.log(validarNome("Al"));
-console.log(validarNome("Alice"));`,
-      "Teste a função de validação"
-    );
+label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 4px;
+}
 
-    criarPlaygroundDOM({
-      idContainer: "playground-form-completo",
-      titulo: "Formulário de cadastro",
-      htmlBase: `
-        <form id="formCadastro">
-          <label for="nome">Nome</label>
-          <input id="nome" type="text" />
-          <label for="email">E-mail</label>
-          <input id="email" type="text" />
-          <div id="erros" style="color:#dc2626;margin-top:0.6rem;font-size:0.9rem;"></div>
-          <button type="submit" style="margin-top:0.8rem;">Cadastrar</button>
-        </form>
-      `,
-      codigoInicial: `const formulario = document.querySelector("#formCadastro");
-const divErros = document.querySelector("#erros");
+.campo {
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #c7cbe0;
+  border-radius: 8px;
+}
+
+.campo:focus {
+  border-color: #2e7d5b;
+  outline: 3px solid #b9e4cf;
+}
+
+.campo.erro {
+  border-color: #c22450;
+}
+
+button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #1a1a2e;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.mensagem.erro {
+  color: #c22450;
+}
+
+.mensagem.sucesso {
+  color: #2e7d5b;
+  font-weight: bold;
+}`;
+
+    criarProjetoVS({
+      idContainer: "playground-form-html",
+      titulo: "Só HTML: o formulário existe",
+      abaInicial: "html",
+      altura: 150,
+      pasta: "primeiro-formulario",
+      arquivos: {
+        "index.html": paginaCompleta("Meu primeiro formulário", `<form id="formCadastro">
+  <label for="nome">Nome</label>
+  <input id="nome" name="nome" type="text">
+
+  <button type="submit">Cadastrar</button>
+</form>`),
+        "estilo.css": `/* ainda vazio: o navegador usa o visual padrão */`,
+        "script.js": `// ainda vazio: o formulário só existe e aparece`,
+      },
+    });
+
+    criarProjetoVS({
+      idContainer: "playground-form-css",
+      titulo: "HTML + CSS: o formulário com cara de site",
+      abaInicial: "css",
+      altura: 170,
+      pasta: "formulario-com-css",
+      arquivos: {
+        "index.html": paginaCompleta("Formulário com CSS", `<form id="formCadastro">
+  <label for="nome">Nome</label>
+  <input id="nome" name="nome" class="campo" type="text">
+
+  <button type="submit">Cadastrar</button>
+</form>`),
+        "estilo.css": cssFormulario,
+        "script.js": `// ainda vazio: quem manda aqui é o CSS`,
+      },
+    });
+
+    criarProjetoVS({
+      idContainer: "playground-form-valor",
+      titulo: "HTML + CSS + JavaScript: digite e clique",
+      abaInicial: "js",
+      altura: 190,
+      pasta: "dizer-ola",
+      arquivos: {
+        "index.html": paginaCompleta("Dizer olá", `<label for="nome">Nome</label>
+<input id="nome" class="campo" type="text">
+
+<button type="button" id="botaoOla">Dizer olá</button>
+
+<p id="mensagem" class="mensagem sucesso"></p>`),
+        "estilo.css": cssFormulario,
+        "script.js": `const campoNome = document.querySelector("#nome");
+const botaoOla = document.querySelector("#botaoOla");
+const mensagem = document.querySelector("#mensagem");
+
+botaoOla.addEventListener("click", function () {
+  mensagem.textContent = "Olá, " + campoNome.value + "!";
+});`,
+      },
+    });
+
+    criarProjetoVS({
+      idContainer: "playground-eventos",
+      titulo: "Eventos submit e input",
+      abaInicial: "js",
+      altura: 300,
+      pasta: "eventos",
+      arquivos: {
+        "index.html": paginaCompleta("Eventos do formulário", `<form id="formCadastro">
+  <label for="nome">Nome</label>
+  <input id="nome" class="campo" type="text">
+
+  <label for="bio">Fale de você</label>
+  <textarea id="bio" class="campo" rows="3" maxlength="80"></textarea>
+  <small id="contador">0 de 80 letras</small>
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<p id="mensagem" class="mensagem sucesso" aria-live="polite"></p>`),
+        "estilo.css": cssFormulario + `
+
+textarea.campo {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+small {
+  display: block;
+  color: #4a5650;
+}`,
+        "script.js": `const formulario = document.querySelector("#formCadastro");
+const campoNome = document.querySelector("#nome");
+const campoBio = document.querySelector("#bio");
+const contador = document.querySelector("#contador");
+const mensagem = document.querySelector("#mensagem");
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault(); // não deixa a página recarregar
+  mensagem.textContent = "Recebido, " + campoNome.value + "!";
+});
+
+campoBio.addEventListener("input", function () {
+  contador.textContent = campoBio.value.length + " de 80 letras";
+});`,
+      },
+    });
+
+    criarProjetoVS({
+      idContainer: "playground-validacao",
+      titulo: "Validação com erro na tela",
+      abaInicial: "js",
+      altura: 190,
+      pasta: "validacao",
+      arquivos: {
+        "index.html": paginaCompleta("Validação", `<form id="formCadastro">
+  <label for="nome">Nome</label>
+  <input id="nome" class="campo" type="text">
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<p id="mensagem" class="mensagem" aria-live="polite"></p>`),
+        "estilo.css": cssFormulario,
+        "script.js": `const formulario = document.querySelector("#formCadastro");
+const campoNome = document.querySelector("#nome");
+const mensagem = document.querySelector("#mensagem");
+
+function validarNome(nome) {
+  if (nome.trim() === "") {
+    return "Escreva o seu nome.";
+  }
+  if (nome.trim().length < 3) {
+    return "O nome precisa de pelo menos 3 letras.";
+  }
+  return ""; // texto vazio: sem erro
+}
 
 formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
+  const erro = validarNome(campoNome.value);
 
-  const nome = document.querySelector("#nome").value.trim();
-  const email = document.querySelector("#email").value.trim();
-  const listaDeErros = [];
-
-  if (nome === "") {
-    listaDeErros.push("O nome é obrigatório.");
-  }
-  if (!email.includes("@")) {
-    listaDeErros.push("Digite um e-mail válido (precisa ter @).");
-  }
-
-  if (listaDeErros.length > 0) {
-    divErros.textContent = listaDeErros.join(" ");
+  if (erro !== "") {
+    campoNome.classList.add("erro");
+    mensagem.textContent = erro;
+    mensagem.className = "mensagem erro";
   } else {
-    divErros.textContent = "";
-    console.log("Cadastro enviado: " + nome + " - " + email);
+    campoNome.classList.remove("erro");
+    mensagem.textContent = "Cadastro feito, " + campoNome.value.trim() + "!";
+    mensagem.className = "mensagem sucesso";
   }
 });`,
-      altura: 320,
+      },
     });
 
-    criarExercicio({
-      idContainer: "exercicio-validacao-email",
-      enunciado: `
-        <p><strong>Desafio:</strong> complete a função <code>validarEmail(email)</code> que
-        <strong>retorna</strong> <code>true</code> se o texto contiver um <code>@</code> e um <code>.</code>
-        depois do <code>@</code>, e <code>false</code> caso contrário. (Você pode usar
-        <code>String.prototype.includes</code> e <code>String.prototype.indexOf</code>.)</p>
-      `,
-      codigoInicial: `function validarEmail(email) {
-  // escreva seu código aqui
+    criarProjetoVS({
+      idContainer: "playground-form-completo",
+      titulo: "Cadastro de Alunos",
+      abaInicial: "js",
+      altura: 470,
+      pasta: "cadastro-de-alunos",
+      arquivos: {
+        "index.html": paginaCompleta("Cadastro de Alunos", `<form id="formAluno">
+  <label for="nome">Nome</label>
+  <input id="nome" class="campo" type="text">
+
+  <label for="nota">Média (0 a 10)</label>
+  <input id="nota" class="campo" type="number" step="0.1">
+
+  <label for="frequencia">Frequência (%)</label>
+  <input id="frequencia" class="campo" type="number">
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<p id="mensagem" class="mensagem" aria-live="polite"></p>
+
+<h2>Turma</h2>
+<ul id="turma"></ul>`),
+        "estilo.css": cssFormulario + `
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.aprovado {
+  color: #2e7d5b;
+}
+
+.recuperacao {
+  color: #8a6614;
+}
+
+.reprovado {
+  color: #c22450;
 }`,
+        "script.js": `const formulario = document.querySelector("#formAluno");
+const campoNome = document.querySelector("#nome");
+const campoNota = document.querySelector("#nota");
+const campoFrequencia = document.querySelector("#frequencia");
+const mensagem = document.querySelector("#mensagem");
+const listaTurma = document.querySelector("#turma");
+
+const turma = [];
+
+// campo vazio vira 0 no Number(), por isso conferimos o texto antes
+function validar(nome, textoNota, textoFrequencia) {
+  if (nome.length < 3) {
+    return "O nome precisa de pelo menos 3 letras.";
+  }
+  if (textoNota === "" || Number(textoNota) < 0 || Number(textoNota) > 10) {
+    return "Escreva uma média de 0 a 10.";
+  }
+  if (textoFrequencia === "" || Number(textoFrequencia) < 0 || Number(textoFrequencia) > 100) {
+    return "Escreva uma frequência de 0 a 100.";
+  }
+  return "";
+}
+
+function verificarSituacao(nota, frequencia) {
+  if (frequencia < 75) {
+    return "Reprovado por falta";
+  }
+  if (nota >= 6) {
+    return "Aprovado";
+  }
+  return "Recuperação final";
+}
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  const nome = campoNome.value.trim();
+  const erro = validar(nome, campoNota.value, campoFrequencia.value);
+
+  if (erro !== "") {
+    mensagem.textContent = erro;
+    mensagem.className = "mensagem erro";
+    return;
+  }
+
+  const nota = Number(campoNota.value);
+  const frequencia = Number(campoFrequencia.value);
+  const situacao = verificarSituacao(nota, frequencia);
+  turma.push({ nome: nome, nota: nota, frequencia: frequencia, situacao: situacao });
+
+  let classe = "reprovado";
+  if (situacao === "Aprovado") {
+    classe = "aprovado";
+  }
+  if (situacao === "Recuperação final") {
+    classe = "recuperacao";
+  }
+
+  const item = document.createElement("li");
+  item.textContent = nome + ": média " + nota + ", " + frequencia + "% · " + situacao;
+  item.className = classe;
+  listaTurma.appendChild(item);
+
+  mensagem.textContent = nome + " entrou na turma. Agora são " + turma.length + " alunos.";
+  mensagem.className = "mensagem sucesso";
+  formulario.reset();
+  campoNome.focus();
+});`,
+      },
+    });
+
+    criarExercicioVS({
+      idContainer: "exercicio-validacao-email",
+      abaInicial: "js",
+      enunciado: `
+        <p><strong>Desafio:</strong> o <code>index.html</code> e o <code>estilo.css</code> já estão prontos. No <code>script.js</code>:</p>
+        <ol>
+          <li>Complete a função <code>validarEmail(email)</code>: ela devolve <code>true</code> se o texto tiver um
+          <code>@</code> e um <code>.</code> depois do <code>@</code>, e <code>false</code> se não tiver.
+          (<code>includes()</code> e <code>indexOf()</code> ajudam.)</li>
+          <li>No envio do formulário, se o e-mail for inválido, ligue a classe <code>erro</code> no campo e escreva
+          o aviso no parágrafo <code>#mensagem</code>.</li>
+          <li>Se for válido, tire a classe <code>erro</code> e escreva uma mensagem de sucesso.</li>
+        </ol>
+        <p>Teste na página e, quando estiver funcionando, clique em <strong>Verificar</strong>.</p>
+      `,
+      altura: 190,
+      pasta: "validar-email",
+      arquivos: {
+        "index.html": paginaCompleta("Validar e-mail", `<form id="formEmail">
+  <label for="email">E-mail</label>
+  <input id="email" class="campo" type="text">
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<p id="mensagem" class="mensagem" aria-live="polite"></p>`),
+        "estilo.css": cssFormulario,
+        "script.js": `const formulario = document.querySelector("#formEmail");
+const campoEmail = document.querySelector("#email");
+const mensagem = document.querySelector("#mensagem");
+
+function validarEmail(email) {
+  // 1. devolva true se tiver "@" e um "." depois do "@"; senão, false
+}
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  // 2. e-mail inválido: classe "erro" no campo e aviso na mensagem
+  // 3. e-mail válido: tire a classe "erro" e mostre o sucesso
+});`,
+      },
+      ajudantes: `
+        function __enviar(valor) {
+          document.querySelector("#email").value = valor;
+          document.querySelector("#formEmail").dispatchEvent(new Event("submit", { cancelable: true }));
+        }
+        function __temErro() {
+          return document.querySelector("#email").classList.contains("erro");
+        }
+        function __mensagem() {
+          return document.querySelector("#mensagem").textContent.trim();
+        }
+      `,
       testes: [
-        { descricao: 'validarEmail("ana@exemplo.com") deve retornar true', expressao: 'validarEmail("ana@exemplo.com") === true' },
-        { descricao: 'validarEmail("semarroba.com") deve retornar false', expressao: 'validarEmail("semarroba.com") === false' },
-        { descricao: 'validarEmail("com@ponto") deve retornar false', expressao: 'validarEmail("com@ponto") === false' },
+        { descricao: 'validarEmail("ana@exemplo.com") devolve true', expressao: 'validarEmail("ana@exemplo.com") === true' },
+        { descricao: 'validarEmail("semarroba.com") devolve false', expressao: 'validarEmail("semarroba.com") === false' },
+        { descricao: 'validarEmail("com@ponto") devolve false', expressao: 'validarEmail("com@ponto") === false' },
+        { descricao: 'Enviar "semarroba.com" liga a classe erro no campo e mostra um aviso', expressao: '(__enviar("semarroba.com"), __temErro() && __mensagem() !== "")' },
+        { descricao: 'Enviar "ana@exemplo.com" tira a classe erro e mostra uma mensagem', expressao: '(__enviar("semarroba.com"), __enviar("ana@exemplo.com"), !__temErro() && __mensagem() !== "")' },
       ],
     });
 
     criarQuiz("quiz-modulo7", [
       {
-        pergunta: "O que `evento.preventDefault()` faz em um formulário?",
+        pergunta: "Qual camada da página cuida da aparência (cores, tamanhos, espaços)?",
+        alternativas: ["HTML", "CSS", "JavaScript", "O navegador escolhe sozinho"],
+        correta: 1,
+      },
+      {
+        pergunta: "Para que serve o <code>for=\"nome\"</code> no <code>&lt;label&gt;</code>?",
+        alternativas: [
+          "Para repetir o campo várias vezes",
+          "Para ligar o texto ao campo com id=\"nome\": clicar no texto põe o cursor no campo e o leitor de tela lê os dois juntos",
+          "Para validar o campo automaticamente",
+          "Para deixar o texto em negrito",
+        ],
+        correta: 1,
+      },
+      {
+        pergunta: "Qual seletor CSS muda o visual do campo enquanto o cursor está dentro dele?",
+        alternativas: [".campo:hover", ".campo:focus", "#campo", ".campo.erro"],
+        correta: 1,
+      },
+      {
+        pergunta: "O que <code>evento.preventDefault()</code> faz no evento <code>submit</code>?",
         alternativas: [
           "Envia o formulário mais rápido",
-          "Impede o comportamento padrão (recarregar a página) ao enviar o formulário",
-          "Valida automaticamente todos os campos",
-          "Apaga os valores digitados",
+          "Impede que a página recarregue, para o JavaScript cuidar do envio",
+          "Valida todos os campos sozinho",
+          "Apaga o que foi digitado",
         ],
         correta: 1,
       },
       {
-        pergunta: "Como você acessa o texto digitado em um `<input>` selecionado em `campo`?",
-        alternativas: ["campo.text", "campo.value", "campo.innerHTML", "campo.data"],
-        correta: 1,
-      },
-      {
-        pergunta: 'O que `"  Ana  ".trim()` retorna?',
-        alternativas: ['"  Ana  "', '"Ana"', '"Ana  "', "undefined"],
-        correta: 1,
-      },
-      {
-        pergunta: "Por que validar os dados do formulário antes de usá-los?",
+        pergunta: "Como mostrar uma mensagem dentro do parágrafo <code>mensagem</code>, na página?",
         alternativas: [
-          "Para deixar o código mais lento de propósito",
-          "Para evitar erros e garantir que os dados estejam no formato esperado",
-          "Não é necessário validar, o navegador já faz tudo sozinho",
-          "Só é necessário se o formulário tiver mais de 5 campos",
+          "console.log(mensagem)",
+          "mensagem.value = \"Olá!\"",
+          "mensagem.textContent = \"Olá!\"",
+          "alert(mensagem)",
         ],
-        correta: 1,
+        correta: 2,
+      },
+      {
+        pergunta: "Qual linha liga a classe CSS <code>erro</code> no campo, para ele ficar vermelho?",
+        alternativas: [
+          "campo.classList.add(\"erro\")",
+          "campo.style = \"erro\"",
+          "campo.value = \"erro\"",
+          "campo.erro = true",
+        ],
+        correta: 0,
       },
     ]);
 
