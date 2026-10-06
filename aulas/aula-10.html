@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <!-- EDITE AQUI: número e tema da aula -->
-  <title>Aula 10: Arrays · Web em JavaScript · Stela</title>
-  <meta name="description" content="Aula 10 de Programação Web em JavaScript: arrays, do problema das 40 notas ao map, filter e reduce.">
+  <title>Aula 10: Objetos e JSON · Web em JavaScript · Stela</title>
+  <meta name="description" content="Aula 10 de Programação Web em JavaScript: objetos, arrays de objetos e JSON no Cadastro de Alunos.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -72,11 +72,12 @@
         <!-- EDITE AQUI: número, tipo de aula, unidade, título e datas -->
         <div class="aula-etiquetas">
           <span class="etiqueta ouro">Aula 10</span>
-          <span class="etiqueta">Situação-problema</span>
+          <span class="etiqueta">Projeto</span>
           <span class="etiqueta">Unidade 4</span>
         </div>
-        <h1>Como guardar as notas de 40 alunos?</h1>
-        <p class="subtitulo">Arrays: uma lista inteira de dados dentro de uma variável só.</p>
+        <h1>Cada aluno é um objeto</h1>
+        <p class="subtitulo">Cadastro de Alunos, parte II: objetos, arrays de objetos e JSON.</p>
+
       </div>
     </section>
 
@@ -86,15 +87,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Guardar, percorrer, buscar e transformar listas de dados com arrays.</p>
+            <p>Modelar dados com objetos, organizar listas de objetos e converter para JSON.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Ler sobre arrays na bibliografia básica. Se der, dê uma olhada no módulo 5 do curso.</p>
+            <p>Pesquisar exemplos de arquivos JSON em APIs públicas.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Resolução dos exercícios no laboratório, com commit no GitHub.</p>
+            <p>Entrega da parte II do Cadastro (Moodle).</p>
           </div>
         </div>
       </div>
@@ -107,119 +108,56 @@
         <section class="parte" id="problema">
           <div class="cab">
             <span class="olho">P1 · o problema</span>
-            <h2>Uma variável para cada aluno? Não vai dar.</h2>
-            <p>
-              Começamos com a correção comentada da prova. Depois, um desafio: a turma tem 40 alunos e precisamos
-              guardar a nota de cada um. Com o que vimos até agora, ficaria assim:
-            </p>
+            <h2>Nome num array, nota em outro… e a bagunça começa</h2>
+            <p>Na aula passada, nomes e notas ficaram em arrays separados. Basta um <code>sort()</code> numa lista para tudo desalinhar. Que tal guardar cada aluno inteiro, com nome, notas e frequência, num pacote só? Em grupo, modelem o objeto "aluno" numa tabela no Loop.</p>
           </div>
-
-          <div class="janela">
-            <div class="janela-barra">
-              <span class="semaforo" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="janela-titulo">notas-do-jeito-dificil.js</span>
-            </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">let</span> <span class="var">nota1</span> = <span class="str">8.5</span>;</span><span class="linha"><span class="num">2</span><span class="tag">let</span> <span class="var">nota2</span> = <span class="str">7</span>;</span><span class="linha"><span class="num">3</span><span class="tag">let</span> <span class="var">nota3</span> = <span class="str">9.2</span>;</span><span class="linha"><span class="num">4</span><span class="com">// ... mais 37 variáveis</span></span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="com">// e a média? somar as 40 na mão?</span></span><span class="linha"><span class="num">7</span><span class="tag">let</span> <span class="var">media</span> = (<span class="var">nota1</span> + <span class="var">nota2</span> + <span class="var">nota3</span> <span class="com">/* + ... */</span>) / <span class="str">40</span>;</span></code></pre>
-          </div>
-          <p class="dica" style="margin-top:1.2rem">
-            <strong>Spoiler:</strong> tem jeito melhor. Uma variável só, guardando a lista inteira. Isso é um array.
-          </p>
         </section>
 
         <!-- ===================== CONCEITOS ===================== -->
         <section class="parte" id="conceitos">
           <div class="cab">
-            <span class="olho">C1–C5 · conceitos</span>
-            <h2>Cinco peças para dominar arrays</h2>
+            <span class="olho">C1–C4 · conceitos</span>
+            <h2>Objetos e JSON em quatro passos</h2>
           </div>
 
-          <!-- conceito 1 -->
           <div class="conceito">
             <div class="texto">
               <span class="olho">C1</span>
-              <h3>Criando um array</h3>
-              <p>Um array é uma lista entre colchetes, com os itens separados por vírgula. Cada item tem uma posição, o <strong>índice</strong>.</p>
-              <p>O primeiro item fica na posição <code>0</code>, não na 1. A propriedade <code>length</code> diz quantos itens a lista tem.</p>
-              <p class="dica cuidado"><strong>Pegadinha clássica:</strong> se o array tem 4 itens, o último está no índice 3.</p>
+              <h3>Objeto: propriedades com nome</h3>
+              <p>Um objeto guarda pares de <strong>chave</strong> e <strong>valor</strong> entre chaves. Cada par é uma propriedade.</p>
+              <p>Acesse com ponto (<code>aluno.nome</code>) ou com colchetes (<code>aluno["nome"]</code>), que servem quando a chave está numa variável.</p>
             </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">8.5</span>, <span class="str">7</span>, <span class="str">9.2</span>, <span class="str">6.8</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="fn">console.log</span>(<span class="var">notas</span>[<span class="str">0</span>]);     <span class="com">// 8.5  (o primeiro)</span></span><span class="linha"><span class="num">4</span><span class="fn">console.log</span>(<span class="var">notas</span>.<span class="var">length</span>);  <span class="com">// 4</span></span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="var">notas</span>[<span class="str">1</span>] = <span class="str">7.5</span>;           <span class="com">// trocando a 2ª nota</span></span><span class="linha"><span class="num">7</span><span class="fn">console.log</span>(<span class="var">notas</span>);     <span class="com">// [8.5, 7.5, 9.2, 6.8]</span></span></code></pre>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">aluno</span> = {</span><span class="linha"><span class="num">2</span>  <span class="var">nome</span>: <span class="str">&quot;Ana&quot;</span>,</span><span class="linha"><span class="num">3</span>  <span class="var">notas</span>: [<span class="str">8.5</span>, <span class="str">7</span>, <span class="str">9</span>],</span><span class="linha"><span class="num">4</span>  <span class="var">frequencia</span>: <span class="str">92</span></span><span class="linha"><span class="num">5</span>};</span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="fn">console.log</span>(<span class="var">aluno</span>.<span class="var">nome</span>);          <span class="com">// Ana</span></span><span class="linha"><span class="num">8</span><span class="fn">console.log</span>(<span class="var">aluno</span>[<span class="str">&quot;frequencia&quot;</span>]); <span class="com">// 92</span></span></code></pre>
           </div>
 
-          <!-- conceito 2 -->
           <div class="conceito">
             <div class="texto">
               <span class="olho">C2</span>
-              <h3>Percorrendo a lista</h3>
-              <p>Percorrer é visitar item por item. Você já conhece o <code>for</code> da aula de laços. Agora ganha dois atalhos:</p>
-              <p><code>for...of</code> entrega cada item direto, sem índice. <code>forEach()</code> chama uma função para cada item.</p>
+              <h3>Mudar, acrescentar, apagar e métodos</h3>
+              <p>Dá para alterar e acrescentar propriedades a qualquer momento, e apagar com <code>delete</code>.</p>
+              <p>Uma função guardada dentro do objeto é um <strong>método</strong>.</p>
             </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="com">// o for de sempre, com índice</span></span><span class="linha"><span class="num">2</span><span class="tag">for</span> (<span class="tag">let</span> <span class="var">i</span> = <span class="str">0</span>; <span class="var">i</span> &lt; <span class="var">notas</span>.<span class="var">length</span>; <span class="var">i</span>++) {</span><span class="linha"><span class="num">3</span>  <span class="fn">console.log</span>(<span class="var">i</span>, <span class="var">notas</span>[<span class="var">i</span>]);</span><span class="linha"><span class="num">4</span>}</span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="com">// for...of: item por item</span></span><span class="linha"><span class="num">7</span><span class="tag">for</span> (<span class="tag">const</span> <span class="var">nota</span> <span class="tag">of</span> <span class="var">notas</span>) {</span><span class="linha"><span class="num">8</span>  <span class="fn">console.log</span>(<span class="var">nota</span>);</span><span class="linha"><span class="num">9</span>}</span><span class="linha"><span class="num">10</span></span><span class="linha"><span class="num">11</span><span class="com">// forEach: uma função para cada item</span></span><span class="linha"><span class="num">12</span><span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nota</span>) =&gt; <span class="fn">console.log</span>(<span class="var">nota</span>));</span></code></pre>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="var">aluno</span>.<span class="var">frequencia</span> = <span class="str">95</span>;       <span class="com">// altera</span></span><span class="linha"><span class="num">2</span><span class="var">aluno</span>.<span class="var">curso</span> = <span class="str">&quot;ADS&quot;</span>;         <span class="com">// acrescenta</span></span><span class="linha"><span class="num">3</span><span class="var">delete</span> <span class="var">aluno</span>.<span class="var">curso</span>;          <span class="com">// apaga</span></span><span class="linha"><span class="num">4</span></span><span class="linha"><span class="num">5</span><span class="tag">const</span> <span class="var">outra</span> = {</span><span class="linha"><span class="num">6</span>  <span class="var">nome</span>: <span class="str">&quot;Bia&quot;</span>,</span><span class="linha"><span class="num">7</span>  <span class="fn">apresentar</span>() {</span><span class="linha"><span class="num">8</span>    <span class="tag">return</span> <span class="str">`Eu sou a ${this.nome}`</span>;</span><span class="linha"><span class="num">9</span>  }</span><span class="linha"><span class="num">10</span>};</span><span class="linha"><span class="num">11</span><span class="fn">console.log</span>(<span class="var">outra</span>.<span class="fn">apresentar</span>());   <span class="com">// Eu sou a Bia</span></span></code></pre>
           </div>
 
-          <!-- conceito 3 -->
           <div class="conceito">
             <div class="texto">
               <span class="olho">C3</span>
-              <h3>Colocando e tirando itens</h3>
-              <p>A lista não é fixa: dá para colocar e tirar itens no começo, no fim ou no meio.</p>
-              <div class="tabela-rola">
-                <table class="metodos">
-                  <thead><tr><th>Método</th><th>O que faz</th></tr></thead>
-                  <tbody>
-                    <tr><td><code>push()</code></td><td>coloca no fim</td></tr>
-                    <tr><td><code>pop()</code></td><td>tira do fim</td></tr>
-                    <tr><td><code>unshift()</code></td><td>coloca no começo</td></tr>
-                    <tr><td><code>shift()</code></td><td>tira do começo</td></tr>
-                    <tr><td><code>splice()</code></td><td>tira ou coloca no meio</td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <h3>Array de objetos: a turma inteira</h3>
+              <p>Juntando a aula passada com a de hoje: uma lista de objetos. Os métodos de array funcionam do mesmo jeito.</p>
             </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">alunos</span> = [<span class="str">"Ana"</span>, <span class="str">"Bruno"</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="var">alunos</span>.<span class="fn">push</span>(<span class="str">"Caio"</span>);      <span class="com">// ["Ana", "Bruno", "Caio"]</span></span><span class="linha"><span class="num">4</span><span class="var">alunos</span>.<span class="fn">unshift</span>(<span class="str">"Duda"</span>);   <span class="com">// ["Duda", "Ana", "Bruno", "Caio"]</span></span><span class="linha"><span class="num">5</span><span class="var">alunos</span>.<span class="fn">pop</span>();            <span class="com">// tira "Caio"</span></span><span class="linha"><span class="num">6</span><span class="var">alunos</span>.<span class="fn">shift</span>();          <span class="com">// tira "Duda"</span></span><span class="linha"><span class="num">7</span></span><span class="linha"><span class="num">8</span><span class="com">// splice(posição, quantos tirar, o que colocar)</span></span><span class="linha"><span class="num">9</span><span class="var">alunos</span>.<span class="fn">splice</span>(<span class="str">1</span>, <span class="str">0</span>, <span class="str">"Bia"</span>); <span class="com">// ["Ana", "Bia", "Bruno"]</span></span></code></pre>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">turma</span> = [</span><span class="linha"><span class="num">2</span>  { <span class="var">nome</span>: <span class="str">&quot;Ana&quot;</span>, <span class="var">media</span>: <span class="str">8.2</span> },</span><span class="linha"><span class="num">3</span>  { <span class="var">nome</span>: <span class="str">&quot;Caio&quot;</span>, <span class="var">media</span>: <span class="str">5.4</span> },</span><span class="linha"><span class="num">4</span>  { <span class="var">nome</span>: <span class="str">&quot;Bia&quot;</span>, <span class="var">media</span>: <span class="str">9.1</span> }</span><span class="linha"><span class="num">5</span>];</span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="tag">const</span> <span class="var">aprovados</span> = <span class="var">turma</span>.<span class="fn">filter</span>((<span class="var">a</span>) =&gt; <span class="var">a</span>.<span class="var">media</span> &gt;= <span class="str">6</span>);</span><span class="linha"><span class="num">8</span><span class="fn">console.log</span>(<span class="var">aprovados</span>.<span class="fn">map</span>((<span class="var">a</span>) =&gt; <span class="var">a</span>.<span class="var">nome</span>));   <span class="com">// [&quot;Ana&quot;, &quot;Bia&quot;]</span></span></code></pre>
           </div>
 
-          <!-- conceito 4 -->
           <div class="conceito">
             <div class="texto">
               <span class="olho">C4</span>
-              <h3>Buscando e ordenando</h3>
-              <p><code>indexOf()</code> diz em que posição está um item (ou <code>-1</code>, se não achar). <code>includes()</code> responde só sim ou não. <code>find()</code> devolve o primeiro item que passa num teste.</p>
-              <p><code>sort()</code> coloca a lista em ordem.</p>
-              <p class="dica cuidado"><strong>Cuidado com o sort em números:</strong> sozinho, ele ordena como texto, e <code>10</code> fica antes de <code>9</code>. Para números, passe a regra: <code>(a, b) =&gt; a - b</code>.</p>
+              <h3>JSON: o idioma da troca de dados</h3>
+              <p>JSON é texto no formato de objeto. É assim que sistemas conversam pela internet.</p>
+              <p><code>JSON.stringify()</code> transforma objeto em texto. <code>JSON.parse()</code> faz o caminho de volta.</p>
+              <p class="dica"><strong>Dica:</strong> abra <code>https://viacep.com.br/ws/01001000/json/</code> no navegador e veja um JSON de verdade, vindo de uma API pública.</p>
             </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="var">alunos</span>.<span class="fn">indexOf</span>(<span class="str">"Bia"</span>);     <span class="com">// 1</span></span><span class="linha"><span class="num">2</span><span class="var">alunos</span>.<span class="fn">includes</span>(<span class="str">"Zé"</span>);    <span class="com">// false</span></span><span class="linha"><span class="num">3</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">10</span>, <span class="str">9</span>, <span class="str">5.5</span>, <span class="str">7</span>];</span><span class="linha"><span class="num">5</span><span class="var">notas</span>.<span class="fn">find</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &lt; <span class="str">6</span>);  <span class="com">// 5.5</span></span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="var">notas</span>.<span class="fn">sort</span>();                <span class="com">// [10, 5.5, 7, 9]  ← ordem de texto!</span></span><span class="linha"><span class="num">8</span><span class="var">notas</span>.<span class="fn">sort</span>((<span class="var">a</span>, <span class="var">b</span>) =&gt; <span class="var">a</span> - <span class="var">b</span>); <span class="com">// [5.5, 7, 9, 10]  ← agora sim</span></span></code></pre>
-          </div>
-
-          <!-- conceito 5 -->
-          <div class="conceito">
-            <div class="texto">
-              <span class="olho">C5</span>
-              <h3>Transformando: map, filter e reduce</h3>
-              <p>Os três métodos mais usados no dia a dia. Nenhum deles muda a lista original: cada um devolve um resultado novo.</p>
-              <p><code>map()</code> transforma cada item. <code>filter()</code> escolhe alguns itens. <code>reduce()</code> junta tudo num valor só.</p>
-            </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">notas</span> = [<span class="str">8.5</span>, <span class="str">5</span>, <span class="str">9.2</span>, <span class="str">6</span>];</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="com">// map: ponto extra para todo mundo</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">comBonus</span> = <span class="var">notas</span>.<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> + <span class="str">1</span>);</span><span class="linha"><span class="num">5</span><span class="com">// [9.5, 6, 10.2, 7]</span></span><span class="linha"><span class="num">6</span></span><span class="linha"><span class="num">7</span><span class="com">// filter: só quem passou</span></span><span class="linha"><span class="num">8</span><span class="tag">const</span> <span class="var">aprovados</span> = <span class="var">notas</span>.<span class="fn">filter</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt;= <span class="str">6</span>);</span><span class="linha"><span class="num">9</span><span class="com">// [8.5, 9.2, 6]</span></span><span class="linha"><span class="num">10</span></span><span class="linha"><span class="num">11</span><span class="com">// reduce: soma tudo, depois tira a média</span></span><span class="linha"><span class="num">12</span><span class="tag">const</span> <span class="var">soma</span> = <span class="var">notas</span>.<span class="fn">reduce</span>((<span class="var">total</span>, <span class="var">n</span>) =&gt; <span class="var">total</span> + <span class="var">n</span>, <span class="str">0</span>);</span><span class="linha"><span class="num">13</span><span class="fn">console.log</span>(<span class="var">soma</span> / <span class="var">notas</span>.<span class="var">length</span>); <span class="com">// 7.175</span></span></code></pre>
-          </div>
-
-          <div class="cartoes-visuais" aria-label="Resumo visual de map, filter e reduce">
-            <div class="cartao cartao-visual">
-              <span class="olho">map</span>
-              <h3>Transforma cada item</h3>
-              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ ×2 →</span><span class="lista">[2, 4, 6]</span></div>
-              <p>Mesma quantidade de itens, cada um mudado.</p>
-            </div>
-            <div class="cartao cartao-visual">
-              <span class="olho">filter</span>
-              <h3>Escolhe alguns</h3>
-              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ ≥ 2 →</span><span class="lista">[2, 3]</span></div>
-              <p>Pode sair com menos itens, nunca com mais.</p>
-            </div>
-            <div class="cartao cartao-visual">
-              <span class="olho">reduce</span>
-              <h3>Junta tudo num valor</h3>
-              <div class="antes-depois"><span class="lista">[1, 2, 3]</span><span class="seta">→ soma →</span><span class="lista">6</span></div>
-              <p>Entra uma lista, sai um resultado só.</p>
-            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">texto</span> = <span class="fn">JSON.stringify</span>({ <span class="var">nome</span>: <span class="str">&quot;Ana&quot;</span>, <span class="var">media</span>: <span class="str">8.2</span> });</span><span class="linha"><span class="num">2</span><span class="fn">console.log</span>(<span class="var">texto</span>);   <span class="com">// {&quot;nome&quot;:&quot;Ana&quot;,&quot;media&quot;:8.2}</span></span><span class="linha"><span class="num">3</span></span><span class="linha"><span class="num">4</span><span class="tag">const</span> <span class="var">deVolta</span> = <span class="fn">JSON.parse</span>(<span class="var">texto</span>);</span><span class="linha"><span class="num">5</span><span class="fn">console.log</span>(<span class="var">deVolta</span>.<span class="var">nome</span>);   <span class="com">// Ana</span></span></code></pre>
           </div>
         </section>
 
@@ -227,27 +165,26 @@
         <section class="parte" id="caso">
           <div class="cab">
             <span class="olho">CU1 · caso de uso</span>
-            <h2>Lançar as notas da turma de uma vez</h2>
+            <h2>Salvar o cadastro e abrir de novo amanhã</h2>
           </div>
           <div class="cartao caso">
-            <p><strong>Ator:</strong> Professora</p>
-            <p><strong>Objetivo:</strong> Guardar as notas de todos os alunos e ver a média da turma, a maior e a menor nota.</p>
+            <p><strong>Ator:</strong> Secretaria da escola</p>
+            <p><strong>Objetivo:</strong> Não perder os alunos cadastrados quando a página fecha.</p>
             <h3>Fluxo principal</h3>
             <ol>
-              <li>A professora lança a nota de cada aluno, uma depois da outra.</li>
-              <li>O sistema guarda todas as notas numa lista só.</li>
-              <li>Mostra quantas notas foram lançadas.</li>
-              <li>Mostra a média da turma, a maior e a menor nota.</li>
+              <li>A secretaria cadastra alunos com nome, curso e notas.</li>
+              <li>O sistema guarda cada aluno como um objeto.</li>
+              <li>Transforma a lista em JSON e salva.</li>
+              <li>No dia seguinte, a página lê o JSON e mostra os alunos de volta.</li>
             </ol>
             <h3>E se...</h3>
             <ul>
-              <li>A professora lançou uma nota errada: o sistema troca a nota daquela posição da lista.</li>
-              <li>Um aluno saiu da turma: o sistema tira a nota dele da lista.</li>
+              <li>O arquivo salvo está vazio: o sistema começa com a lista vazia, sem erro.</li>
             </ul>
             <h3>Para pensar</h3>
             <ol>
-              <li>Que método de array resolve cada passo (push, length, reduce, Math.max)?</li>
-              <li>Por que 40 variáveis (nota1, nota2...) não resolveriam esse caso?</li>
+              <li>Que propriedades tem o objeto aluno?</li>
+              <li>Por que salvar em JSON, e não como texto solto?</li>
             </ol>
           </div>
         </section>
@@ -256,58 +193,49 @@
         <section class="parte" id="atividade">
           <div class="cab">
             <span class="olho">A1 · atividade</span>
-            <h2>Mão na massa: a lista da turma</h2>
-            <p>
-              Use a lista de alunos do seu Cadastro de Alunos (aula 7) ou crie uma nova. Vá marcando os passos:
-              o que você marcar fica salvo neste navegador.
-            </p>
+            <h2>Cadastro de Alunos, parte II</h2>
+            <p>O projeto ganha estrutura de verdade. O que você marcar fica salvo neste navegador.</p>
           </div>
 
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-10">
-              <span class="contagem">0 de 9</span>
+              <span class="contagem">0 de 8</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-10">
-              <li><label><input type="checkbox"><span>Crie o arquivo <code>aula10.js</code> no seu repositório <code>programacao-web-js</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie um array <code>alunos</code> com 5 nomes e um array <code>notas</code> com as 5 notas, na mesma ordem.</span></label></li>
-              <li><label><input type="checkbox"><span>Mostre no console quantos alunos a turma tem, usando <code>length</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Percorra a lista com <code>for...of</code> e mostre cada nome.</span></label></li>
-              <li><label><input type="checkbox"><span>Coloque um aluno novo com <code>push()</code> e tire o último com <code>pop()</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Use <code>filter()</code> para separar as notas maiores ou iguais a 6.</span></label></li>
-              <li><label><input type="checkbox"><span>Use <code>reduce()</code> para calcular a média da turma.</span></label></li>
-              <li><label><input type="checkbox"><span>Ordene as notas da maior para a menor com <code>sort()</code>. Lembre da regra para números.</span></label></li>
-              <li><label><input type="checkbox"><span>Faça o commit e o push no GitHub.</span></label></li>
+              <li><label><input type="checkbox"><span>Modele o objeto "aluno" na tabela do Loop com o seu grupo.</span></label></li>
+              <li><label><input type="checkbox"><span>Transforme o seu Cadastro num array de objetos.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie uma função para cadastrar um aluno novo (<code>push</code> de um objeto).</span></label></li>
+              <li><label><input type="checkbox"><span>Crie uma função que lista todos os alunos com nome, média e situação.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie uma função que filtra só os aprovados.</span></label></li>
+              <li><label><input type="checkbox"><span>Converta a turma para JSON com <code>JSON.stringify()</code> e mostre no console.</span></label></li>
+              <li><label><input type="checkbox"><span>Peça ao Copilot dados fictícios de teste em JSON e confira se o formato está certo.</span></label></li>
+              <li><label><input type="checkbox"><span>Entregue a parte II no Moodle e faça o commit.</span></label></li>
             </ol>
           </div>
-
-          <p class="dica" style="margin-top:1rem">
-            <strong>Em grupo:</strong> no Whiteboard da turma, cada grupo desenha um cartão mostrando o que
-            <code>map</code>, <code>filter</code> e <code>reduce</code> fazem com uma lista de exemplo.
-          </p>
         </section>
 
         <!-- ===================== CONEXÃO STEAM ===================== -->
         <section class="parte" id="steam">
           <div class="cab">
             <span class="olho">S1 · conexão STEAM</span>
-            <h2>Arrays fora da tela</h2>
+            <h2>Objetos fora da tela</h2>
           </div>
           <div class="steam">
             <div class="cartao">
-              <span class="letra">M</span>
-              <h3>Matemática</h3>
-              <p>Média, maior e menor nota são estatística. O <code>reduce</code> faz a mesma soma que você faria na calculadora, só que para 40 ou 4 mil números.</p>
+              <span class="letra">S</span>
+              <h3>Ciência</h3>
+              <p>Cientistas guardam medições em JSON e trocam dados entre laboratórios do mundo todo nesse formato.</p>
             </div>
             <div class="cartao">
               <span class="letra">E</span>
               <h3>Eletrônica</h3>
-              <p>Um ESP32 lendo um sensor de temperatura a cada minuto guarda as leituras num array. No fim do dia, é só calcular a média.</p>
+              <p>Um ESP32 manda as leituras do sensor para a nuvem num JSON como <code>{"temp": 24.5, "umidade": 60}</code>.</p>
             </div>
             <div class="cartao">
               <span class="letra">A</span>
               <h3>Arte</h3>
-              <p>Uma paleta de cores também é um array: <code>["#d6b25e", "#9fd0b7", "#12261d"]</code>. Muitos sites geram paletas assim.</p>
+              <p>Uma obra de arte também vira objeto: título, artista, ano e materiais. Museus inteiros catalogam acervo assim.</p>
             </div>
           </div>
         </section>
@@ -317,10 +245,7 @@
           <div class="cab">
             <span class="olho">D1 · desafio extra</span>
             <h2>Terminou antes? Tem mais.</h2>
-            <p>
-              Descubra a maior e a menor nota da turma <strong>sem usar <code>sort()</code></strong>. Primeiro tente com
-              <code>reduce()</code>. Depois pesquise o que faz <code>Math.max(...notas)</code> e compare.
-            </p>
+            <p>Busque um CEP real com <code>fetch("https://viacep.com.br/ws/SEUCEP/json/")</code>, converta a resposta com <code>.json()</code> e mostre a cidade no console. É seu primeiro consumo de API.</p>
           </div>
         </section>
 
@@ -333,22 +258,22 @@
           <div class="repos">
             <a class="repo luz" href="../curso/modulos/05-arrays-objetos/index.html">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/módulo 5</span>
-              <h4>Arrays e objetos no curso interativo</h4>
-              <p>Explicação, editor de código ao vivo e quiz sobre o tema de hoje.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta verde">praticar</span></span>
+              <h4>Arrays e objetos</h4>
+              <p>Explicação, editor ao vivo e quiz.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">praticar</span></span>
             </a>
-            <a class="repo luz" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array">
+            <a class="repo luz" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Working_with_objects">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>MDN Web Docs</span>
-              <h4>Referência completa de Array</h4>
-              <p>Todos os métodos, com exemplos, em português. A documentação que os profissionais usam.</p>
+              <h4>Trabalhando com objetos</h4>
+              <p>Em português.</p>
               <span class="repo-pe"><span class="ling" style="--cor:#9fd0b7"><i></i>Documentação</span><span class="etiqueta">consulta</span></span>
             </a>
-            <div class="repo">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>bibliografia</span>
-              <h4>Estruturas de dados e algoritmos com JavaScript</h4>
-              <p>GRONER, Loiane. Novatec, 2021. E-book na biblioteca. Os capítulos sobre arrays caem como uma luva.</p>
-              <span class="repo-pe"><span class="ling" style="--cor:#d6b25e"><i></i>Livro</span><span class="etiqueta">leitura</span></span>
-            </div>
+            <a class="repo luz" href="https://viacep.com.br/ws/01001000/json/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>ViaCEP</span>
+              <h4>Uma API pública de verdade</h4>
+              <p>Veja um JSON real com dados de endereço.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#9fd0b7"><i></i>API</span><span class="etiqueta">explorar</span></span>
+            </a>
           </div>
         </section>
 
@@ -358,23 +283,22 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Commit do <code>aula10.js</code> no seu repositório</h3>
-              <p>Até o fim da aula. Na próxima, a gente usa esses arrays para montar objetos e JSON no Cadastro de Alunos.</p>
+              <h3>Parte II do Cadastro no Moodle</h3>
+              <p>E commit no GitHub. Na próxima aula, o Cadastro sai do console e ganha cara de página.</p>
             </div>
           </div>
         </section>
 
-        <!-- ===================== NAVEGAÇÃO ENTRE AULAS ===================== -->
         <nav class="nav-aulas" aria-label="Outras aulas">
-          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página existir; <span> enquanto não existir -->
-          <a href="aula-09.html">
+          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
+          <a class="anterior" href="aula-09.html">
             <span class="olho">← aula anterior</span>
-            <strong>Aula 9: Avaliação do 1º bimestre</strong>
+            <strong>Aula 9: Arrays e arrow functions</strong>
           </a>
-          <a class="proxima" href="aula-11.html">
+          <span class="proxima">
             <span class="olho">próxima aula →</span>
-            <strong>Aula 11: Objetos e JSON</strong>
-          </a>
+            <strong>Aula 11: Conhecendo o DOM</strong>
+          </span>
         </nav>
 
       </div>
@@ -386,7 +310,7 @@
     <div class="envolve">
       <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
         <span><a href="../">Programação Web em JavaScript</a> · Feito com ♥ e sucata eletrônica.</span>
-        <span>console.log("bons estudos!");</span>
+        <span>console.log(&quot;bons estudos!&quot;);</span>
       </div>
     </div>
   </footer>

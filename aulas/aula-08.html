@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <!-- EDITE AQUI: número e tema da aula -->
-  <title>Aula 8: Arrow functions, escopo e avaliação prática · Web em JavaScript · Stela</title>
-  <meta name="description" content="Aula 8 de Programação Web em JavaScript: arrow functions, escopo e a atividade avaliativa prática do 1º bimestre.">
+  <title>Aula 8: Avaliação do 1º bimestre · Web em JavaScript · Stela</title>
+  <meta name="description" content="Aula 8 de Programação Web em JavaScript: revisão e prova objetiva do 1º bimestre.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -35,7 +35,7 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
-        <a href="#conceitos">Conceitos</a>
+        <a href="#roteiro">Roteiro</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -72,11 +72,11 @@
         <!-- EDITE AQUI: número, tipo de aula, unidade, título e datas -->
         <div class="aula-etiquetas">
           <span class="etiqueta ouro">Aula 8</span>
-          <span class="etiqueta">Amostra de trabalho</span>
-          <span class="etiqueta">Unidade 3</span>
+          <span class="etiqueta">Avaliação</span>
+          <span class="etiqueta">Unidades 1 a 3</span>
         </div>
-        <h1>Funções mais curtas e a prática que vale nota</h1>
-        <p class="subtitulo">Arrow functions, escopo de variáveis e a atividade avaliativa do 1º bimestre.</p>
+        <h1>Dia de prova. Respira.</h1>
+        <p class="subtitulo">Prova objetiva do 1º bimestre: fundamentos, decisão, repetição e funções.</p>
 
       </div>
     </section>
@@ -87,15 +87,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Escrever arrow functions, entender escopo e mostrar autonomia na atividade prática.</p>
+            <p>Mostrar o que você aprendeu nas Unidades 1, 2 e 3.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Revisar os conteúdos das Unidades 1 a 3.</p>
+            <p>Estudar os conteúdos das Unidades 1 a 3. O quiz de revisão do curso ajuda muito.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Atividade avaliativa prática (4,0 pontos), individual e sem IA.</p>
+            <p>Prova objetiva individual (6,0 pontos).</p>
           </div>
         </div>
       </div>
@@ -104,58 +104,45 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
-        <!-- ===================== CONCEITOS ===================== -->
-        <section class="parte" id="conceitos">
+        <!-- ===================== ROTEIRO DO ENCONTRO ===================== -->
+        <section class="parte" id="roteiro">
           <div class="cab">
-            <span class="olho">C1–C2 · conceitos</span>
-            <h2>Antes da atividade</h2>
+            <span class="olho">R1 · roteiro</span>
+            <h2>Como vai ser o encontro</h2>
           </div>
-
-          <div class="conceito">
-            <div class="texto">
-              <span class="olho">C1</span>
-              <h3>Função anônima e arrow function</h3>
-              <p>Uma função pode ser guardada numa variável. Sem nome próprio, ela é <strong>anônima</strong>.</p>
-              <p>A <strong>arrow function</strong> é o jeito curto de escrever: <code>(parâmetros) =&gt; resultado</code>. Com uma linha só, o <code>return</code> fica implícito.</p>
-            </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="com">// função tradicional</span></span><span class="linha"><span class="num">2</span><span class="tag">function</span> <span class="fn">dobro</span>(<span class="var">n</span>) {</span><span class="linha"><span class="num">3</span>  <span class="tag">return</span> <span class="var">n</span> * <span class="str">2</span>;</span><span class="linha"><span class="num">4</span>}</span><span class="linha"><span class="num">5</span></span><span class="linha"><span class="num">6</span><span class="com">// anônima, guardada numa variável</span></span><span class="linha"><span class="num">7</span><span class="tag">const</span> <span class="var">triplo</span> = <span class="tag">function</span> (<span class="var">n</span>) {</span><span class="linha"><span class="num">8</span>  <span class="tag">return</span> <span class="var">n</span> * <span class="str">3</span>;</span><span class="linha"><span class="num">9</span>};</span><span class="linha"><span class="num">10</span></span><span class="linha"><span class="num">11</span><span class="com">// arrow function: o return está implícito</span></span><span class="linha"><span class="num">12</span><span class="tag">const</span> <span class="var">quadrado</span> = (<span class="var">n</span>) =&gt; <span class="var">n</span> * <span class="var">n</span>;</span><span class="linha"><span class="num">13</span></span><span class="linha"><span class="num">14</span><span class="fn">console.log</span>(<span class="fn">quadrado</span>(<span class="str">4</span>));   <span class="com">// 16</span></span></code></pre>
-          </div>
-
-          <div class="conceito">
-            <div class="texto">
-              <span class="olho">C2</span>
-              <h3>Escopo: onde a variável existe</h3>
-              <p><strong>Global</strong>: declarada fora de tudo, vale no arquivo inteiro. <strong>De função</strong>: só dentro da função. <strong>De bloco</strong>: só dentro das chaves <code>{ }</code> onde nasceu.</p>
-              <p><code>let</code> e <code>const</code> respeitam o bloco. O <code>var</code> não, e é por isso que ele causa tanta confusão.</p>
-            </div>
-            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">turma</span> = <span class="str">&quot;ADS&quot;</span>;           <span class="com">// global</span></span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="tag">function</span> <span class="fn">mostrar</span>() {</span><span class="linha"><span class="num">4</span>  <span class="tag">const</span> <span class="var">sala</span> = <span class="str">&quot;Lab 3&quot;</span>;        <span class="com">// de função</span></span><span class="linha"><span class="num">5</span>  <span class="tag">if</span> (<span class="tag">true</span>) {</span><span class="linha"><span class="num">6</span>    <span class="tag">let</span> <span class="var">hora</span> = <span class="str">&quot;19h&quot;</span>;          <span class="com">// de bloco</span></span><span class="linha"><span class="num">7</span>    <span class="fn">console.log</span>(<span class="var">turma</span>, <span class="var">sala</span>, <span class="var">hora</span>);</span><span class="linha"><span class="num">8</span>  }</span><span class="linha"><span class="num">9</span>  <span class="com">// console.log(hora);  // erro: hora não existe aqui</span></span><span class="linha"><span class="num">10</span>}</span><span class="linha"><span class="num">11</span><span class="fn">mostrar</span>();</span></code></pre>
-          </div>
+          <ol class="log">
+          <li class="commit"><div class="commit-linha"><h3>Revisão relâmpago</h3><span class="hash">R1</span></div><p>Um quiz rápido com os principais conceitos e tempo para tirar as últimas dúvidas.</p></li>
+          <li class="commit"><div class="commit-linha"><h3>Prova objetiva</h3><span class="hash">R2</span></div><p>Individual, com as orientações gerais no início. Vale 6,0 pontos.</p></li>
+          <li class="commit"><div class="commit-linha"><h3>Terminou?</h3><span class="hash">R3</span></div><p>Avance nos módulos da NetAcad ou nos desafios extras do repositório.</p></li>
+          <li class="commit"><div class="commit-linha"><h3>Autoavaliação</h3><span class="hash">R4</span></div><p>O que eu já domino e o que preciso reforçar no próximo bimestre.</p></li>
+          </ol>
         </section>
 
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
             <span class="olho">CU1 · caso de uso</span>
-            <h2>Aplicar desconto na mensalidade</h2>
+            <h2>Revisão: o Sistema de Aprovação completo</h2>
           </div>
           <div class="cartao caso">
-            <p><strong>Ator:</strong> Secretaria financeira</p>
-            <p><strong>Objetivo:</strong> Calcular a mensalidade com o desconto certo para cada aluno.</p>
+            <p><strong>Ator:</strong> Professora</p>
+            <p><strong>Objetivo:</strong> Fechar as notas da turma no fim do bimestre.</p>
             <h3>Fluxo principal</h3>
             <ol>
-              <li>A secretaria escolhe o aluno.</li>
-              <li>O sistema identifica o tipo de desconto (pontualidade, irmãos ou bolsa).</li>
-              <li>Calcula a mensalidade final.</li>
-              <li>Mostra o valor.</li>
+              <li>A professora informa nome, notas e frequência de cada aluno.</li>
+              <li>O sistema calcula a média com uma função.</li>
+              <li>Decide a situação com if e else.</li>
+              <li>Repete para a turma inteira.</li>
+              <li>Mostra o resumo.</li>
             </ol>
             <h3>E se...</h3>
             <ul>
-              <li>O aluno não tem desconto: a mensalidade fica cheia.</li>
+              <li>Um aluno não tem frequência lançada: o sistema avisa em vez de calcular.</li>
             </ul>
             <h3>Para pensar</h3>
             <ol>
-              <li>Cada desconto pode ser uma arrow function curta. Como ficariam?</li>
-              <li>Onde a variável do valor final deve existir: dentro ou fora da função? (escopo)</li>
+              <li>Em que passo entra cada conteúdo das Unidades 1 a 3?</li>
+              <li>Qual parte você sabe programar de olhos fechados, e qual precisa revisar?</li>
             </ol>
           </div>
         </section>
@@ -164,33 +151,25 @@
         <section class="parte" id="atividade">
           <div class="cab">
             <span class="olho">A1 · atividade</span>
-            <h2>Atividade avaliativa prática (4,0 pontos)</h2>
-            <p>Individual. Leia os critérios antes de começar. O que você marcar fica salvo neste navegador.</p>
+            <h2>Checklist de estudo</h2>
+            <p>Use nos dias antes da prova. O que você marcar fica salvo neste navegador.</p>
           </div>
 
           <div class="cartao">
             <div class="progresso-atividade" data-progresso="passos-aula-08">
-              <span class="contagem">0 de 6</span>
+              <span class="contagem">0 de 8</span>
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-08">
-              <li><label><input type="checkbox"><span>Ouvi as orientações e os critérios de avaliação.</span></label></li>
-              <li><label><input type="checkbox"><span>Abri o meu Cadastro de Alunos da aula 7.</span></label></li>
-              <li><label><input type="checkbox"><span>Desenvolvi as novas funcionalidades pedidas na atividade.</span></label></li>
-              <li><label><input type="checkbox"><span>Testei tudo no console.</span></label></li>
-              <li><label><input type="checkbox"><span>Fiz o commit e o push.</span></label></li>
-              <li><label><input type="checkbox"><span>Entreguei o link do repositório e o arquivo da atividade no Moodle.</span></label></li>
+              <li><label><input type="checkbox"><span>Variáveis com <code>let</code> e <code>const</code> e os tipos de dados.</span></label></li>
+              <li><label><input type="checkbox"><span>Conversão de tipos: <code>Number()</code>, <code>parseInt()</code> e <code>parseFloat()</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Operadores aritméticos, relacionais (<code>===</code>!) e lógicos.</span></label></li>
+              <li><label><input type="checkbox"><span><code>if</code>, <code>else if</code>, ternário e <code>switch</code>.</span></label></li>
+              <li><label><input type="checkbox"><span><code>for</code>, <code>while</code> e <code>do...while</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Funções: parâmetros e <code>return</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Fiz o quiz de revisão do 1º bimestre.</span></label></li>
+              <li><label><input type="checkbox"><span>Revisei os módulos da NetAcad.</span></label></li>
             </ol>
-          </div>
-          <p class="dica" style="margin-top:1rem"><strong>Sem IA nesta atividade:</strong> o objetivo é ver a sua autonomia. Copilot e companhia ficam desligados até a entrega.</p>
-        </section>
-
-        <!-- ===================== DESAFIO EXTRA ===================== -->
-        <section class="parte" id="desafio">
-          <div class="cab">
-            <span class="olho">D1 · desafio extra</span>
-            <h2>Terminou antes? Tem mais.</h2>
-            <p>Depois de entregar: converta todas as funções do seu Cadastro para arrow functions e veja onde ficou mais legível (e onde não ficou).</p>
           </div>
         </section>
 
@@ -201,23 +180,23 @@
             <h2>Para estudar e praticar</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="../curso/modulos/04-funcoes/index.html">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/módulo 4</span>
-              <h4>Funções</h4>
-              <p>Revise arrow functions e escopo antes da prova.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">revisar</span></span>
-            </a>
             <a class="repo luz" href="../curso/quiz/revisao-1bimestre.html">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/quiz</span>
               <h4>Quiz de revisão do 1º bimestre</h4>
-              <p>20 questões sobre os módulos 1, 2 e 3, com explicação.</p>
+              <p>20 questões sobre os módulos 1, 2 e 3, com explicação em cada resposta.</p>
               <span class="repo-pe"><span class="ling" style="--cor:#ecc874"><i></i>Quiz</span><span class="etiqueta">revisão</span></span>
             </a>
-            <a class="repo luz" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>MDN Web Docs</span>
-              <h4>Arrow functions</h4>
-              <p>A referência, em português.</p>
-              <span class="repo-pe"><span class="ling" style="--cor:#9fd0b7"><i></i>Documentação</span><span class="etiqueta">consulta</span></span>
+            <a class="repo luz" href="../curso/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>prog-web-js/curso</span>
+              <h4>Curso interativo</h4>
+              <p>Os módulos 1 a 4 cobrem tudo o que cai na prova.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">revisar</span></span>
+            </a>
+            <a class="repo luz" href="https://www.netacad.com/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>NetAcad</span>
+              <h4>JavaScript Essentials 1</h4>
+              <p>A trilha oficial que acompanha a disciplina. Os módulos e checkpoints contam para a atividade remota.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#1ba0d7"><i></i>Plataforma</span><span class="etiqueta">trilha</span></span>
             </a>
           </div>
         </section>
@@ -228,8 +207,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Atividade no Moodle</h3>
-              <p>Link do repositório e arquivo da atividade. Para a prova: revise os módulos da NetAcad e peça ao Copilot do Microsoft 365 questões de revisão sobre o conteúdo.</p>
+              <h3>A prova, no fim do encontro</h3>
+              <p>Depois, autoavaliação: anote o que precisa reforçar. Na próxima aula tem correção comentada.</p>
             </div>
           </div>
         </section>
@@ -242,7 +221,7 @@
           </a>
           <a class="proxima" href="aula-09.html">
             <span class="olho">próxima aula →</span>
-            <strong>Aula 9: Avaliação do 1º bimestre</strong>
+            <strong>Aula 9: Arrays e arrow functions</strong>
           </a>
         </nav>
 
