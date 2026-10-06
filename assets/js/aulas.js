@@ -1,12 +1,13 @@
 /*
   aulas.js: comportamento das páginas de aula e da lista de aulas.
-  versão 1 · 2026-10-05
+  versão 2 · 2026-10-05
 
   1. Checklist da atividade (<ol class="checklist" id="...">): o que o aluno marca
      fica salvo no navegador dele, e a barra de progresso mostra quantos passos faltam.
   2. Lista de aulas (<ol class="log lista-aulas">): cada <li> tem as datas das turmas
      em data-a e data-b (formato AAAA-MM-DD). O script destaca a próxima aula e
      deixa mais apagadas as que já passaram e as futuras. Ninguém precisa atualizar à mão.
+     Duas aulas com a mesma data (mesmo encontro) ficam as duas destacadas.
 */
 (function () {
 
@@ -70,7 +71,7 @@
   }
 
   const hoje = new Date();
-  let achouProxima = false;
+  let dataProxima = "";   // data da próxima aula (duas aulas no mesmo encontro ficam as duas destacadas)
 
   document.querySelectorAll(".lista-aulas > li[data-a]").forEach(function (aula) {
     // a aula só "passou" depois da data da última turma (B)
@@ -78,8 +79,8 @@
 
     if (ultimaData < hoje) {
       aula.classList.add("passada");
-    } else if (!achouProxima) {
-      achouProxima = true;
+    } else if (!dataProxima || aula.dataset.a === dataProxima) {
+      dataProxima = aula.dataset.a;
       aula.classList.add("andamento");
       const etiqueta = document.createElement("span");
       etiqueta.className = "etiqueta verde";
