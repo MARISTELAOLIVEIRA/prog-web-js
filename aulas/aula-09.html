@@ -18,7 +18,8 @@
   <link rel="stylesheet" href="../assets/css/estilo.css">
   <link rel="stylesheet" href="../assets/css/disciplina.css">
   <link rel="stylesheet" href="../assets/css/aula.css">
-  <link rel="stylesheet" href="../assets/css/neon.css">
+  <link rel="stylesheet" href="../assets/css/neon.css?v=3">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=1">
 </head>
 <body>
 
@@ -26,12 +27,13 @@
   <header class="barra">
     <div class="envolve">
       <div class="marcas">
-        <a class="marca-disc" href="../" title="Página inicial da disciplina">JS</a>
+        <a class="marca-disc marca-logo" href="../" title="Página inicial da disciplina"><img src="../assets/img/tec/javascript.svg" alt="JavaScript: página inicial da disciplina" width="32" height="32"></a>
       </div>
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#na-tela">Na tela</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -71,12 +73,13 @@
 
         <!-- EDITE AQUI: número, tipo de aula, unidade, título e datas -->
         <div class="aula-etiquetas">
+          <span class="etiqueta senac">Senac DF</span>
           <span class="etiqueta ouro">Aula 9</span>
           <span class="etiqueta">Situação-problema</span>
           <span class="etiqueta">Unidade 4</span>
         </div>
         <h1>Como guardar as notas de 40 alunos?</h1>
-        <p class="subtitulo">Arrays: uma lista inteira de dados dentro de uma variável só.</p>
+        <p class="subtitulo">Arrays: uma lista inteira numa variável só. E, no fim, a turma inteira na página, com objetos.</p>
       </div>
     </section>
 
@@ -86,7 +89,7 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Guardar, percorrer, buscar e transformar listas de dados com arrays e arrow functions.</p>
+            <p>Guardar, percorrer e transformar listas com arrays e mostrar a turma na página, com objetos.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
@@ -245,6 +248,78 @@
           </div>
         </section>
 
+        <!-- ===================== A TURMA NA TELA ===================== -->
+        <section class="parte" id="na-tela">
+          <div class="cab">
+            <span class="olho">T1 · na tela</span>
+            <h2>A turma na tela: arrays e objetos na página</h2>
+            <p>
+              Agora sem console: o que você aprendeu nos conceitos, mostrado na página. São cinco passos do mesmo projeto,
+              com os três arquivos completos, como no VS Code, e um conceito novo no caminho, o <strong>objeto</strong>.
+              Mexa no código: a página de resultado embaixo muda na hora. Errou? O <strong>↺ Reiniciar</strong> volta ao original.
+            </p>
+          </div>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 1</span>
+              <h3>Array: a lista numa variável só</h3>
+              <p>Um <strong>array</strong> é uma lista entre colchetes, com os itens separados por vírgula. Cada item tem uma posição, o <strong>índice</strong>, e a contagem começa no <code>0</code>.</p>
+              <p>O <code>length</code> diz quantos itens a lista tem. Para mostrar na página, o de sempre: <code>querySelector</code> acha o lugar e o <code>textContent</code> escreve.</p>
+              <p class="dica cuidado"><strong>Pegadinha clássica:</strong> com 5 alunos, o último está no índice 4. Teste: troque <code>alunos[0]</code> por <code>alunos[4]</code>.</p>
+            </div>
+            <div id="projeto-c1"></div>
+          </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 2</span>
+              <h3>Percorrer: um <code>&lt;li&gt;</code> para cada nome</h3>
+              <p>O <code>for...of</code> visita a lista item por item. A cada volta, a variável <code>aluno</code> vale um nome, e o <code>innerHTML +=</code> acrescenta um <code>&lt;li&gt;</code> na página.</p>
+              <p class="dica"><strong>Experimente:</strong> coloque mais um nome no array. A lista na página cresce sozinha, sem mexer no HTML.</p>
+            </div>
+            <div id="projeto-c2"></div>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 3</span>
+              <h3>O botão que coloca na lista: <code>push</code></h3>
+              <p>O <code>push()</code> coloca um item no <strong>fim</strong> da lista. Junto com o botão (o <code>addEventListener</code> do módulo 7), a turma cresce enquanto você usa a página.</p>
+              <p>A função <code>mostrarLista()</code> apaga a lista da página e desenha de novo, do zero. Assim a página sempre mostra o que está no array.</p>
+              <p class="dica"><strong>Experimente:</strong> digite um nome e clique em Adicionar. Depois clique em Adicionar com o campo vazio. O que aparece? Como você evitaria isso?</p>
+            </div>
+            <div id="projeto-c3"></div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 4</span>
+              <h3>Objeto: a ficha do aluno</h3>
+              <p>O array guarda <strong>muitos</strong> itens. O <strong>objeto</strong> guarda várias informações de <strong>uma coisa só</strong>: a ficha do aluno, com nome, turma e nota. Fica entre chaves <code>{ }</code>, e cada informação tem um nome (a <strong>propriedade</strong>).</p>
+              <p>Para pegar uma informação, use o ponto: <code>aluno.nome</code>, <code>aluno.nota</code>.</p>
+              <p class="dica"><strong>Experimente:</strong> acrescente <code>cidade: "Brasília"</code> no objeto e mostre a cidade na ficha.</p>
+            </div>
+            <div id="projeto-c4"></div>
+          </div>
+
+          <!-- passo 5 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 5</span>
+              <h3>A turma inteira: uma lista de objetos</h3>
+              <p>Juntando os dois: um array em que cada item é um objeto. É assim que quase todo sistema guarda dados: a lista de clientes, de produtos, de alunos.</p>
+              <p>O <code>filter()</code> escolhe só alguns itens (quem passou) e o <code>reduce()</code> junta todos num valor só (a soma das notas). O <code>(aluno) =&gt; ...</code> é a <strong>arrow function</strong>, o jeito curto de escrever uma função.</p>
+              <p class="dica"><strong>Repare:</strong> o JavaScript não pinta nada. Ele só escolhe a classe (<code>aprovado</code> ou <code>reprovado</code>), e as cores ficam no CSS. Cada arquivo com o seu trabalho.</p>
+            </div>
+            <div id="projeto-c5"></div>
+          </div>
+        </section>
+
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
@@ -258,8 +333,8 @@
             <ol>
               <li>A professora lança a nota de cada aluno, uma depois da outra.</li>
               <li>O sistema guarda todas as notas numa lista só.</li>
-              <li>Mostra quantas notas foram lançadas.</li>
-              <li>Mostra a média da turma, a maior e a menor nota.</li>
+              <li>Mostra na página a lista da turma, com quem passou em verde e quem não passou em vermelho.</li>
+              <li>Mostra a média da turma e quantos foram aprovados.</li>
             </ol>
             <h3>E se...</h3>
             <ul>
@@ -268,8 +343,8 @@
             </ul>
             <h3>Para pensar</h3>
             <ol>
-              <li>Que método de array resolve cada passo (push, length, reduce, Math.max)?</li>
-              <li>Por que 40 variáveis (nota1, nota2...) não resolveriam esse caso?</li>
+              <li>Que parte do JavaScript resolve cada passo (<code>push</code>, <code>length</code>, <code>filter</code>, <code>reduce</code>)?</li>
+              <li>Por que guardar nome e nota juntos num objeto é melhor do que dois arrays separados?</li>
             </ol>
           </div>
         </section>
@@ -280,7 +355,8 @@
             <span class="olho">A1 · atividade</span>
             <h2>Mão na massa: a lista da turma</h2>
             <p>
-              Use a lista de alunos do seu Cadastro de Alunos (aula 7) ou crie uma nova. Vá marcando os passos:
+              Agora é no seu VS Code: o mesmo projeto dos conceitos, passo a passo. Abra o <code>index.html</code> no
+              navegador (dois cliques no arquivo ou o Live Server) e recarregue a cada mudança. Vá marcando os passos:
               o que você marcar fica salvo neste navegador.
             </p>
           </div>
@@ -291,21 +367,21 @@
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-09">
-              <li><label><input type="checkbox"><span>Crie o arquivo <code>aula09.js</code> no seu repositório <code>programacao-web-js</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie um array <code>alunos</code> com 5 nomes e um array <code>notas</code> com as 5 notas, na mesma ordem.</span></label></li>
-              <li><label><input type="checkbox"><span>Mostre no console quantos alunos a turma tem, usando <code>length</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Percorra a lista com <code>for...of</code> e mostre cada nome.</span></label></li>
-              <li><label><input type="checkbox"><span>Coloque um aluno novo com <code>push()</code> e tire o último com <code>pop()</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Use <code>filter()</code> para separar as notas maiores ou iguais a 6.</span></label></li>
-              <li><label><input type="checkbox"><span>Use <code>reduce()</code> para calcular a média da turma.</span></label></li>
-              <li><label><input type="checkbox"><span>Ordene as notas da maior para a menor com <code>sort()</code>. Lembre da regra para números.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie a pasta <code>aula09</code> no seu repositório <code>programacao-web-js</code>, com <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code>. Para começar, copie os arquivos do passo 1 de "A turma na tela".</span></label></li>
+              <li><label><input type="checkbox"><span>Troque os nomes pelos da sua turma (5 alunos) e mostre na página quantos são, com <code>length</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Desenhe a lista na página com <code>for...of</code>: um <code>&lt;li&gt;</code> para cada nome.</span></label></li>
+              <li><label><input type="checkbox"><span>Coloque o campo e o botão Adicionar: o nome novo entra na lista com <code>push()</code> e aparece na hora.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie um objeto com o nome e a nota de um aluno e mostre a ficha dele na página.</span></label></li>
+              <li><label><input type="checkbox"><span>Transforme a turma numa lista de objetos e mostre a tabela com nome, nota e situação.</span></label></li>
+              <li><label><input type="checkbox"><span>Pinte de verde quem passou e de vermelho quem não passou, com as classes no CSS.</span></label></li>
+              <li><label><input type="checkbox"><span>Mostre a média da turma (<code>reduce</code>) e quantos foram aprovados (<code>filter</code>).</span></label></li>
               <li><label><input type="checkbox"><span>Faça o commit e o push no GitHub.</span></label></li>
             </ol>
           </div>
 
           <p class="dica" style="margin-top:1rem">
             <strong>Em grupo:</strong> no Whiteboard da turma, cada grupo desenha um cartão mostrando o que
-            <code>map</code>, <code>filter</code> e <code>reduce</code> fazem com uma lista de exemplo.
+            <code>filter</code> e <code>reduce</code> fazem com a lista da turma.
           </p>
         </section>
 
@@ -380,8 +456,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Commit do <code>aula09.js</code> no seu repositório</h3>
-              <p>Até o fim da aula. Na próxima, a gente usa esses arrays para montar objetos e JSON no Cadastro de Alunos.</p>
+              <h3>Commit da pasta <code>aula09</code> no seu repositório</h3>
+              <p>Até o fim da aula. Na próxima, a gente guarda a turma no navegador com JSON, para ela não sumir quando a página recarrega.</p>
             </div>
           </div>
         </section>
@@ -419,6 +495,8 @@
   </svg>
 
   <script src="../assets/js/aulas.js"></script>
-  <script src="../assets/js/matrix.js"></script>
+  <script src="../curso/js/playground.js?v=4"></script>
+  <script src="../assets/js/aula-09-projetos.js?v=1"></script>
+  <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
