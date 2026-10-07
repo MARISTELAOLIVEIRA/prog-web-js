@@ -1,7 +1,7 @@
 /*
   neon.css: o toque hacker do site de Python (chuva de 0 e 1 e brilho neon, como no PyQuiz).
-  versão 2 · 2026-10-07 · NESTE SITE (JavaScript) o neon é amarelo, como o logo do JS, e o link da
-  disciplina na barra é o próprio logo. Não copie esta versão para os outros sites.
+  versão 3 · 2026-10-07 · NESTE SITE (JavaScript) o neon é amarelo, como o logo do JS, e o link da
+  disciplina na barra é o próprio logo. (A assinatura da Faculdade foi para o disciplina.css e o aula.css.) Não copie esta versão para os outros sites.
 
   Carregue depois do estilo.css e do disciplina.css.
 */
@@ -99,58 +99,3 @@
   transition: none;
 }
 
-
-/* ---------- assinatura da Faculdade (Senac DF): azul-marinho e laranja do logo ---------- */
-:root {
-  --senac-azul: #3b6fd4;   /* no escuro, um azul mais aberto para aparecer */
-  --senac-laranja: #f39a1e;
-}
-
-[data-tema="claro"] {
-  --senac-azul: #082c75;
-}
-
-/* linha fina laranja e azul embaixo da barra do topo */
-.barra::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 -1px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--senac-laranja), var(--senac-azul));
-  pointer-events: none;
-}
-
-/* o logo da Faculdade num cartão branco, como no portal */
-.logo-faculdade {
-  display: block;
-  justify-self: center;
-  width: fit-content;
-  margin: 1.4rem auto 0;
-  padding: .55rem .9rem;
-  border-radius: var(--raio-p);
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .07), 0 18px 40px -20px rgba(0, 0, 0, .6);
-  transition: transform .2s;
-}
-
-.logo-faculdade:hover {
-  transform: translateY(-2px);
-}
-
-.pausado .logo-faculdade {
-  transition: none;
-}
-
-.logo-faculdade img {
-  display: block;
-  width: clamp(11rem, 26vw, 15rem);
-  height: auto;
-}
-
-/* etiqueta "Senac DF" no cabeçalho das aulas */
-.etiqueta.senac {
-  color: var(--senac-laranja);
-  background: #082c75;
-  border-color: #082c75;
-  font-weight: 700;
-}
