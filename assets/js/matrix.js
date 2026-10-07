@@ -1,6 +1,6 @@
 /*
-  matrix.js: chuva de 0 e 1 em verde neon atrás da abertura (o mesmo efeito do PyQuiz).
-  versão 1 · 2026-10-05
+  matrix.js: chuva de 0 e 1 na cor neon do site atrás da abertura (o mesmo efeito do PyQuiz).
+  versão 2 · 2026-10-07 (a cor vem do --neon do CSS)
 
   Uso: <canvas class="chuva-matrix" aria-hidden="true"></canvas> dentro da seção da abertura.
   Para quando a pessoa aperta "Pausar animações" (ou pede menos movimento no sistema).
@@ -25,8 +25,8 @@
   }
 
   function atualizaCor() {
-    // verde neon no escuro; verde mais fechado no claro, para não ofuscar
-    cor = raiz.dataset.tema === "claro" ? "#0a8f4d" : "#39ff14";
+    // a cor vem do --neon do neon.css (no site de JavaScript, amarelo); verde se não tiver
+    cor = getComputedStyle(raiz).getPropertyValue("--neon").trim() || "#39ff14";
   }
 
   function ajustaTamanho() {

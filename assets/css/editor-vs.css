@@ -1,0 +1,389 @@
+/*
+  editor-vs.css: o editor com cara de VS Code (criarProjetoVS do curso/js/playground.js) nas páginas de aula.
+  Cópia das regras do editor que estão no curso/css/style.css (07/10/2026). Mudou lá? Gere esta cópia de novo.
+  versão 1 · 2026-10-07
+*/
+
+:root {
+  --cor-primaria: var(--neon);
+  --cor-secundaria: var(--ouro-forte);
+  --cor-sucesso: var(--neon);
+  --cor-erro: #ff5c7f;
+  --cor-aviso: var(--ouro-forte);
+
+  --fundo-card: var(--superficie);
+  --fundo-card-hover: var(--superficie-2);
+  --fundo-code: var(--chip);
+  --borda-neon: color-mix(in srgb, var(--neon) 40%, transparent);
+
+  --texto-suave: var(--texto-2);
+  --texto-invertido: var(--fundo);
+  --cor-codigo: var(--menta);
+
+  --brilho-neon: 0 0 8px var(--neon-brilho), 0 0 22px var(--neon-brilho);
+  --fonte: var(--f-texto);
+  --fonte-titulo: var(--f-titulo);
+  --fonte-code: var(--f-mono);
+}
+
+.playground {
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1rem;
+  margin: 1.2rem 0;
+}
+
+.playground__barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.playground__titulo {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.playground__botoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+textarea.playground__editor {
+  width: 100%;
+  min-height: 160px;
+  background: var(--fundo-code);
+  color: var(--cor-codigo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-family: var(--fonte-code);
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  resize: vertical;
+  tab-size: 2;
+}
+
+textarea.playground__editor:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--neon) 35%, transparent);
+}
+
+.playground__saida {
+  margin-top: 0.7rem;
+  background: var(--fundo-code);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--fonte-code);
+  font-size: 0.85rem;
+  min-height: 2.4rem;
+  max-height: 260px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.playground__saida .linha-erro {
+  color: var(--cor-erro);
+}
+
+.playground__saida .linha-log {
+  color: var(--cor-codigo);
+}
+
+.playground__saida .linha-vazia {
+  color: var(--texto-suave);
+  font-style: italic;
+}
+
+.vscode {
+  --vs-fundo: #1e1e1e;
+  --vs-letra: 14px;
+  --vs-linha: 1.55;
+  background: var(--vs-fundo);
+  border: 1px solid #2b2b2b;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: var(--fonte-code);
+}
+
+.vscode__barra {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #323233;
+  color: #cccccc;
+  font-size: 0.78rem;
+  padding: 0.45rem 0.8rem;
+}
+
+.vscode__titulo {
+  flex: 1;
+  text-align: center;
+  margin-right: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vscode__abas {
+  display: flex;
+  background: #252526;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.vscode__abas::-webkit-scrollbar {
+  display: none;
+}
+
+.vscode__aba {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #2d2d2d;
+  color: #969696;
+  border: 0;
+  border-top: 2px solid transparent;
+  border-right: 1px solid var(--vs-fundo);
+  padding: 0.5rem 0.95rem;
+  font-family: var(--fonte-code);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.vscode__aba::before {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.vscode__aba--html::before {
+  content: "<>";
+  color: #e44d26;
+}
+
+.vscode__aba--css::before {
+  content: "#";
+  color: #42a5f5;
+}
+
+.vscode__aba--js::before {
+  content: "JS";
+  color: #f1e05a;
+}
+
+.vscode__aba[aria-selected="true"] {
+  background: var(--vs-fundo);
+  color: #ffffff;
+  border-top-color: #0078d4;
+}
+
+.vscode__aba:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: -2px;
+}
+
+.vscode__migalhas {
+  background: var(--vs-fundo);
+  color: #a9a9a9;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.9rem 0.35rem;
+  border-bottom: 1px solid #2b2b2b;
+}
+
+.vscode__arquivo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: var(--altura-editor, 320px);
+  resize: vertical;
+  overflow: hidden;
+}
+
+.vscode__arquivo[hidden] {
+  display: none;
+}
+
+.vscode__linhas,
+.vscode__realce,
+.vscode__texto {
+  margin: 0;
+  font-family: var(--fonte-code);
+  font-size: var(--vs-letra);
+  line-height: var(--vs-linha);
+  letter-spacing: 0;
+  tab-size: 2;
+  white-space: pre;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.vscode__linhas {
+  padding: 0.6rem 0.5rem 2.5rem 0.9rem; /* sobra embaixo: acompanha a barra de rolagem do texto */
+  background: var(--vs-fundo);
+  color: #6e7681;
+  text-align: right;
+  overflow: hidden;
+  user-select: none;
+}
+
+.vscode__area {
+  position: relative;
+  overflow: hidden;
+}
+
+.vscode__realce,
+.vscode__texto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.6rem 0.9rem;
+}
+
+.vscode__realce {
+  padding-bottom: 2.5rem;
+  background: transparent;
+  color: #d4d4d4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vscode__realce code {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.vscode__texto {
+  background: transparent;
+  color: transparent;
+  caret-color: #aeafad;
+  overflow: auto;
+  resize: none;
+  outline: none;
+}
+
+.vscode__texto::selection {
+  background: rgba(38, 79, 120, 0.85);
+}
+
+.vscode__texto:focus-visible {
+  box-shadow: inset 0 0 0 1px #0078d4;
+}
+
+@media (max-width: 520px) {
+  .vscode__aba {
+    padding: 0.45rem 0.35rem;
+    font-size: 0.68rem;
+    gap: 0.25rem;
+  }
+  .playground.playground--projeto,
+  .exercicio.playground--projeto {
+    padding: 0.6rem;
+  }
+  .vscode {
+    --vs-letra: 13px;
+  }
+}
+
+.vs-tag { color: #569cd6; }
+
+.vs-atributo { color: #9cdcfe; }
+
+.vs-texto { color: #ce9178; }
+
+.vs-comentario { color: #6a9955; }
+
+.vs-pontuacao { color: #808080; }
+
+.vs-seletor { color: #d7ba7d; }
+
+.vs-propriedade { color: #9cdcfe; }
+
+.vs-numero { color: #b5cea8; }
+
+.vs-controle { color: #c586c0; }
+
+.vs-palavra { color: #569cd6; }
+
+.vs-funcao { color: #dcdcaa; }
+
+.playground__rotulo-pagina {
+  margin: 0.8rem 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.playground__pagina {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--texto);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.5rem 1.05rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.02em;
+}
+
+.botao:active {
+  transform: scale(0.97);
+}
+
+.botao--primario {
+  background: var(--cor-primaria);
+  color: var(--texto-invertido);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon) 45%, transparent);
+}
+
+.botao--secundario {
+  background: transparent;
+  color: var(--cor-primaria);
+  border: 1px solid var(--borda-neon);
+}
+
+.botao--sucesso {
+  background: var(--cor-sucesso);
+  color: var(--texto-invertido);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon) 45%, transparent);
+}
+
+.botao:hover {
+  color: inherit;
+  filter: brightness(1.15);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--neon) 60%, transparent);
+}
+
+.botao[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
