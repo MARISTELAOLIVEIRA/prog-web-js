@@ -677,7 +677,7 @@ function _casca(opcoes, rodape) {
     </div>
     <div class="vscode" style="--altura-editor:${opcoes.alturaEditor || 320}px"></div>
     <p class="playground__rotulo-pagina">Resultado: o index.html aberto no navegador</p>
-    <iframe class="playground__pagina" title="Resultado: ${opcoes.titulo || "página do projeto"}" sandbox="allow-scripts allow-forms" style="height:${opcoes.altura || 220}px"></iframe>
+    <iframe class="playground__pagina" title="Resultado: ${opcoes.titulo || "página do projeto"}" sandbox="allow-scripts allow-forms${opcoes.mesmaOrigem ? " allow-same-origin" : ""}" style="height:${opcoes.altura || 220}px"></iframe>
     <div class="playground__saida" hidden></div>
     ${rodape || ""}
   `;
@@ -693,6 +693,7 @@ function _casca(opcoes, rodape) {
  * @param {{"index.html": string, "estilo.css": string, "script.js": string}} opcoes.arquivos - conteúdo inicial
  * @param {string} [opcoes.abaInicial="html"] - "html", "css" ou "js"
  * @param {number} [opcoes.altura=220] - altura da página de resultado, em pixels
+ * @param {boolean} [opcoes.mesmaOrigem=false] - deixa a página usar o localStorage (ex.: guardar dados no navegador)
  */
 function criarProjetoVS(opcoes) {
   const container = document.getElementById(opcoes.idContainer);
