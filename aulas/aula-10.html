@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=1">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#na-tela">Na tela</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -88,7 +90,7 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Modelar dados com objetos, organizar listas de objetos e converter para JSON.</p>
+            <p>Modelar dados com objetos, organizar listas de objetos, converter para JSON e guardar a turma no navegador.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
@@ -162,6 +164,64 @@
           </div>
         </section>
 
+        <!-- ===================== A TURMA NA TELA, PARTE II ===================== -->
+        <section class="parte" id="na-tela">
+          <div class="cab">
+            <span class="olho">T1 · na tela</span>
+            <h2>A turma na tela, parte II: do objeto ao navegador</h2>
+            <p>
+              Agora sem console: o mesmo projeto "Minha turma" da aula 9, em quatro passos, com os três arquivos completos,
+              como no VS Code. No fim, a turma fica <strong>guardada no navegador</strong> e volta quando a página abre.
+              Mexa no código: a página de resultado embaixo muda na hora. Errou? O <strong>↺ Reiniciar</strong> volta ao original.
+            </p>
+          </div>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 1</span>
+              <h3>A ficha completa: objeto com lista e método</h3>
+              <p>O aluno agora tem uma <strong>lista de notas</strong> dentro do objeto, e um <strong>método</strong>: uma função que mora dentro dele. O <code>media()</code> soma as notas e divide pela quantidade.</p>
+              <p>Dentro do método, <code>this</code> quer dizer "o próprio objeto": <code>this.notas</code> são as notas da Ana. Para chamar o método, use parênteses: <code>aluno.media()</code>.</p>
+              <p class="dica"><strong>Experimente:</strong> acrescente a nota <code>10</code> na lista e veja a média subir sozinha.</p>
+            </div>
+            <div id="projeto-p1"></div>
+          </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 2</span>
+              <h3>Cadastrar pelo formulário: o <code>push</code> de um objeto</h3>
+              <p>O botão monta um <strong>objeto novo</strong> com o que foi digitado (<code>{ nome, nota }</code>) e coloca no fim da lista com <code>push()</code>. Depois, a <code>mostrarTurma()</code> desenha a tabela de novo.</p>
+              <p class="dica cuidado"><strong>Pegadinha:</strong> todo campo de formulário devolve <strong>texto</strong>. Sem o <code>Number()</code>, a nota "8" seria texto, e a comparação com 6 dá errado.</p>
+            </div>
+            <div id="projeto-p2"></div>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 3</span>
+              <h3>Ver o JSON: o idioma da troca de dados</h3>
+              <p>O <code>JSON.stringify()</code> transforma a lista de objetos em <strong>texto</strong>, no formato JSON. Clique em <strong>Ver o JSON</strong> e repare: chaves entre aspas, vírgulas, colchetes. É esse texto que viaja pela internet entre sistemas.</p>
+              <p class="dica"><strong>Experimente:</strong> cadastre um aluno e clique em Ver o JSON de novo. O texto acompanha a lista.</p>
+            </div>
+            <div id="projeto-p3"></div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Passo 4</span>
+              <h3>Guardar no navegador: <code>localStorage</code> + JSON</h3>
+              <p>O navegador tem uma gaveta chamada <code>localStorage</code>, que só guarda <strong>texto</strong>. Por isso, para guardar a lista, transformamos em JSON com <code>JSON.stringify()</code>. Para ler de volta, <code>JSON.parse()</code> faz o caminho inverso.</p>
+              <p class="dica"><strong>Teste o "abrir de novo amanhã":</strong> cadastre dois alunos e clique em <strong>▶ Atualizar a página</strong>. A página recomeça do zero, mas a turma continua lá. Esse é o caso de uso da aula.</p>
+            </div>
+            <div id="projeto-p4"></div>
+          </div>
+        </section>
+
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
@@ -205,11 +265,11 @@
             </div>
             <ol class="checklist" id="passos-aula-10">
               <li><label><input type="checkbox"><span>Modele o objeto "aluno" na tabela do Loop com o seu grupo.</span></label></li>
-              <li><label><input type="checkbox"><span>Transforme o seu Cadastro num array de objetos.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie uma função para cadastrar um aluno novo (<code>push</code> de um objeto).</span></label></li>
-              <li><label><input type="checkbox"><span>Crie uma função que lista todos os alunos com nome, média e situação.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie uma função que filtra só os aprovados.</span></label></li>
-              <li><label><input type="checkbox"><span>Converta a turma para JSON com <code>JSON.stringify()</code> e mostre no console.</span></label></li>
+              <li><label><input type="checkbox"><span>Na pasta <code>aula10</code> (copie a <code>aula09</code>), dê a cada aluno uma lista de notas e um método <code>media()</code>, e mostre a média na ficha.</span></label></li>
+              <li><label><input type="checkbox"><span>Monte o formulário com nome e nota: o botão cadastra um objeto novo com <code>push()</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Faça a tabela da turma se redesenhar a cada cadastro, com a função <code>mostrarTurma()</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Mostre na página o JSON da turma com <code>JSON.stringify()</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Guarde a turma no navegador (<code>localStorage</code>) e carregue de volta ao abrir a página, com <code>JSON.parse()</code>.</span></label></li>
               <li><label><input type="checkbox"><span>Peça ao Copilot dados fictícios de teste em JSON e confira se o formato está certo.</span></label></li>
               <li><label><input type="checkbox"><span>Entregue a parte II no Moodle e faça o commit.</span></label></li>
             </ol>
@@ -246,7 +306,7 @@
           <div class="cab">
             <span class="olho">D1 · desafio extra</span>
             <h2>Terminou antes? Tem mais.</h2>
-            <p>Busque um CEP real com <code>fetch("https://viacep.com.br/ws/SEUCEP/json/")</code>, converta a resposta com <code>.json()</code> e mostre a cidade no console. É seu primeiro consumo de API.</p>
+            <p>Busque um CEP real com <code>fetch("https://viacep.com.br/ws/SEUCEP/json/")</code>, converta a resposta com <code>.json()</code> e mostre a cidade num parágrafo da página, com <code>textContent</code>. É seu primeiro consumo de API.</p>
           </div>
         </section>
 
@@ -285,7 +345,7 @@
             <div>
               <span class="olho">E1 · entrega</span>
               <h3>Parte II do Cadastro no Moodle</h3>
-              <p>E commit no GitHub. Na próxima aula, o Cadastro sai do console e ganha cara de página.</p>
+              <p>E commit no GitHub. Na próxima aula, a gente conhece o DOM de perto: criar, mudar e apagar elementos da página.</p>
             </div>
           </div>
         </section>
@@ -322,6 +382,8 @@
   </svg>
 
   <script src="../assets/js/aulas.js"></script>
+  <script src="../curso/js/playground.js?v=5"></script>
+  <script src="../assets/js/aula-10-projetos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
