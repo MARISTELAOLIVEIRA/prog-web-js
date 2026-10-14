@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- EDITE AQUI: número e tema da aula -->
+  <title>Aula 12: Eventos · Web em JavaScript · Stela</title>
+  <meta name="description" content="Aula 12 de Programação Web em JavaScript: eventos, formulários e o lançamento do projeto integrador.">
+
+  <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <script src="../assets/js/placa.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+</head>
+<body>
+
+  <!-- ===================== BARRA DO TOPO (igual em todos os sites) ===================== -->
+  <header class="barra">
+    <div class="envolve">
+      <div class="marcas">
+        <a class="marca-disc marca-logo" href="../" title="Página inicial da disciplina"><img src="../assets/img/tec/javascript.svg" alt="JavaScript: página inicial da disciplina" width="32" height="32"></a>
+      </div>
+      <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Partes da aula">
+        <a href="../#aulas">← Todas as aulas</a>
+        <a href="#conceitos">Conceitos</a>
+        <a href="#caso">Caso</a>
+        <a href="#atividade">Atividade</a>
+        <a href="#materiais">Materiais</a>
+        <a href="#entrega">Entrega</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+        </button>
+        <button type="button" id="btn-fonte" aria-label="Aumentar o tamanho do texto">A+</button>
+        <button type="button" id="btn-movimento" aria-pressed="false">
+          <svg class="pausar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="tocar" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+          <span class="rotulo">Pausar animações</span>
+        </button>
+        <a class="marca" href="/" title="Portal da Stela">
+          <img src="../assets/img/estrela.webp" alt="" width="26" height="24">
+          <span class="marca-texto">Stela</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===================== CABEÇALHO DA AULA ===================== -->
+    <section class="aula-cab">
+      <canvas class="chuva-matrix" aria-hidden="true"></canvas>
+      <div class="envolve">
+        <p class="trilha-migalhas">
+          <a href="/">Stela</a> <span aria-hidden="true">/</span>
+          <a href="../">JavaScript</a> <span aria-hidden="true">/</span>
+          <a href="../#aulas">Aulas</a> <span aria-hidden="true">/</span>
+          <span>Aula 12</span>
+        </p>
+
+        <!-- EDITE AQUI: número, tipo de aula, unidade, título e datas -->
+        <div class="aula-etiquetas">
+          <span class="etiqueta senac">Fac Senac DF</span>
+          <span class="etiqueta ouro">Aula 12</span>
+          <span class="etiqueta">Projeto</span>
+          <span class="etiqueta">Unidade 4</span>
+        </div>
+        <h1>A página responde quando você clica</h1>
+        <p class="subtitulo">Eventos de mouse, teclado e formulário. E o lançamento do projeto integrador.</p>
+
+      </div>
+    </section>
+
+    <!-- ===================== RESUMO ===================== -->
+    <section class="bloco faixa alt" aria-label="Resumo da aula">
+      <div class="envolve">
+        <div class="resumo">
+          <div class="cartao">
+            <span class="olho">Objetivo do dia</span>
+            <p>Fazer a página reagir ao usuário e começar o projeto integrador em grupo.</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Antes da aula</span>
+            <p>Revisar a manipulação do DOM.</p>
+          </div>
+          <div class="cartao">
+            <span class="olho">Como conta ponto</span>
+            <p>Entrega do Cadastro interativo (Moodle).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bloco">
+      <div class="envolve aula-corpo">
+
+        <!-- ===================== CONCEITOS ===================== -->
+        <section class="parte" id="conceitos">
+          <div class="cab">
+            <span class="olho">C1–C3 · conceitos</span>
+            <h2>Eventos em três camadas</h2>
+          </div>
+
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C1</span>
+              <h3>addEventListener: fique de olho</h3>
+              <p>Um <strong>evento</strong> é algo que acontece: um clique, uma tecla, um envio. O <code>addEventListener()</code> diz qual função executar quando ele acontecer.</p>
+              <p>A função recebe o objeto <code>event</code>, com detalhes do que aconteceu.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">botao</span> = <span class="fn">document.querySelector</span>(<span class="str">&quot;#salvar&quot;</span>);</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="var">botao</span>.<span class="fn">addEventListener</span>(<span class="str">&quot;click&quot;</span>, (<span class="var">event</span>) =&gt; {</span><span class="linha"><span class="num">4</span>  <span class="fn">console.log</span>(<span class="str">&quot;Clicou!&quot;</span>, <span class="var">event</span>.<span class="var">type</span>);   <span class="com">// Clicou! click</span></span><span class="linha"><span class="num">5</span>});</span></code></pre>
+          </div>
+
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C2</span>
+              <h3>Mouse, teclado e formulário</h3>
+              <p>Mouse: <code>click</code>, <code>dblclick</code>, <code>mouseover</code>. Teclado: <code>keydown</code>, <code>keyup</code>. Formulário: <code>submit</code>, <code>input</code>, <code>change</code>.</p>
+              <p>O <code>input</code> dispara a cada letra digitada: perfeito para filtrar em tempo real.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">busca</span> = <span class="fn">document.querySelector</span>(<span class="str">&quot;#busca&quot;</span>);</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="var">busca</span>.<span class="fn">addEventListener</span>(<span class="str">&quot;input&quot;</span>, () =&gt; {</span><span class="linha"><span class="num">4</span>  <span class="tag">const</span> <span class="var">termo</span> = <span class="var">busca</span>.<span class="var">value</span>.<span class="fn">toLowerCase</span>();</span><span class="linha"><span class="num">5</span>  <span class="tag">const</span> <span class="var">achados</span> = <span class="var">turma</span>.<span class="fn">filter</span>((<span class="var">a</span>) =&gt;</span><span class="linha"><span class="num">6</span>    <span class="var">a</span>.<span class="var">nome</span>.<span class="fn">toLowerCase</span>().<span class="fn">includes</span>(<span class="var">termo</span>)</span><span class="linha"><span class="num">7</span>  );</span><span class="linha"><span class="num">8</span>  <span class="fn">mostrarTabela</span>(<span class="var">achados</span>);</span><span class="linha"><span class="num">9</span>});</span></code></pre>
+          </div>
+
+          <div class="conceito">
+            <div class="texto">
+              <span class="olho">C3</span>
+              <h3>Formulário sem recarregar</h3>
+              <p>Ao enviar, o formulário recarrega a página por padrão. O <code>preventDefault()</code> impede isso, e você trata os dados no JavaScript.</p>
+              <p>Valide antes de cadastrar: campo vazio e nota fora de 0 a 10 não passam.</p>
+            </div>
+            <pre class="codigo"><code><span class="linha"><span class="num">1</span><span class="tag">const</span> <span class="var">form</span> = <span class="fn">document.querySelector</span>(<span class="str">&quot;#form-aluno&quot;</span>);</span><span class="linha"><span class="num">2</span></span><span class="linha"><span class="num">3</span><span class="var">form</span>.<span class="fn">addEventListener</span>(<span class="str">&quot;submit&quot;</span>, (<span class="var">event</span>) =&gt; {</span><span class="linha"><span class="num">4</span>  <span class="var">event</span>.<span class="fn">preventDefault</span>();</span><span class="linha"><span class="num">5</span>  <span class="tag">const</span> <span class="var">nome</span> = <span class="var">form</span>.<span class="var">nome</span>.<span class="var">value</span>.<span class="fn">trim</span>();</span><span class="linha"><span class="num">6</span>  <span class="tag">const</span> <span class="var">nota</span> = <span class="fn">Number</span>(<span class="var">form</span>.<span class="var">nota</span>.<span class="var">value</span>);</span><span class="linha"><span class="num">7</span>  <span class="tag">if</span> (<span class="var">nome</span> === <span class="str">&quot;&quot;</span> || <span class="var">nota</span> &lt; <span class="str">0</span> || <span class="var">nota</span> &gt; <span class="str">10</span>) {</span><span class="linha"><span class="num">8</span>    <span class="fn">alert</span>(<span class="str">&quot;Confira o nome e a nota&quot;</span>);</span><span class="linha"><span class="num">9</span>    <span class="tag">return</span>;</span><span class="linha"><span class="num">10</span>  }</span><span class="linha"><span class="num">11</span>  <span class="var">turma</span>.<span class="fn">push</span>({ <span class="var">nome</span>, <span class="var">media</span>: <span class="var">nota</span> });</span><span class="linha"><span class="num">12</span>  <span class="fn">mostrarTabela</span>(<span class="var">turma</span>);</span><span class="linha"><span class="num">13</span>});</span></code></pre>
+          </div>
+        </section>
+
+        <!-- ===================== CASO DE USO ===================== -->
+        <section class="parte" id="caso">
+          <div class="cab">
+            <span class="olho">CU1 · caso de uso</span>
+            <h2>Cadastrar pelo formulário</h2>
+          </div>
+          <div class="cartao caso">
+            <p><strong>Ator:</strong> Secretaria da escola</p>
+            <p><strong>Objetivo:</strong> Cadastrar um aluno clicando num botão, como em qualquer sistema de verdade.</p>
+            <h3>Fluxo principal</h3>
+            <ol>
+              <li>A secretaria preenche o formulário.</li>
+              <li>Clica em "Cadastrar".</li>
+              <li>O sistema confere os campos.</li>
+              <li>O aluno aparece na tabela na hora, sem recarregar a página.</li>
+            </ol>
+            <h3>E se...</h3>
+            <ul>
+              <li>Um campo obrigatório está vazio: o sistema destaca o campo e não cadastra.</li>
+              <li>A secretaria aperta Enter em vez de clicar: o cadastro funciona igual.</li>
+            </ul>
+            <h3>Para pensar</h3>
+            <ol>
+              <li>Que evento cada passo escuta (click, submit, input)?</li>
+              <li>Por que o preventDefault() aparece aqui?</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- ===================== ATIVIDADE ===================== -->
+        <section class="parte" id="atividade">
+          <div class="cab">
+            <span class="olho">A1 · atividade</span>
+            <h2>Cadastro interativo e projeto integrador</h2>
+            <p>Duas missões no mesmo dia. O que você marcar fica salvo neste navegador.</p>
+          </div>
+
+          <div class="cartao">
+            <div class="progresso-atividade" data-progresso="passos-aula-12">
+              <span class="contagem">0 de 8</span>
+              <span class="barra-progresso"><span></span></span>
+            </div>
+            <ol class="checklist" id="passos-aula-12">
+              <li><label><input type="checkbox"><span>Crie um formulário de cadastro com nome e nota.</span></label></li>
+              <li><label><input type="checkbox"><span>Trate o <code>submit</code> com <code>preventDefault()</code> e valide os campos.</span></label></li>
+              <li><label><input type="checkbox"><span>Cadastre o aluno no array e atualize a tabela.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie um campo de busca que filtra a tabela enquanto o usuário digita.</span></label></li>
+              <li><label><input type="checkbox"><span>Entregue o Cadastro interativo no Moodle e faça o commit.</span></label></li>
+              <li><label><input type="checkbox"><span>Forme o grupo do projeto integrador.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie o workspace do grupo no Loop.</span></label></li>
+              <li><label><input type="checkbox"><span>Façam o brainstorm de ideias com o Copilot do Microsoft 365 e escolham com senso crítico.</span></label></li>
+            </ol>
+          </div>
+          <p class="dica" style="margin-top:1rem"><strong>Projeto integrador:</strong> em grupo, uma aplicação web que resolva um problema real da comunidade acadêmica ou do seu bairro, publicada no GitHub Pages.</p>
+        </section>
+
+        <!-- ===================== CONEXÃO STEAM ===================== -->
+        <section class="parte" id="steam">
+          <div class="cab">
+            <span class="olho">S1 · conexão STEAM</span>
+            <h2>Quando acontecer, faça</h2>
+          </div>
+          <div class="steam">
+            <div class="cartao">
+              <span class="letra">E</span>
+              <h3>Eletrônica</h3>
+              <p>Apertar um botão físico no ESP32 também é um evento. A lógica de "quando acontecer, faça" é a mesma.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">A</span>
+              <h3>Arte</h3>
+              <p>Interação é design: um botão que muda de cor ao passar o mouse dá vida à página.</p>
+            </div>
+            <div class="cartao">
+              <span class="letra">T</span>
+              <h3>Tecnologia</h3>
+              <p>Jogos no navegador são feitos de eventos de teclado: cada <code>keydown</code> move o personagem.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== DESAFIO EXTRA ===================== -->
+        <section class="parte" id="desafio">
+          <div class="cab">
+            <span class="olho">D1 · desafio extra</span>
+            <h2>Terminou antes? Tem mais.</h2>
+            <p>Faça a tecla Esc limpar o campo de busca e mostrar a turma inteira de novo (dica: <code>keydown</code> e <code>event.key</code>).</p>
+          </div>
+        </section>
+
+        <!-- ===================== MATERIAIS ===================== -->
+        <section class="parte" id="materiais">
+          <div class="cab">
+            <span class="olho">J1 · materiais</span>
+            <h2>Para estudar e praticar</h2>
+          </div>
+          <div class="repos">
+            <a class="repo luz" href="../curso/modulos/06-dom-eventos/index.html">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/módulo 6</span>
+              <h4>DOM e eventos</h4>
+              <p>Revise antes de começar.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">praticar</span></span>
+            </a>
+            <a class="repo luz" href="../curso/modulos/07-formularios/index.html">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso/módulo 7</span>
+              <h4>Formulários</h4>
+              <p>Validação e envio sem recarregar.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">praticar</span></span>
+            </a>
+            <a class="repo luz" href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>MDN Web Docs</span>
+              <h4>addEventListener</h4>
+              <p>A referência, em português.</p>
+              <span class="repo-pe"><span class="ling" style="--cor:#9fd0b7"><i></i>Documentação</span><span class="etiqueta">consulta</span></span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===================== ENTREGA ===================== -->
+        <section class="parte" id="entrega">
+          <div class="cartao entrega">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            <div>
+              <span class="olho">E1 · entrega</span>
+              <h3>Cadastro interativo no Moodle</h3>
+              <p>E o grupo do projeto integrador formado, com o workspace no Loop criado.</p>
+            </div>
+          </div>
+        </section>
+
+        <nav class="nav-aulas" aria-label="Outras aulas">
+          <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
+          <span class="anterior">
+            <span class="olho">← aula anterior</span>
+            <strong>Aula 11: Conhecendo o DOM</strong>
+          </span>
+          <a class="proxima" href="aula-13.html">
+            <span class="olho">próxima aula →</span>
+            <strong>Aula 13: Frameworks e seminários relâmpago</strong>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="envolve">
+      <div class="rodape-fim" style="margin-top:0; padding-top:0; border-top:0">
+        <span><a href="../">Programação Web em JavaScript</a> · Feito com ♥ e sucata eletrônica.</span>
+        <span>console.log(&quot;bons estudos!&quot;);</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ícone de repositório (Octicons, licença MIT) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ic-repo" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></symbol>
+  </svg>
+
+  <script src="../assets/js/aulas.js"></script>
+  <script src="../assets/js/matrix.js?v=2"></script>
+</body>
+</html>
