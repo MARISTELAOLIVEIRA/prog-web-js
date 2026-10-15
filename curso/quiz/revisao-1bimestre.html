@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../../assets/css/neon.css?v=4" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/quiz-revisao.css" />
+  <link rel="stylesheet" href="../../assets/css/conta.css?v=3" />
 </head>
 <body>
   <div class="chuva-curso" aria-hidden="true"><canvas class="chuva-matrix"></canvas></div>
@@ -59,7 +60,7 @@
     <h1 class="titulo-aula">Quiz de Revisão · 1º Bimestre</h1>
 
     <!-- TELA 1: nome completo (libera o quiz) -->
-    <section id="tela-entrada">
+    <section id="tela-entrada" data-exige-login>
       <div class="objetivos">
         <h2>Antes de começar</h2>
         <p>Este quiz revisa o que estudamos nos <strong>módulos 1, 2 e 3</strong>: variáveis, tipos e operadores, condicionais e laços de repetição.</p>
@@ -115,6 +116,9 @@
           <div><strong id="res-percentual"></strong><span>de aproveitamento</span></div>
           <div><strong id="res-pontos"></strong><span>pontos do quiz</span></div>
         </div>
+
+        <!-- resultado registrado para a professora (código de verificação, também na imagem) -->
+        <p id="res-registro" class="registro-tentativa" aria-live="polite" hidden></p>
 
         <canvas id="res-certificado" class="rev-previa" aria-label="Imagem de conclusão do quiz"></canvas>
 
@@ -177,8 +181,11 @@
     </div>
   </footer>
 
+  <!-- login dos alunos (e-mail da faculdade) e registro dos resultados para a professora -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="../../assets/js/conta.js?v=3" data-disciplina="prog-web-js"></script>
   <script src="../js/questoes-revisao.js"></script>
-  <script src="../js/quiz-revisao.js"></script>
+  <script src="../js/quiz-revisao.js?v=2"></script>
   <script src="../../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
