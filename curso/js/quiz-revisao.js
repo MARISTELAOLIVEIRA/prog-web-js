@@ -108,13 +108,23 @@
       return;
     }
     erroNome.textContent = "";
-    nome = digitado;
+    // nome com a primeira letra maiúscula (conta.js)
+    nome = window.CONTA ? CONTA.formatarNome(digitado) : digitado;
     guardar(CHAVE_NOME, nome);
     iniciar();
   });
 
+  // com o login da faculdade, o nome da conta entra no campo
+  if (window.CONTA) {
+    CONTA.aoMudar(() => {
+      if (CONTA.daFaculdade() && CONTA.nome()) campoNome.value = CONTA.nome();
+    });
+  }
+
   // ---------- Quiz ----------
+  let inicioEm = 0;
   function iniciar() {
+    inicioEm = Date.now();
     // a cada tentativa: questões e alternativas em ordem nova
     questoes = embaralhar(QUESTOES_REVISAO).map((q) => ({
       ...q,
@@ -229,6 +239,33 @@
     mostrar("resultado");
     animar(nivel);
     desenharCertificado(ultimoResultado, true);
+    registrarResultado(ultimoResultado);
+  }
+
+  // ---------- Registro para a professora (assets/js/conta.js) ----------
+  // O quiz só começa com o login da faculdade (data-exige-login na tela de entrada). No fim, o resultado
+  // vai para o Placa-Mãe da professora, e o código de verificação entra na imagem da conclusão.
+  async function registrarResultado(dados) {
+    const aviso = $("res-registro");
+    if (!window.CONTA) return;
+    aviso.hidden = false;
+    aviso.textContent = "Registrando o resultado para a professora...";
+    const registro = await CONTA.registrarTentativa({
+      atividade: "quiz-revisao-1bimestre",
+      titulo: "Quiz de Revisão · 1º Bimestre (módulos 1 a 3)",
+      acertos: dados.acertos,
+      total: TOTAL,
+      duracao_seg: (Date.now() - inicioEm) / 1000,
+      detalhes: { pontos: dados.pontos, nome_digitado: dados.nome },
+    });
+    if (registro) {
+      dados.codigo = registro.codigo;
+      aviso.innerHTML = "Compilou de primeira! Resultado registrado para a professora. " +
+        "Código de verificação: <strong>" + esc(registro.codigo) + "</strong>. Salve a imagem e envie no Moodle.";
+    } else {
+      aviso.textContent = "Resultado não registrado. Para valer ponto, entre com o e-mail da faculdade e refaça o quiz.";
+    }
+    if (dados === ultimoResultado) desenharCertificado(dados, true);
   }
 
   function renderizarRevisao() {
@@ -457,7 +494,12 @@
       ctx.font = `400 20px ${texto}`;
       const data = dados.data.toLocaleDateString("pt-BR") + " às " +
         dados.data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
-      ctx.fillText(`${data}  ·  Profª Maristela`, L / 2, 690);
+      ctx.fillText(`${data}  ·  Profª Maristela`, L / 2, 672);
+
+      // código de verificação do registro (o Placa-Mãe da professora confere)
+      ctx.fillStyle = dados.codigo ? "#39e6ff" : "#9fd8bd";
+      ctx.font = `400 20px ${texto}`;
+      ctx.fillText(dados.codigo ? `Código de verificação: ${dados.codigo}` : "Resultado não registrado (sem login da faculdade)", L / 2, 710);
     });
   }
 
