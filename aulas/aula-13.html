@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../assets/css/estilo.css">
   <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
-  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=3">
   <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=2">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#na-tela">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -144,6 +146,152 @@
           </div>
         </section>
 
+        <!-- ===================== TUTORIAL: FRAMEWORK E GITHUB ===================== -->
+        <section class="parte" id="na-tela">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: o que um framework faz por você, e o projeto no GitHub</h2>
+            <p>
+              Duas partes. Na primeira, o painel do caso de uso feito duas vezes: em JavaScript puro e com o Vue, um dos
+              frameworks do seminário. Na segunda, o passo a passo para organizar o projeto do grupo no GitHub (itens 6 a 8 da atividade).
+            </p>
+          </div>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · parte 1</span>
+              <h3>O painel em JavaScript puro</h3>
+              <p>É o caso de uso da aula: os totais de aprovados e reprovados e a lista da turma. Lançou uma nota, o painel muda. Tudo com o que você já sabe: <code>querySelector</code>, <code>createElement</code>, <code>classList</code> e o <code>submit</code> da aula 12.</p>
+              <p>Repare na função <code>atualizarPainel()</code>: <strong>você</strong> é quem precisa lembrar de chamá-la toda vez que a turma muda. Num sistema grande, com dezenas de telas, esquecer uma chamada é um erro comum.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Crie a pasta <code>aula13</code> no seu repositório, com <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code>.</li>
+                  <li>Copie os três arquivos deste passo (botão <strong>⧉ Copiar o arquivo</strong> em cada aba) e abra com o Live Server.</li>
+                  <li>Lance a nota de um aluno e veja os totais mudarem.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p1"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Apague a linha <code>atualizarPainel();</code> de dentro do <code>submit</code> e lance uma nota. O aluno entrou na lista, mas o painel não mudou. Coloque a linha de volta.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · parte 1</span>
+              <h3>O mesmo painel com Vue: o painel que se atualiza sozinho</h3>
+              <p>Com o Vue, você descreve no HTML <strong>o que</strong> mostrar, e ele cuida de <strong>quando</strong> redesenhar. O JavaScript só guarda os dados (<code>data</code>), as contas (<code>computed</code>) e as ações (<code>methods</code>). Mudou a turma? O Vue redesenha sozinho, sem nenhum <code>atualizarPainel()</code>.</p>
+              <div class="faca-assim">
+                <strong>O que é novo no HTML:</strong>
+                <ol>
+                  <li><code>{{ aprovados }}</code> mostra um valor e se atualiza sozinho.</li>
+                  <li><code>v-model="nome"</code> liga o campo à variável: digitou, a variável mudou.</li>
+                  <li><code>@submit.prevent="lancar"</code> é o <code>addEventListener("submit")</code> com o <code>preventDefault()</code> já embutido.</li>
+                  <li><code>v-for="aluno in turma"</code> repete o <code>&lt;li&gt;</code> para cada aluno, como o <code>for...of</code>.</li>
+                  <li>A linha <code>&lt;script src="https://unpkg.com/vue…"&gt;</code> traz o Vue da internet (CDN), sem instalar nada.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Na mesma pasta <code>aula13</code>, crie a pasta <code>vue</code> e copie para ela os três arquivos deste passo.</li>
+                  <li>Abra o <code>vue/index.html</code> com o Live Server (o computador precisa estar na internet, por causa do CDN).</li>
+                  <li>Lance uma nota: o painel muda igual ao do passo 1.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Apareceu <code>{{ aprovados }}</code> na página, em vez do número?</strong> O Vue não carregou: confira se o computador está na internet e se o endereço do <code>&lt;script src&gt;</code> do Vue está igual ao do passo.</p>
+            </div>
+            <div id="projeto-p2"></div>
+            <div class="faca-assim desafio">
+              <strong>Para o seminário (e o desafio extra):</strong>
+              <ol>
+                <li>Compare os dois <code>script.js</code>: qual tem mais linhas? Em qual é mais fácil esquecer algo?</li>
+                <li>O que o Vue acrescentou ao projeto (um arquivo de fora, uma sintaxe nova no HTML)? Para um painel pequeno, compensa? E para um sistema com 30 telas?</li>
+                <li>O framework do seu grupo resolve o mesmo problema? Procure na documentação oficial como ele mostra uma lista e atualiza um valor.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Funcionou?</strong> <code>git add .</code> e <code>git commit -m "Aula 13: painel em JS puro e com Vue"</code>.</p>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · parte 2 · itens 6 e 7 da atividade</span>
+              <h3>O repositório do grupo e as issues</h3>
+              <p>Uma pessoa do grupo cria o repositório e convida as outras. Depois, cada tarefa do projeto vira uma <strong>issue</strong>: um cartão com o que fazer e quem faz.</p>
+              <div class="faca-assim">
+                <strong>Quem cria o repositório (uma pessoa só):</strong>
+                <ol>
+                  <li>No GitHub, clique em <strong>+ › New repository</strong>.</li>
+                  <li>Dê o nome do projeto (sem espaços, por exemplo <code>agenda-do-bairro</code>), deixe <strong>Public</strong> (o GitHub Pages da aula 14 precisa) e marque <strong>Add a README file</strong>.</li>
+                  <li>Clique em <strong>Create repository</strong>.</li>
+                  <li>Vá em <strong>Settings › Collaborators › Add people</strong> e convide cada colega pelo usuário do GitHub.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Cada colega:</strong>
+                <ol>
+                  <li>Aceite o convite que chega por e-mail (ou em <strong>github.com/notifications</strong>).</li>
+                  <li>Clone o repositório no VS Code: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, digite <strong>Git: Clone</strong>, cole o endereço do repositório e escolha a pasta.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>As issues (o grupo junto):</strong>
+                <ol>
+                  <li>Na aba <strong>Issues</strong> do repositório, clique em <strong>New issue</strong>.</li>
+                  <li>No título, a tarefa em poucas palavras ("Tela de cadastro"). Na descrição, o que precisa funcionar para a tarefa estar pronta.</li>
+                  <li>Em <strong>Assignees</strong>, escolha quem vai fazer. Clique em <strong>Submit new issue</strong>.</li>
+                  <li>Repita até cada tela do wireframe e cada parte do projeto ter a sua issue. Repare no número de cada uma (<code>#1</code>, <code>#2</code>…): ele vai ser usado no passo 4.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · parte 2 · item 8 da atividade</span>
+              <h3>Cada um na sua branch, e o pull request</h3>
+              <p>A <strong>branch</strong> é uma cópia do projeto só sua: você programa à vontade sem mexer no código dos colegas. Quando a tarefa fica pronta, o <strong>pull request</strong> pede para juntar o seu trabalho na branch principal (<code>main</code>), depois que um colega revisa.</p>
+              <div class="faca-assim">
+                <strong>Criar a sua branch (no VS Code):</strong>
+                <ol>
+                  <li>Clique no nome da branch, no canto de baixo à esquerda (está escrito <code>main</code>).</li>
+                  <li>Escolha <strong>Create new branch…</strong> e dê o nome da sua tarefa, sem espaços: <code>tela-de-cadastro</code>.</li>
+                  <li>Confira: o canto de baixo agora mostra <code>tela-de-cadastro</code>. Tudo o que você fizer fica nessa branch.</li>
+                </ol>
+              </div>
+              <div class="faca-assim">
+                <strong>Programar e enviar:</strong>
+                <ol>
+                  <li>Programe a sua parte e salve.</li>
+                  <li>Na aba <strong>Source Control</strong> (o ícone de ramos, à esquerda), escreva a mensagem do commit e clique em <strong>Commit</strong>.</li>
+                  <li>Clique em <strong>Publish Branch</strong> para mandar a branch para o GitHub.</li>
+                </ol>
+                <p class="dica">Prefere o terminal? São os comandos do conceito C3: <code>git checkout -b tela-de-cadastro</code>, <code>git add .</code>, <code>git commit -m "Tela de cadastro"</code> e <code>git push origin tela-de-cadastro</code>.</p>
+              </div>
+              <div class="faca-assim">
+                <strong>O pull request (no GitHub):</strong>
+                <ol>
+                  <li>Abra o repositório: aparece o aviso amarelo com o botão <strong>Compare &amp; pull request</strong>. Clique nele.</li>
+                  <li>Na descrição, escreva o que você fez e <code>closes #1</code> (o número da sua issue): quando o pull request entrar, a issue fecha sozinha.</li>
+                  <li>Em <strong>Reviewers</strong>, escolha um colega e clique em <strong>Create pull request</strong>.</li>
+                  <li>O colega abre a aba <strong>Files changed</strong>, confere o código e aprova. Depois, clique em <strong>Merge pull request</strong> e <strong>Confirm merge</strong>.</li>
+                  <li>De volta ao VS Code, volte para a <code>main</code> (canto de baixo) e clique em <strong>Sync Changes</strong> para trazer o trabalho de todo mundo.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Regra de ouro do grupo:</strong> ninguém programa direto na <code>main</code>. Cada tarefa, uma branch; cada branch, um pull request revisado por um colega.</p>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
@@ -176,7 +324,7 @@
           <div class="cab">
             <span class="olho">A1 · atividade</span>
             <h2>Seminário e organização do projeto</h2>
-            <p>Em grupo. O que você marcar fica salvo neste navegador.</p>
+            <p>Em grupo. O passo a passo do GitHub está no <a href="#na-tela">tutorial</a>, logo acima. O que você marcar fica salvo neste navegador.</p>
           </div>
 
           <div class="cartao">
@@ -190,9 +338,9 @@
               <li><label><input type="checkbox"><span>Apresente em poucos minutos.</span></label></li>
               <li><label><input type="checkbox"><span>Defina o escopo do projeto integrador.</span></label></li>
               <li><label><input type="checkbox"><span>Desenhe o wireframe das telas no Whiteboard e registre no Loop.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie o repositório do grupo no GitHub.</span></label></li>
-              <li><label><input type="checkbox"><span>Abra uma issue para cada tarefa e distribua no grupo.</span></label></li>
-              <li><label><input type="checkbox"><span>Cada integrante cria a sua branch.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie o repositório do grupo no GitHub. <a href="#passo-3">Veja o passo 3.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Abra uma issue para cada tarefa e distribua no grupo. <a href="#passo-3">Veja o passo 3.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Cada integrante cria a sua branch. <a href="#passo-4">Veja o passo 4.</a></span></label></li>
             </ol>
           </div>
         </section>
@@ -303,6 +451,8 @@
   </svg>
 
   <script src="../assets/js/aulas.js"></script>
+  <script src="../curso/js/playground.js?v=6"></script>
+  <script src="../assets/js/aula-13-projetos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>

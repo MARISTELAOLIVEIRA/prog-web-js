@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../assets/css/estilo.css">
   <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
-  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=3">
   <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=2">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#na-tela">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -143,6 +145,206 @@
           </div>
         </section>
 
+        <!-- ===================== TUTORIAL: CADASTRO INTERATIVO ===================== -->
+        <section class="parte" id="na-tela">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: o Cadastro interativo, em 6 passos</h2>
+            <p>
+              É a missão 1 da atividade, com o código de cada item. O ponto de partida é o Cadastro com tabela da aula 11.
+              Cada passo tem os três arquivos completos: faça um de cada vez, copie, rode, teste e só depois passe para o próximo.
+              Errou? O <strong>↺ Reiniciar</strong> volta ao original.
+            </p>
+          </div>
+
+          <!-- antes de começar -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Antes de começar</span>
+              <h3>Prepare a pasta</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>No seu repositório <code>programacao-web-js</code>, crie a pasta <code>aula12</code> com os arquivos <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code> (ou copie a pasta <code>aula11</code> e renomeie).</li>
+                  <li>Abra a pasta no VS Code e a página com o <strong>Open with Live Server</strong>, como na aula 11.</li>
+                  <li>Em cada passo: clique na aba do arquivo, em <strong>⧉ Copiar o arquivo</strong>, cole no VS Code no lugar do que tinha e salve (<kbd>Ctrl</kbd> + <kbd>S</kbd>).</li>
+                </ol>
+              </div>
+              <p class="dica"><strong>A ideia de hoje em uma frase:</strong> "quando <em>isso</em> acontecer, faça <em>aquilo</em>". O <code>addEventListener</code> é o "quando", e a função é o "faça".</p>
+            </div>
+          </div>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · aquecimento</span>
+              <h3>O primeiro clique: <code>addEventListener</code></h3>
+              <p>Até a aula 11, o script rodava uma vez, de cima para baixo, e acabava. Com o <code>addEventListener("click", function () { ... })</code>, a função fica <strong>esperando</strong>: ela só roda quando o clique acontece, e roda de novo a cada clique.</p>
+              <p>A variável <code>cliques</code> fica <strong>fora</strong> da função, para lembrar a contagem entre um clique e outro.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Copie os três arquivos para a sua pasta <code>aula12</code> e salve.</li>
+                  <li>Clique no botão algumas vezes e veja a contagem subir.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p1"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Troque <code>"click"</code> por <code>"dblclick"</code>: agora só conta o clique duplo.</li>
+                <li>Troque por <code>"mouseover"</code>: conta toda vez que o mouse passa por cima do botão. Depois, volte para <code>"click"</code>.</li>
+                <li>Mova a linha <code>let cliques = 0;</code> para dentro da função. O que acontece com a contagem? Por quê? Depois, volte para fora.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · item 1 da atividade</span>
+              <h3>O formulário envia: <code>submit</code> e <code>preventDefault</code></h3>
+              <p>O HTML ganha um <code>&lt;form&gt;</code> com dois campos e um botão <code>type="submit"</code>. Cada campo tem um <code>name</code>: é por ele que o JavaScript acha o valor, com <code>form.nome.value</code> e <code>form.nota.value</code>.</p>
+              <p>Repare que o evento é o <code>submit</code> do <strong>formulário</strong>, e não o <code>click</code> do botão. Assim o cadastro funciona com o clique <strong>e</strong> com o <kbd>Enter</kbd>, como pede o caso de uso.</p>
+              <p class="dica cuidado"><strong>Por que o <code>event.preventDefault()</code>?</strong> Ao enviar, o navegador recarrega a página. A página recomeça do zero, e a lista volta a ter só os alunos do começo. O <code>preventDefault()</code> diz: "deixa que o JavaScript cuida".</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque os três arquivos: o <code>index.html</code> e o <code>estilo.css</code> ganharam o formulário, e o <code>script.js</code> traz a <code>mostrarTurma()</code> da aula 11.</li>
+                  <li>Digite um nome e uma nota e aperte <kbd>Enter</kbd>: aparece "Recebi: …".</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p2"></div>
+            <div class="faca-assim">
+              <strong>Teste (no seu VS Code, com o Live Server):</strong>
+              <ol>
+                <li>Ponha <code>//</code> na frente do <code>event.preventDefault();</code>, salve e envie o formulário. A página pisca e a mensagem some: ela recarregou. Tire o <code>//</code>.</li>
+                <li>Envie com o nome vazio. O que aparece? O passo 3 resolve isso.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Funcionou?</strong> <code>git add .</code> e <code>git commit -m "Aula 12: o formulário envia"</code>.</p>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · item 2 da atividade</span>
+              <h3>Validar antes de cadastrar</h3>
+              <p>Dado digitado pelo usuário é suspeito até prova em contrário. Antes de cadastrar, duas conferências:</p>
+              <div class="faca-assim">
+                <strong>As duas regras:</strong>
+                <ol>
+                  <li><strong>Nome vazio não passa.</strong> O <code>trim()</code> tira os espaços do começo e do fim: quem digita só espaços também é barrado.</li>
+                  <li><strong>Nota tem que ser de 0 a 10.</strong> O campo devolve texto, por isso o <code>Number()</code> transforma em número antes de comparar.</li>
+                </ol>
+              </div>
+              <p>Repare no <code>novalidate</code> do <code>&lt;form&gt;</code>: ele desliga a conferência automática do navegador (aquele balãozinho), para você ver a <strong>sua</strong> validação funcionando. Num sistema de verdade, as duas trabalham juntas.</p>
+              <p>Quando uma regra falha, o campo ganha a classe <code>campo-erro</code> (borda vermelha), a mensagem aparece na página, o cursor volta para o campo (<code>focus()</code>) e o <code>return</code> para tudo: nada é cadastrado.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque o <code>estilo.css</code> (as classes de erro estão no fim) e o <code>script.js</code>. O <code>index.html</code> é o mesmo do passo 2.</li>
+                  <li>Salve e faça os testes abaixo.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p3"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Envie com o nome vazio, depois só com espaços.</li>
+                <li>Envie com a nota <code>11</code>, depois <code>-1</code>, depois com a nota vazia.</li>
+                <li>Envie certo: a borda vermelha some e aparece "Tudo certo".</li>
+              </ol>
+            </div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você:</strong>
+              <ol>
+                <li>Crie uma terceira regra: o nome precisa ter pelo menos 3 letras (dica: <code>nome.length &lt; 3</code>).</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · item 3 da atividade</span>
+              <h3>Cadastrar no array e atualizar a tabela</h3>
+              <p>Passou nas regras? Três movimentos: <strong>colocar</strong> o aluno na lista com <code>turma.push({ nome: nome, media: nota })</code>, <strong>desenhar</strong> a tabela de novo com <code>mostrarTurma(turma)</code> e <strong>limpar</strong> o formulário com <code>form.reset()</code>.</p>
+              <p>É por isso que a <code>mostrarTurma()</code> virou função na aula 11: agora ela é chamada de novo a cada cadastro.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque só o <code>script.js</code>.</li>
+                  <li>Cadastre dois alunos, um aprovado e um reprovado, e veja cada um entrar na tabela com a cor certa, sem recarregar a página.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p4"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Cadastre usando só o teclado: digite o nome, <kbd>Tab</kbd>, a nota, <kbd>Enter</kbd>. O cursor volta sozinho para o nome, pronto para o próximo.</li>
+                <li>Apague a linha <code>mostrarTurma(turma);</code> de dentro do <code>submit</code>. O aluno entra na lista, mas a tabela não muda. Coloque a linha de volta.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Funcionou?</strong> <code>git add .</code> e <code>git commit -m "Aula 12: cadastro pelo formulário"</code>.</p>
+          </div>
+
+          <!-- passo 5 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-5">
+            <div class="texto">
+              <span class="olho">Passo 5 · item 4 da atividade</span>
+              <h3>Busca enquanto digita: o evento <code>input</code></h3>
+              <p>O evento <code>input</code> dispara <strong>a cada letra</strong> digitada no campo de busca. A cada letra, o <code>filter()</code> monta uma lista só com os alunos cujo nome tem o que foi digitado (<code>includes</code>), e a <code>mostrarTurma()</code> desenha só esses.</p>
+              <p>O <code>toLowerCase()</code> deixa tudo em minúsculas dos dois lados: assim "ana" acha "Ana Souza".</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque os três arquivos: o HTML ganhou o campo de busca.</li>
+                  <li>Digite "an" na busca, letra por letra, e veja a tabela filtrar.</li>
+                  <li>Apague a busca: a turma inteira volta.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p5"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Busque um nome que não existe, como "zé": aparece o aviso "Nenhum aluno com…".</li>
+                <li>Tire os dois <code>toLowerCase()</code> e busque "ana" em minúsculas. O que muda? Coloque de volta.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Terminou a missão 1?</strong> Entregue: <code>git add .</code>, <code>git commit -m "Aula 12: Cadastro interativo"</code>, <code>git push</code> e o link no Moodle (item 5 da atividade).</p>
+          </div>
+
+          <!-- passo 6 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-6">
+            <div class="texto">
+              <span class="olho">Passo 6 · bônus</span>
+              <h3>Clique duplo remove o aluno</h3>
+              <p>Cada linha da tabela ganha o seu próprio "ouvinte": <code>linha.addEventListener("dblclick", ...)</code>. Como ele é criado dentro do laço, cada linha lembra qual é o <strong>seu</strong> aluno.</p>
+              <p>Para tirar da lista: o <code>indexOf(aluno)</code> diz em que posição ele está, e o <code>splice(posicao, 1)</code> tira 1 item dessa posição (aula 9).</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque os três arquivos.</li>
+                  <li>Clique duas vezes num aluno: ele sai da tabela e aparece o aviso.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p6"></div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você:</strong>
+              <ol>
+                <li>Faça o desafio extra da aula: a tecla <kbd>Esc</kbd> limpa a busca e mostra a turma inteira de novo. Dica: <code>busca.addEventListener("keydown", ...)</code> e <code>event.key === "Escape"</code>.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
@@ -177,7 +379,7 @@
           <div class="cab">
             <span class="olho">A1 · atividade</span>
             <h2>Cadastro interativo e projeto integrador</h2>
-            <p>Duas missões no mesmo dia. O que você marcar fica salvo neste navegador.</p>
+            <p>Duas missões no mesmo dia. O código da missão 1 está no <a href="#na-tela">tutorial</a>, logo acima. O que você marcar fica salvo neste navegador.</p>
           </div>
 
           <div class="cartao">
@@ -186,10 +388,10 @@
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-12">
-              <li><label><input type="checkbox"><span>Crie um formulário de cadastro com nome e nota.</span></label></li>
-              <li><label><input type="checkbox"><span>Trate o <code>submit</code> com <code>preventDefault()</code> e valide os campos.</span></label></li>
-              <li><label><input type="checkbox"><span>Cadastre o aluno no array e atualize a tabela.</span></label></li>
-              <li><label><input type="checkbox"><span>Crie um campo de busca que filtra a tabela enquanto o usuário digita.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie um formulário de cadastro com nome e nota. <a href="#passo-2">Veja o passo 2.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Trate o <code>submit</code> com <code>preventDefault()</code> e valide os campos. <a href="#passo-2">Veja os passos 2 e 3.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Cadastre o aluno no array e atualize a tabela. <a href="#passo-4">Veja o passo 4.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Crie um campo de busca que filtra a tabela enquanto o usuário digita. <a href="#passo-5">Veja o passo 5.</a></span></label></li>
               <li><label><input type="checkbox"><span>Entregue o Cadastro interativo no Moodle e faça o commit.</span></label></li>
               <li><label><input type="checkbox"><span>Forme o grupo do projeto integrador.</span></label></li>
               <li><label><input type="checkbox"><span>Crie o workspace do grupo no Loop.</span></label></li>
@@ -305,6 +507,8 @@
   </svg>
 
   <script src="../assets/js/aulas.js"></script>
+  <script src="../curso/js/playground.js?v=6"></script>
+  <script src="../assets/js/aula-12-projetos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
