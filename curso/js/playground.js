@@ -723,8 +723,45 @@ function criarProjetoVS(opcoes) {
     editor.reiniciar();
     atualizar();
   });
+  _botaoCopiar(container, editor);
 
   atualizar();
+}
+
+/* "Copiar o arquivo": copia o arquivo da aba aberta, para colar no VS Code do aluno */
+function _botaoCopiar(container, editor) {
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.className = "botao botao--secundario";
+  botao.textContent = "⧉ Copiar o arquivo";
+  container.querySelector(".playground__botoes").prepend(botao);
+  let volta = null;
+
+  function avisar(texto) {
+    botao.textContent = texto;
+    clearTimeout(volta);
+    volta = setTimeout(() => { botao.textContent = "⧉ Copiar o arquivo"; }, 2500);
+  }
+
+  botao.addEventListener("click", () => {
+    const janela = container.querySelector(".vscode");
+    const arquivo = _ARQUIVOS.find((a) => a.tipo === janela.dataset.ativo);
+    const texto = editor.ler()[arquivo.nome];
+    const ok = () => avisar("✓ " + arquivo.nome + " copiado");
+    const naMao = () => {
+      // sem a área de transferência (página sem https, navegador antigo): seleciona e copia do jeito antigo
+      const area = janela.querySelector("#" + container.id + "-arquivo-" + arquivo.tipo + " textarea");
+      area.focus();
+      area.select();
+      const copiou = document.execCommand && document.execCommand("copy");
+      avisar(copiou ? "✓ " + arquivo.nome + " copiado" : "Selecionado: aperte Ctrl + C");
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(texto).then(ok, naMao);
+    } else {
+      naMao();
+    }
+  });
 }
 
 /**

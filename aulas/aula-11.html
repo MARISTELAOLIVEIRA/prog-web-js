@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,400..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../assets/css/estilo.css">
   <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
-  <link rel="stylesheet" href="../assets/css/aula.css?v=2">
+  <link rel="stylesheet" href="../assets/css/aula.css?v=3">
   <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=2">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
         <a href="#conceitos">Conceitos</a>
+        <a href="#na-tela">Tutorial</a>
         <a href="#caso">Caso</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
@@ -152,6 +154,235 @@
           </div>
         </section>
 
+        <!-- ===================== TUTORIAL: O CADASTRO GANHA CARA ===================== -->
+        <section class="parte" id="na-tela">
+          <div class="cab">
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: o Cadastro ganha cara, em 6 passos</h2>
+            <p>
+              É a atividade da aula, com o código de cada item. Cada passo tem os três arquivos completos, como no VS Code.
+              Faça um de cada vez: copie, rode, teste, entenda o que mudou e só depois passe para o próximo.
+              Mexa no código à vontade: a página de resultado embaixo muda na hora. Errou? O <strong>↺ Reiniciar</strong> volta ao original.
+            </p>
+          </div>
+
+          <!-- antes de começar -->
+          <div class="conceito" style="grid-template-columns:1fr">
+            <div class="texto">
+              <span class="olho">Antes de começar</span>
+              <h3>Prepare a pasta e abra a página</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>No seu repositório <code>programacao-web-js</code>, crie a pasta <code>aula11</code>.</li>
+                  <li>Dentro dela, crie três arquivos vazios: <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code>.</li>
+                  <li>Abra a pasta no VS Code: <strong>Arquivo › Abrir pasta</strong>.</li>
+                  <li>Para ver a página, clique com o botão direito no <code>index.html</code> e escolha <strong>Open with Live Server</strong>. O navegador abre sozinho e atualiza toda vez que você salva.</li>
+                </ol>
+              </div>
+              <p class="dica"><strong>Como copiar o código de cada passo:</strong> clique na aba do arquivo (<code>index.html</code>, <code>estilo.css</code> ou <code>script.js</code>) e depois em <strong>⧉ Copiar o arquivo</strong>. No VS Code, abra o mesmo arquivo, apague o que tinha (<kbd>Ctrl</kbd> + <kbd>A</kbd> e <kbd>Delete</kbd>), cole (<kbd>Ctrl</kbd> + <kbd>V</kbd>) e salve (<kbd>Ctrl</kbd> + <kbd>S</kbd>).</p>
+              <p class="dica cuidado"><strong>Sem o Live Server?</strong> Dê dois cliques no <code>index.html</code> para abrir no navegador. A cada mudança, salve no VS Code e aperte <kbd>F5</kbd> no navegador.</p>
+            </div>
+          </div>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1 · item 2 da atividade</span>
+              <h3>O JavaScript escreve na página</h3>
+              <p>O HTML monta a página e o JavaScript mexe nela depois. Para isso, o <code>index.html</code> precisa dizer onde está o script: a linha <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code>, no <strong>fim</strong> do <code>&lt;body&gt;</code>.</p>
+              <p><code>getElementById("titulo")</code> pega o elemento pelo <code>id</code>, sem o <code>#</code>. <code>querySelector("#mensagem")</code> faz o mesmo com um seletor do CSS, com o <code>#</code>. E o <code>textContent</code> troca o texto.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Copie os três arquivos deste passo para a sua pasta <code>aula11</code> e salve.</li>
+                  <li>Abra a página com o Live Server.</li>
+                  <li>Confira: o título tem que ser <strong>Cadastro de Alunos</strong>, e não "Título provisório".</li>
+                  <li>Aperte <kbd>F12</kbd> e abra a aba <strong>Elements</strong>: o <code>&lt;h1&gt;</code> já mostra o texto novo.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p1"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Mude o texto entre aspas do <code>textContent</code>, salve e veja a página mudar.</li>
+                <li>Apague a linha <code>&lt;script src&gt;</code> do HTML. O que acontece? Depois, coloque a linha de volta.</li>
+                <li>Troque <code>id="titulo"</code> por <code>id="cabecalho"</code> só no HTML e abra o <strong>Console</strong> (<kbd>F12</kbd>). Leia o erro e conserte.</li>
+              </ol>
+            </div>
+            <p class="dica cuidado"><strong>Continua "Título provisório"?</strong> O script não rodou: confira se o nome no <code>src</code> é igual ao do arquivo e se o <code>script.js</code> está na mesma pasta. Apareceu <code>Cannot set properties of null</code>? O <code>id</code> do HTML e o do JavaScript estão diferentes. Maiúscula conta: <code>titulo</code> e <code>Titulo</code> são outro nome.</p>
+            <p class="dica"><strong>Funcionou?</strong> Guarde a versão: <code>git add .</code> e <code>git commit -m "Aula 11: o JavaScript escreve na página"</code>.</p>
+          </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2 · itens 1 e 3 da atividade</span>
+              <h3>A tabela vazia e o <code>querySelector</code></h3>
+              <p>O <code>index.html</code> ganha uma <code>&lt;table&gt;</code> com o cabeçalho pronto (<code>&lt;thead&gt;</code>) e o corpo <strong>vazio</strong>: <code>&lt;tbody id="tabela"&gt;&lt;/tbody&gt;</code>. Quem vai preencher o corpo é o JavaScript.</p>
+              <p><code>querySelector("#tabela")</code> acha o <code>tbody</code> e guarda na variável <code>tabela</code>. O <code>children</code> é a lista dos filhos dele: por enquanto, nenhuma linha.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque todo o <code>index.html</code> pelo deste passo.</li>
+                  <li>Troque o <code>estilo.css</code>: ele ganhou o visual da tabela.</li>
+                  <li>Troque o <code>script.js</code>.</li>
+                  <li>Salve os três e confira: aparece <strong>"Achei a tabela! Ela tem 0 linhas."</strong></li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p2"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Escreva errado de propósito: <code>querySelector("#tabelas")</code>. A página para de funcionar e o Console mostra um erro com <code>null</code>.</li>
+                <li>Conserte. Esse <code>null</code> é o erro mais comum do DOM: quer dizer "não achei esse elemento". Quando aparecer, confira o <code>id</code>.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Funcionou?</strong> <code>git add .</code> e <code>git commit -m "Aula 11: a tabela vazia"</code>.</p>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3 · itens 4 e 5 da atividade</span>
+              <h3>A primeira linha, peça por peça</h3>
+              <p>Para pôr uma linha na tabela são cinco movimentos, sempre nesta ordem:</p>
+              <div class="faca-assim">
+                <strong>Os cinco movimentos:</strong>
+                <ol>
+                  <li><strong>Criar a linha:</strong> <code>document.createElement("tr")</code>.</li>
+                  <li><strong>Criar as células:</strong> um <code>createElement("td")</code> para cada coluna.</li>
+                  <li><strong>Escrever o texto</strong> de cada célula com <code>textContent</code>.</li>
+                  <li><strong>Pôr as células na linha:</strong> <code>linha.append(...)</code>.</li>
+                  <li><strong>Pôr a linha na tabela:</strong> <code>tabela.append(linha)</code>.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Pegadinha:</strong> o <code>createElement</code> cria o elemento só na memória. Ele só aparece na página depois do <code>append</code>.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>O <code>index.html</code> e o <code>estilo.css</code> são os mesmos do passo 2. Troque só o <code>script.js</code>.</li>
+                  <li>Salve: a Ana aparece na tabela.</li>
+                  <li>No <kbd>F12</kbd>, aba <strong>Elements</strong>, abra o <code>&lt;tbody&gt;</code> e ache o <code>&lt;tr&gt;</code> que o JavaScript criou.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p3"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Ponha <code>//</code> na frente da última linha (<code>// tabela.append(linha);</code>). A Ana some: a linha foi criada, mas não entrou na página. Tire o <code>//</code>.</li>
+              </ol>
+            </div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você:</strong>
+              <ol>
+                <li>Crie uma segunda linha com o <strong>Bruno Lima</strong>, média <code>5.2</code>, <strong>reprovado</strong>. Copie os cinco movimentos e troque os nomes das variáveis (<code>linha2</code>, <code>celulaNome2</code>…).</li>
+                <li>Percebeu quanta repetição? O passo 4 resolve isso.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4 · itens 4 e 5 da atividade</span>
+              <h3>Uma linha para cada aluno: o laço faz o trabalho</h3>
+              <p>A turma vira uma <strong>lista de objetos</strong>, como na aula 10. O <code>for...of</code> visita um aluno por vez: a cada volta, <code>aluno</code> é um objeto, com <code>aluno.nome</code> e <code>aluno.media</code>. Dentro do laço, os mesmos cinco movimentos do passo 3.</p>
+              <p>O <code>if</code> decide o texto da situação: média 6 ou mais é <strong>aprovado</strong>.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque só o <code>script.js</code>.</li>
+                  <li>Salve: aparecem os três alunos.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p4"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Acrescente um quarto aluno na lista: <code>{ nome: "Davi Rocha", media: 9 }</code>. Não esqueça a vírgula depois do <code>}</code> do aluno de cima.</li>
+                <li>A tabela cresce sem você mexer no HTML.</li>
+              </ol>
+            </div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você:</strong>
+              <ol>
+                <li>Troque a lista pela turma do <strong>seu</strong> Cadastro de Alunos (o array das aulas 9 e 10).</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- passo 5 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-5">
+            <div class="texto">
+              <span class="olho">Passo 5 · item 6 da atividade</span>
+              <h3>Aprovado em verde, reprovado em vermelho: <code>classList</code></h3>
+              <p>O JavaScript não pinta nada. As cores ficam no CSS, nas classes <code>.aprovado</code> e <code>.reprovado</code>. O JavaScript só escolhe a classe da linha: <code>linha.classList.add(situacao)</code>.</p>
+              <p>Repare no <code>let situacao</code>: a decisão é tomada uma vez só e usada duas vezes, na classe e no texto. E o <code>toFixed(1)</code> mostra a média com uma casa decimal: <code>7</code> vira <code>7.0</code>.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque o <code>estilo.css</code>: as duas classes novas estão no fim.</li>
+                  <li>Troque o <code>script.js</code>.</li>
+                  <li>Salve e veja as cores.</li>
+                  <li>No <kbd>F12</kbd>, aba <strong>Elements</strong>: cada <code>&lt;tr&gt;</code> ganhou <code>class="aprovado"</code> ou <code>class="reprovado"</code>.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p5"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>No CSS, troque a cor do <code>.reprovado</code> por laranja (<code>#b85c00</code>). Você mudou uma linha e todas as linhas reprovadas mudaram juntas.</li>
+              </ol>
+            </div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você:</strong>
+              <ol>
+                <li>Crie a classe <code>.destaque</code> no CSS (por exemplo, <code>font-weight: bold;</code>) e ligue nas linhas com média 9 ou mais, com mais um <code>if</code> e <code>classList.add("destaque")</code>.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Funcionou?</strong> <code>git add .</code> e <code>git commit -m "Aula 11: tabela com cores"</code>.</p>
+          </div>
+
+          <!-- passo 6 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-6">
+            <div class="texto">
+              <span class="olho">Passo 6 · itens 7 e 8 da atividade</span>
+              <h3>A versão final: funções, turma vazia e CSS caprichado</h3>
+              <p>Três melhorias de programador. A função <code>criarCelula(texto)</code> cria a célula e já escreve o texto: três linhas viram uma. A função <code>mostrarTurma(lista)</code> desenha a tabela inteira e pode ser chamada de novo sempre que a lista mudar (é o que a aula 12 vai fazer).</p>
+              <p>E o "E se…" do caso de uso: se a lista está vazia (<code>lista.length === 0</code>), a tabela se esconde (<code>hidden = true</code>) e aparece o aviso <strong>"Nenhum aluno cadastrado"</strong>.</p>
+              <p>O CSS ganhou o desafio criativo: cantos arredondados, sombra e a linha que escurece quando o mouse passa por cima.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Troque os três arquivos.</li>
+                  <li>Salve e passe o mouse sobre as linhas da tabela.</li>
+                </ol>
+              </div>
+            </div>
+            <div id="projeto-p6"></div>
+            <div class="faca-assim">
+              <strong>Teste:</strong>
+              <ol>
+                <li>Na última linha, troque <code>mostrarTurma(turma)</code> por <code>mostrarTurma([])</code>: a tabela some e aparece o aviso. Depois, volte como estava.</li>
+              </ol>
+            </div>
+            <div class="faca-assim desafio">
+              <strong>Agora é com você (desafio criativo):</strong>
+              <ol>
+                <li>Personalize o CSS do seu jeito: as cores da sua turma, outra fonte, um emoji na situação (✅ ou ❌).</li>
+                <li>Quer mais? Faça o desafio extra lá embaixo: aprovados e média geral no topo da página.</li>
+              </ol>
+            </div>
+            <p class="dica"><strong>Terminou?</strong> Entregue: <code>git add .</code>, <code>git commit -m "Aula 11: Cadastro com tabela"</code> e <code>git push</code>. Depois marque os itens da atividade.</p>
+          </div>
+        </section>
+
         <!-- ===================== CASO DE USO ===================== -->
         <section class="parte" id="caso">
           <div class="cab">
@@ -185,7 +416,7 @@
           <div class="cab">
             <span class="olho">A1 · atividade</span>
             <h2>O Cadastro ganha cara</h2>
-            <p>Do console para uma tabela na página. O que você marcar fica salvo neste navegador.</p>
+            <p>Do console para uma tabela na página. O código de cada item está no <a href="#na-tela">tutorial</a>, logo acima. O que você marcar fica salvo neste navegador.</p>
           </div>
 
           <div class="cartao">
@@ -194,14 +425,14 @@
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-11">
-              <li><label><input type="checkbox"><span>Crie um <code>index.html</code> no Cadastro com uma <code>&lt;table&gt;</code> vazia.</span></label></li>
-              <li><label><input type="checkbox"><span>Ligue o seu <code>script.js</code> com <code>&lt;script src&gt;</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Selecione a tabela com <code>querySelector()</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Percorra o array de alunos e crie uma linha (<code>tr</code>) para cada um com <code>createElement()</code>.</span></label></li>
-              <li><label><input type="checkbox"><span>Preencha as células com <code>textContent</code>: nome, média e situação.</span></label></li>
-              <li><label><input type="checkbox"><span>Use <code>classList</code> para pintar de verde os aprovados.</span></label></li>
-              <li><label><input type="checkbox"><span>Desafio criativo: personalize a tabela com CSS.</span></label></li>
-              <li><label><input type="checkbox"><span>Faça o commit.</span></label></li>
+              <li><label><input type="checkbox"><span>Crie um <code>index.html</code> no Cadastro com uma <code>&lt;table&gt;</code> vazia. <a href="#passo-2">Veja o passo 2.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Ligue o seu <code>script.js</code> com <code>&lt;script src&gt;</code>. <a href="#passo-1">Veja o passo 1.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Selecione a tabela com <code>querySelector()</code>. <a href="#passo-2">Veja o passo 2.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Percorra o array de alunos e crie uma linha (<code>tr</code>) para cada um com <code>createElement()</code>. <a href="#passo-3">Veja os passos 3 e 4.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Preencha as células com <code>textContent</code>: nome, média e situação. <a href="#passo-3">Veja os passos 3 e 4.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Use <code>classList</code> para pintar de verde os aprovados. <a href="#passo-5">Veja o passo 5.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Desafio criativo: personalize a tabela com CSS. <a href="#passo-6">Veja o passo 6.</a></span></label></li>
+              <li><label><input type="checkbox"><span>Faça o commit e o push. <a href="#passo-6">Veja o passo 6.</a></span></label></li>
             </ol>
           </div>
         </section>
@@ -312,6 +543,8 @@
   </svg>
 
   <script src="../assets/js/aulas.js"></script>
+  <script src="../curso/js/playground.js?v=6"></script>
+  <script src="../assets/js/aula-11-projetos.js?v=1"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
 </html>
