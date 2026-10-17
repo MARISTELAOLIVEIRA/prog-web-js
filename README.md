@@ -1,100 +1,206 @@
 <p align="center">
-  <img src="img/EstrelaLogo.png" alt="Logo do curso" width="110" />
-</p>
-
-<h1 align="center">Curso Interativo de HTML, CSS e JavaScript</h1>
-
-<p align="center">
-  <strong>Tema visual cyberpunk</strong> · verde neon · chuva de zeros e uns animada 🟢⚡
+  <img src="assets/img/banner.svg" alt="Programação Web em JavaScript · Profa. Maristela · Senac DF" width="100%">
 </p>
 
 <p align="center">
-  <img alt="Módulos" src="https://img.shields.io/badge/módulos-8-39ff14?style=flat-square&labelColor=050807" />
-  <img alt="Tecnologias" src="https://img.shields.io/badge/tecnologias-HTML%20%7C%20CSS%20%7C%20JS-00ff9d?style=flat-square&labelColor=050807" />
-  <img alt="Servidor" src="https://img.shields.io/badge/servidor-não%20necessário-39e6ff?style=flat-square&labelColor=050807" />
-  <img alt="Licença" src="https://img.shields.io/badge/uso-educacional-ff2e63?style=flat-square&labelColor=050807" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=F7DF1E&labelColor=0E0F0A" alt="JavaScript ES6+">
+  <img src="https://img.shields.io/badge/aulas-18_encontros-39FF9E?style=for-the-badge&labelColor=0E0F0A" alt="18 encontros">
+  <img src="https://img.shields.io/badge/curso_interativo-8_módulos-F7DF1E?style=for-the-badge&labelColor=0E0F0A" alt="Curso interativo com 8 módulos">
+  <img src="https://img.shields.io/badge/instalar-nada-5FA8E8?style=for-the-badge&labelColor=0E0F0A" alt="Não precisa instalar nada">
+</p>
+
+<p align="center">
+  <b><a href="https://maristelaoliveira.github.io/prog-web-js/">🌐 Abrir o site da disciplina</a></b>
+  &nbsp;·&nbsp;
+  <b><a href="https://maristelaoliveira.github.io/prog-web-js/#aulas">📚 Ir direto para as aulas</a></b>
+  &nbsp;·&nbsp;
+  <b><a href="https://maristelaoliveira.github.io/prog-web-js/curso/">⚡ Abrir o curso interativo</a></b>
 </p>
 
 ---
 
-Curso feito para acompanhar (e simplificar!) o conteúdo do **NetAcad JavaScript Essentials 1**, pensado para a
-disciplina de **Programação Web em JavaScript**. Nada de slides estáticos: cada módulo tem teoria direta ao ponto, um editor
-de código que roda de verdade no navegador, exercícios com correção automática e quiz de fixação — tudo isso
-com um fundo neon animado estilo Matrix. 😎
+## `> console.log("Prazer!")`
 
-## ✨ Destaques
+Prazer, eu sou a **Profa. Maristela**, ou só **Stela**! 👋
 
-- 🖥️ **Editor de código ao vivo** — o aluno escreve e executa JavaScript de verdade, isolado em um `<iframe>`
-  sandbox, sem risco para a página.
-- 🧪 **Exercícios com correção automática** — o aluno completa uma função, clica em "Verificar" e recebe
-  feedback instantâneo, teste por teste.
-- 🖱️ **Playgrounds de DOM/Formulários** — uma mini página HTML de verdade dentro do próprio módulo, para clicar
-  em botões e ver o resultado na hora.
-- ❓ **Quiz de múltipla escolha** em cada módulo, com correção visual (verde = certo, magenta = errado).
-- 💾 **Progresso salvo no navegador** — o botão "Marcar módulo como concluído" atualiza a barra de progresso da
-  página inicial via `localStorage`.
-- ⚡ **Fundo animado estilo Matrix** — colunas de zeros e uns caindo no topo da página, em `<canvas>` puro (sem bibliotecas
-  externas). É a mesma chuva do site da disciplina: [assets/js/matrix.js](assets/js/matrix.js). Para com o botão
-  "Pausar animações" da barra do topo.
+Boas-vindas à **Programação Web em JavaScript**, do curso de **Análise e Desenvolvimento de Sistemas** da Faculdade de Tecnologia e Inovação Senac DF (2º semestre, turmas A e B, 70 horas: 60h presenciais e 10h EAD).
 
-## 🧩 Módulos
+Este repositório é o **site da disciplina**: o lugar onde ficam as aulas, os tutoriais, o curso interativo, os exercícios e o quiz de revisão. Nada de slides: aqui a aula é o próprio site.
 
-| # | Módulo | O que você aprende |
-|---|--------|---------------------|
-| 1 | [Variáveis, Tipos e Operadores](modulos/01-variaveis/index.html) | `let`/`const`, tipos de dados, operadores aritméticos, lógicos e de comparação |
-| 2 | [Estruturas Condicionais](modulos/02-condicionais/index.html) | `if`/`else`, `switch`, operador ternário |
-| 3 | [Laços de Repetição](modulos/03-lacos/index.html) | `for`, `while`, `do...while`, `break`/`continue` |
-| 4 | [Funções](modulos/04-funcoes/index.html) | funções tradicionais, arrow functions, parâmetros, retorno, escopo |
-| 5 | [Arrays e Objetos](modulos/05-arrays-objetos/index.html) | listas, `push`/`pop`, objetos, arrays de objetos |
-| 6 | [DOM e Eventos](modulos/06-dom-eventos/index.html) | `querySelector`, `addEventListener`, `classList` |
-| 7 | [Formulários e Validação](modulos/07-formularios/index.html) | `preventDefault`, leitura de `<input>`, validação de dados |
-| 8 | [Debugging e Boas Práticas](modulos/08-debug-boas-praticas/index.html) | leitura de erros, `console.log` estratégico, boas práticas de código |
+Abra o console do navegador (`F12`) e veja com os próprios olhos:
 
-## ▶️ Como usar
+```js
+> const turma = "filhotes";
+> let energia = Infinity;
+> console.log(`Bem-vindos, ${turma}!`);
+Bem-vindos, filhotes!
 
-1. Baixe/clone esta pasta.
-2. Abra o [index.html](index.html) direto no navegador — **não precisa de servidor nem instalação**.
-3. *(Opcional, recomendado)* use a extensão **Live Server** do VS Code para uma experiência ainda mais estável
-   com o progresso salvo entre páginas.
+> typeof null
+'object'          // um bug de 1995 que nunca foi corrigido 🤷
 
-## 🗂️ Estrutura do projeto
-
-```
-CursoJavascript/
-├── index.html                  # página inicial (lista de módulos + progresso geral)
-├── css/
-│   └── style.css               # componentes do curso (as cores e fontes vêm do assets/css do site)
-├── js/
-│   ├── playground.js           # editor de código ao vivo + exercícios com correção automática
-│   ├── quiz.js                 # motor dos quizzes de múltipla escolha
-│   └── progress.js             # progresso do aluno (localStorage)
-├── img/
-│   ├── EstrelaLogo.png         # logo usado no certificado do quiz
-│   └── memoji.png              # avatar (não aparece mais na barra do topo)
-└── modulos/
-    ├── 01-variaveis/index.html
-    ├── 02-condicionais/index.html
-    ├── 03-lacos/index.html
-    ├── 04-funcoes/index.html
-    ├── 05-arrays-objetos/index.html
-    ├── 06-dom-eventos/index.html
-    ├── 07-formularios/index.html
-    └── 08-debug-boas-praticas/index.html
+> 0.1 + 0.2
+0.30000000000000004   // não é o JavaScript errando: é a matemática dos bits
 ```
 
-## 🎨 Personalizando
+> ⚡ Curiosidade: o JavaScript nasceu em cerca de 10 dias, em 1995, e o "Java" do nome foi só marketing. São linguagens diferentes.
 
-- **Teoria/texto de um módulo:** edite o HTML dentro da respectiva pasta em `modulos/`.
-- **Perguntas do quiz:** procure `criarQuiz("quiz-moduloX", [...])` no final do arquivo do módulo.
-- **Exercícios com correção automática:** procure `criarExercicio({...})` e ajuste enunciado, código inicial e testes.
-- **Cores/tema:** o curso usa o visual comum dos sites da Stela (`assets/css/estilo.css` e `assets/css/neon.css`,
-  com tema claro e escuro). O topo do [css/style.css](css/style.css) só traduz essas cores para os nomes do curso.
-- **Novo módulo:** copie a estrutura de uma pasta existente, adicione o link em `index.html` (lista
-  `DADOS_MODULOS`) e em `js/progress.js` (lista `MODULOS_DO_CURSO`).
+---
+
+## 🧭 O que tem no site
+
+| | Seção | Para que serve |
+|:-:|---|---|
+| 🔬 | **Raio-X do JavaScript** | O que a linguagem faz na página, com seis curiosidades (e o famoso `typeof null`). |
+| 📜 | **Ementa e objetivos** | A ementa oficial e aonde a gente quer chegar. |
+| 🧩 | **Conteúdo programático** | As cinco unidades, do console ao framework. |
+| 📚 | **Aulas** | Uma página por encontro, com problema, conceitos, tutorial passo a passo, estudo de caso e checklist. |
+| ⚡ | **Curso interativo** | Oito módulos com explicação direta, editor de código ao vivo e quiz. O seu progresso fica salvo no navegador. |
+| 🛠️ | **Tutoriais** | Passo a passo para construir do zero, começando por uma calculadora simples. |
+| 🧪 | **Exercícios e modelos** | Variáveis, operadores lógicos, `else if` e repetição, mais arquivos prontos para começar. |
+| 🕹️ | **Quiz de revisão do 1º bimestre** | 20 questões sobre os módulos 1, 2 e 3, com explicação em cada resposta. Começa com o login do e-mail da faculdade. |
+| 📊 | **Avaliação** | Como a nota é montada nos dois bimestres. |
+| 📖 | **Bibliografia** | Os livros da biblioteca, todos em e-book. |
+
+---
+
+## 🗺️ A trilha do semestre
+
+Cinco unidades, do primeiro `console.log` ao framework. Em JavaScript, fica assim:
+
+```js
+const trilha = [
+  "Unidade 1 · fundamentos: variáveis, tipos e operadores",
+  "Unidade 2 · decisão e repetição (if, switch, for, while)",
+  "Unidade 3 · funções e arrow functions",
+  "Unidade 4 · arrays, objetos, DOM e eventos",
+  "Unidade 5 · frameworks: React na tela, Node.js no servidor",
+];
+
+trilha.forEach((unidade, i) => console.log(`${i + 1}. ${unidade}`));
+console.log("🏁 Projeto integrador no ar!");
+```
+
+| Aula | Tema | |
+|:-:|---|:-:|
+| 01 | Conhecendo a disciplina | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-01.html) |
+| 02 | Como os sites executam comandos? (introdução ao JavaScript) | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-02.html) |
+| 03 | Variáveis e tipos de dados: guardando informações | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-03.html) |
+| 04 | Desenvolvendo uma calculadora inteligente (operadores) | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-04.html) |
+| 05 | Como um sistema toma decisões? | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-05.html) |
+| 06 | Repetindo tarefas automaticamente | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-06.html) |
+| 07 | Cadastro de Alunos, parte I: organizando o código com funções | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-07.html) |
+| 08 | Avaliação do 1º bimestre | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-08.html) |
+| 09 | Como organizar grandes volumes de dados? Arrays | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-09.html) |
+| 10 | Cadastro de Alunos, parte II: objetos e JSON | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-10.html) |
+| 11 | Conhecendo o DOM | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-11.html) |
+| 12 | Tornando páginas interativas: eventos | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-12.html) |
+| 13 | Frameworks JavaScript: seminários relâmpago | [abrir](https://maristelaoliveira.github.io/prog-web-js/aulas/aula-13.html) |
+| 14 a 18 | React, Node.js e GitHub Pages, projeto integrador, apresentação e encerramento | em breve |
+
+---
+
+## 🖥️ Tutorial com cara de VS Code
+
+Da aula 9 em diante, o tutorial de cada aula roda num editor com cara de VS Code, dentro da própria página. Cada passo tem três caixas:
+
+```text
+✅ Faça assim         → o código completo, pronto para copiar e rodar
+🧪 Teste             → erros de propósito, para ver o que acontece
+🚀 Agora é com você  → um desafio para fazer sozinho
+```
+
+E cada item do checklist da atividade diz qual passo mostra como fazer. Travou? "Veja o passo 3". 😉
+
+---
+
+## 🛠️ Ferramentas da disciplina
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=js,html,css,vscode,github,git,react,nodejs&theme=dark" alt="JavaScript, HTML, CSS, VS Code, GitHub, Git, React e Node.js">
+</p>
+
+| Ferramenta | Para quê |
+|---|---|
+| 🧭 **Navegador e console** (`F12`) | Rodar o JavaScript e ver o que acontece. O F12 vai virar seu melhor amigo. |
+| 💻 **VS Code** com **Live Server** | Escrever o código e ver a página atualizar sozinha. |
+| 🎓 **NetAcad · JavaScript Essentials 1** | A trilha que o curso interativo acompanha (e simplifica). |
+| 🐙 **GitHub** e **GitHub Pages** | Guardar o projeto, fazer commit e publicar o site. |
+| 📘 **MDN Web Docs** | A documentação oficial, em português, para consultar sem medo. |
+| ⚛️ **React** e 🟢 **Node.js** | O mapa do mercado: framework na tela e JavaScript no servidor. |
+| 💬 **Teams** e **Moodle** | Combinar, tirar dúvida e entregar. |
+| 🤖 **GitHub Copilot** e **Copilot do Microsoft 365** | Para codificar, depurar e revisar, com senso crítico. |
+
+> 🤖 **IA com consciência:** o Copilot entra **depois** de você. Primeiro você pensa e escreve; depois a IA revisa e explica. Ela é assistente de estudo, não substituta do seu raciocínio. E se a sugestão parecer boa demais, confira: a IA também erra. 💪
+
+---
+
+## 📊 Como a nota é montada
+
+| 1º bimestre (10 pontos) | | 2º bimestre (10 pontos) | |
+|---|:-:|---|:-:|
+| Prova objetiva | 6,0 | Atividade avaliativa prática | 7,0 |
+| Atividade avaliativa prática | 4,0 | Avaliação Integrada | 2,0 |
+| | | Participação na Jornada Interdisciplinar | 1,0 |
+
+Para ser aprovado: **média final 6,0** e pelo menos **75% de frequência**.
+
+```text
+Uncaught TypeError: aluno.aprovar is not a function
+    at semestre.js:18
+    motivo: frequência abaixo de 75%
+```
+
+> Esse erro a gente não quer ver no console. Venha às aulas! 😉
+
+---
+
+## 🙋 Dicas de sobrevivência
+
+1. **Abra o console antes de pedir socorro.** A mensagem vermelha diz o arquivo e a linha.
+2. **Use `===`, não `==`.** Em JavaScript, `"1" == 1` dá `true`. Não confie.
+3. **`console.log` estratégico.** Na dúvida sobre o valor de uma variável, imprima.
+4. **Teste com dado errado de propósito.** Campo vazio, número negativo, letra no lugar de número.
+5. **`const` primeiro, `let` quando precisar mudar.** E esqueça o `var`. 🙃
+6. **Travou?** Pergunte no Teams. Ninguém nasce sabendo `addEventListener`.
+
+---
+
+<details>
+<summary><b>👩‍🏫 Para a professora (estrutura do repositório)</b></summary>
+
+<br>
+
+Site estático publicado no GitHub Pages a partir da branch `main`, sem build e sem dependências.
+
+```text
+prog-web-js/
+├── index.html                # página da disciplina (raio-x, ementa, conteúdo, aulas, avaliação, atividades)
+├── aulas/
+│   └── aula-NN.html          # uma página por aula
+├── curso/                    # o curso interativo
+│   ├── index.html            # página inicial dos 8 módulos, com a barra de progresso
+│   ├── modulos/NN-tema/      # um módulo por pasta (explicação, editor ao vivo e quiz)
+│   ├── tutoriais/            # calculadora simples e calculadora com HTML, CSS e JS
+│   ├── exercicios/           # exercícios e modelos para copiar
+│   ├── quiz/                 # quiz de revisão do 1º bimestre (perguntas em js/questoes-revisao.js)
+│   └── js/playground.js      # editor ao vivo, exercícios corrigidos e criarProjetoVS()
+└── assets/
+    ├── css/                  # visual comum dos sites da Stela; aula.css e editor-vs.css (o editor com cara de VS Code)
+    ├── js/                   # aula-NN-projetos.js (os passos do tutorial), conta.js (login e registro do quiz)
+    └── img/                  # ícones, logo e o banner deste README
+```
+
+- Aula nova: copie uma página de `aulas/`, ajuste o conteúdo e ligue o link na lista de aulas do `index.html`.
+- Tutorial no editor: os arquivos de cada passo ficam em `assets/js/aula-NN-projetos.js`.
+- Pergunta nova no quiz de revisão: `curso/js/questoes-revisao.js`.
+- Antes de publicar: testar no navegador, também na largura de celular (390 px).
+
+</details>
 
 ---
 
 <p align="center">
-  Criado para a disciplina de <strong>Programação Web em JavaScript</strong> · HTML, CSS e JavaScript<br />
-  <strong>Profª Maristela</strong>
+  Feito com ♥ e sucata eletrônica pela <a href="https://maristelaoliveira.github.io/">Profa. Maristela</a> · Faculdade de Tecnologia e Inovação Senac DF
+  <br>
+  <code>console.log("bons estudos!");</code>
 </p>
