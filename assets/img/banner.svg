@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Programação Web em JavaScript · Profa. Maristela · Senac DF</title>
+  <desc id="descricao">Banner: o título em amarelo do JavaScript, ao lado de uma janela de editor com o programa bem-vindos.js e o console do navegador mostrando a saída e a piada do typeof null.</desc>
+
+  <defs>
+    <!-- Brilhos do fundo: amarelo do JavaScript à esquerda, verde neon à direita -->
+    <radialGradient id="brilhoAmarelo" cx="6%" cy="18%" r="65%">
+      <stop offset="0" stop-color="#F7DF1E" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#F7DF1E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="brilhoVerde" cx="96%" cy="112%" r="60%">
+      <stop offset="0" stop-color="#39FF9E" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#39FF9E" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Trilhas de placa de circuito, bem apagadas -->
+    <pattern id="placa" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M0 30 H22 L30 22 V0 M60 40 H42 L36 46 V60" fill="none" stroke="#F7DF1E" stroke-opacity=".06" stroke-width="2"/>
+      <circle cx="30" cy="22" r="3" fill="#F7DF1E" fill-opacity=".09"/>
+      <circle cx="36" cy="46" r="3" fill="#F7DF1E" fill-opacity=".09"/>
+    </pattern>
+    <filter id="neon" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="borrado"/>
+      <feMerge><feMergeNode in="borrado"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="1200" height="360" rx="18" fill="#0E0F0A"/>
+  <rect width="1200" height="360" rx="18" fill="url(#placa)"/>
+  <rect width="1200" height="360" rx="18" fill="url(#brilhoAmarelo)"/>
+  <rect width="1200" height="360" rx="18" fill="url(#brilhoVerde)"/>
+
+  <!-- Selo "JS" -->
+  <g transform="translate(64 62)">
+    <rect width="44" height="44" rx="6" fill="#F7DF1E"/>
+    <text x="40" y="38" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#0E0F0A">JS</text>
+  </g>
+
+  <!-- Título -->
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+    <text x="124" y="92" font-size="20" fill="#B9B8A0" letter-spacing="3">ADS · SENAC DF · TURMAS A E B</text>
+    <text x="62" y="162" font-size="56" font-weight="800" fill="#F5F5EE">Programação Web</text>
+    <text x="62" y="232" font-size="74" font-weight="800" fill="#F7DF1E" filter="url(#neon)">JavaScript</text>
+    <text x="64" y="280" font-size="22" fill="#DCDCCB">Do primeiro console.log ao projeto com</text>
+    <text x="64" y="310" font-size="22" fill="#DCDCCB">framework, direto no navegador.</text>
+  </g>
+
+  <!-- Janela do editor -->
+  <g transform="translate(640 46)">
+    <rect width="500" height="268" rx="12" fill="#16170F" stroke="#3A3A28" stroke-width="2"/>
+    <rect width="500" height="38" rx="12" fill="#22231A"/>
+    <rect y="26" width="500" height="12" fill="#22231A"/>
+    <circle cx="22" cy="19" r="7" fill="#FF5F57"/>
+    <circle cx="44" cy="19" r="7" fill="#FEBC2E"/>
+    <circle cx="66" cy="19" r="7" fill="#28C840"/>
+    <text x="250" y="25" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="15" fill="#B9B8A0">bem-vindos.js</text>
+
+    <g font-family="Consolas, 'Courier New', monospace" font-size="18">
+      <text x="20" y="72" fill="#6B6B55">1</text>
+      <text x="48" y="72" fill="#6A9955">// ADS · 2º semestre · 70h</text>
+      <text x="20" y="98" fill="#6B6B55">2</text>
+      <text x="48" y="98"><tspan fill="#569CD6">const</tspan><tspan fill="#9CDCFE"> turma</tspan><tspan fill="#D4D4D4"> = </tspan><tspan fill="#CE9178">"filhotes"</tspan><tspan fill="#D4D4D4">;</tspan></text>
+      <text x="20" y="124" fill="#6B6B55">3</text>
+      <text x="48" y="124"><tspan fill="#569CD6">let</tspan><tspan fill="#9CDCFE"> energia</tspan><tspan fill="#D4D4D4"> = </tspan><tspan fill="#4EC9B0">Infinity</tspan><tspan fill="#D4D4D4">;</tspan></text>
+      <text x="20" y="150" fill="#6B6B55">4</text>
+      <text x="48" y="150"><tspan fill="#9CDCFE">console</tspan><tspan fill="#D4D4D4">.</tspan><tspan fill="#DCDCAA">log</tspan><tspan fill="#D4D4D4">(</tspan><tspan fill="#CE9178">`Bem-vindos, </tspan><tspan fill="#569CD6">${</tspan><tspan fill="#9CDCFE">turma</tspan><tspan fill="#569CD6">}</tspan><tspan fill="#CE9178">!`</tspan><tspan fill="#D4D4D4">);</tspan></text>
+    </g>
+
+    <!-- Console do navegador (F12) -->
+    <rect x="14" y="166" width="472" height="90" rx="8" fill="#0A0A06"/>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="16">
+      <text x="30" y="188" fill="#B9B8A0">Console · F12</text>
+      <text x="30" y="212" fill="#F7DF1E">Bem-vindos, filhotes!</text>
+      <text x="30" y="240"><tspan fill="#39FF9E">&gt; </tspan><tspan fill="#D4D4D4">typeof null</tspan><tspan fill="#8A8A70">  ←  </tspan><tspan fill="#CE9178">'object'</tspan></text>
+      <rect x="276" y="226" width="10" height="18" fill="#39FF9E"/>
+    </g>
+  </g>
+</svg>
