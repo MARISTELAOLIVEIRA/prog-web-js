@@ -35,7 +35,6 @@
         <a href="#aulas">Aulas</a>
         <a href="#avaliacao">Avaliação</a>
         <a href="#atividades">Atividades</a>
-        <a href="#entregas">Entregas</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -291,12 +290,42 @@
       </div>
     </section>
 
+    <!-- ===================== BIBLIOGRAFIA (opcional) ===================== -->
+    <section class="bloco alt" id="bibliografia">
+      <div class="envolve">
+        <div class="cab" data-revela>
+          <span class="olho">B1 · bibliografia</span>
+          <h2>Para ir além da aula</h2>
+          <p>Todos disponíveis como e-book na biblioteca.</p>
+        </div>
+
+        <!-- EDITE AQUI: bibliografia básica e complementar (do plano de ensino) -->
+        <div class="biblio">
+          <div class="cartao" data-revela>
+            <span class="olho">Básica</span>
+            <ol>
+              <li><strong>JavaScript: o guia definitivo</strong>FLANAGAN, David. 6. ed. São Paulo: O'Reilly Media, 2012.</li>
+              <li><strong>JavaScript: guia do programador</strong>SILVA, Maurício Samy. São Paulo: Novatec Editora, 2020.</li>
+              <li><strong>Estruturas de dados e algoritmos com JavaScript</strong>GRONER, Loiane. São Paulo: Novatec Editora, 2021.</li>
+            </ol>
+          </div>
+          <div class="cartao" data-revela style="--i:1">
+            <span class="olho">Complementar</span>
+            <ol>
+              <li><strong>Padrões JavaScript</strong>STEFANOV, Stoyan. São Paulo: Novatec Editora, 2020.</li>
+              <li><strong>Use a cabeça!: programação JavaScript</strong>FREEMAN, Eric; ROBSON, Elisabeth. São Paulo: Alta Books, 2014.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== AULAS ===================== -->
     <!--
       EDITE AQUI: uma linha por aula, numerada e sem data (o material serve para vários semestres). Quando a página da aula existir, coloque o link no título
       (<a href="aulas/aula-NN.html">) e a etiqueta "abrir a aula →" no fim da linha.
     -->
-    <section class="bloco alt" id="aulas">
+    <section class="bloco" id="aulas">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">A1–A18 · aulas</span>
@@ -381,7 +410,7 @@
     </section>
 
     <!-- ===================== COMO AS AULAS FUNCIONAM ===================== -->
-    <section class="bloco" id="metodo">
+    <section class="bloco alt" id="metodo">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">M1 · metodologia</span>
@@ -424,10 +453,10 @@
     </section>
 
     <!-- ===================== AVALIAÇÃO (opcional) ===================== -->
-    <section class="bloco alt" id="avaliacao">
+    <section class="bloco" id="avaliacao">
       <div class="envolve">
         <div class="cab" data-revela>
-          <span class="olho">A1 · avaliação</span>
+          <span class="olho">N1 · avaliação</span>
           <h2>Como a nota é montada</h2>
           <p>Sem surpresa: dez pontos por bimestre, e cada parte tem o seu peso.</p>
         </div>
@@ -459,7 +488,7 @@
     </section>
 
     <!-- ===================== ATIVIDADES E MATERIAIS ===================== -->
-    <section class="bloco" id="atividades">
+    <section class="bloco alt" id="atividades">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">J1 · conectores</span>
@@ -505,7 +534,7 @@
     </section>
 
     <!-- ===================== PRÓXIMAS ENTREGAS ===================== -->
-    <section class="bloco alt" id="entregas">
+    <section class="bloco" id="entregas">
       <div class="envolve">
         <div class="cab" data-revela>
           <span class="olho">T1 · prazos</span>
@@ -527,36 +556,6 @@
           <div class="cartao entregas-vazio">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
             <p>Nenhuma entrega com data marcada por enquanto. Quando tiver, ela aparece aqui primeiro.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== BIBLIOGRAFIA (opcional) ===================== -->
-    <section class="bloco" id="bibliografia">
-      <div class="envolve">
-        <div class="cab" data-revela>
-          <span class="olho">B1 · bibliografia</span>
-          <h2>Para ir além da aula</h2>
-          <p>Todos disponíveis como e-book na biblioteca.</p>
-        </div>
-
-        <!-- EDITE AQUI: bibliografia básica e complementar (do plano de ensino) -->
-        <div class="biblio">
-          <div class="cartao" data-revela>
-            <span class="olho">Básica</span>
-            <ol>
-              <li><strong>JavaScript: o guia definitivo</strong>FLANAGAN, David. 6. ed. São Paulo: O'Reilly Media, 2012.</li>
-              <li><strong>JavaScript: guia do programador</strong>SILVA, Maurício Samy. São Paulo: Novatec Editora, 2020.</li>
-              <li><strong>Estruturas de dados e algoritmos com JavaScript</strong>GRONER, Loiane. São Paulo: Novatec Editora, 2021.</li>
-            </ol>
-          </div>
-          <div class="cartao" data-revela style="--i:1">
-            <span class="olho">Complementar</span>
-            <ol>
-              <li><strong>Padrões JavaScript</strong>STEFANOV, Stoyan. São Paulo: Novatec Editora, 2020.</li>
-              <li><strong>Use a cabeça!: programação JavaScript</strong>FREEMAN, Eric; ROBSON, Elisabeth. São Paulo: Alta Books, 2014.</li>
-            </ol>
           </div>
         </div>
       </div>
@@ -625,7 +624,7 @@
   </svg>
 
   <script src="assets/js/aulas.js"></script>
-  <script src="assets/js/atividades.js?v=2"></script>
+  <script src="assets/js/atividades.js?v=3"></script>
   <script src="assets/js/matrix.js?v=2"></script>
 </body>
 </html>
