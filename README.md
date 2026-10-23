@@ -124,7 +124,7 @@ E cada item do checklist da atividade diz qual passo mostra como fazer. Travou? 
 | 🧭 **Navegador e console** (`F12`) | Rodar o JavaScript e ver o que acontece. O F12 vai virar seu melhor amigo. |
 | 💻 **VS Code** com **Live Server** | Escrever o código e ver a página atualizar sozinha. |
 | 🎓 **NetAcad · JavaScript Essentials 1** | A trilha que o curso interativo acompanha (e simplifica). |
-| 🐙 **GitHub** e **GitHub Pages** | Guardar o projeto, fazer commit e publicar o site. |
+| <img src="https://maristelaoliveira.github.io/assets/img/octocat-stela.webp" width="22" height="22" alt="Octocat da Stela" align="absmiddle"> **GitHub** e **GitHub Pages** | Guardar o projeto, fazer commit e publicar o site. |
 | 📘 **MDN Web Docs** | A documentação oficial, em português, para consultar sem medo. |
 | ⚛️ **React** e 🟢 **Node.js** | O mapa do mercado: framework na tela e JavaScript no servidor. |
 | 💬 **Teams** e **Moodle** | Combinar, tirar dúvida e entregar. |
