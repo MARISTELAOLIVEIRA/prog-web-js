@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <!-- EDITE AQUI: número e tema da aula -->
-  <title>Aula 15: Projeto integrador: desenvolvimento orientado · Web em JavaScript · Stela</title>
-  <meta name="description" content="Aula 15 de Programação Web em JavaScript: mentoria por grupo e ajustes orientados no projeto integrador.">
+  <title>Aula 15: Do VS Code ao ar · Web em JavaScript · Stela</title>
+  <meta name="description" content="Aula 15 de Programação Web em JavaScript: tutorial para publicar a sua página no GitHub Pages e a entrega final individual.">
 
   <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../assets/css/disciplina.css?v=4">
   <link rel="stylesheet" href="../assets/css/aula.css?v=2">
   <link rel="stylesheet" href="../assets/css/neon.css?v=4">
+  <link rel="stylesheet" href="../assets/css/editor-vs.css?v=2">
 </head>
 <body>
 
@@ -31,11 +32,11 @@
       <button type="button" class="btn-menu" id="btn-menu" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="nav" id="menu" aria-label="Partes da aula">
         <a href="../#aulas">← Todas as aulas</a>
-        <a href="#roteiro">Roteiro</a>
-        <a href="#caso">Caso</a>
+        <a href="#tutorial">Tutorial</a>
+        <a href="#erros">Deu ruim?</a>
+        <a href="#entrega-final">Entrega final</a>
         <a href="#atividade">Atividade</a>
         <a href="#materiais">Materiais</a>
-        <a href="#entrega">Entrega</a>
       </nav>
       <div class="ajustes">
         <button type="button" id="btn-tema" aria-label="Mudar para o tema claro">
@@ -73,11 +74,11 @@
         <div class="aula-etiquetas">
           <span class="etiqueta senac">Fac Senac DF</span>
           <span class="etiqueta ouro">Aula 15</span>
-          <span class="etiqueta">Projeto</span>
-          <span class="etiqueta">Projeto integrador</span>
+          <span class="etiqueta">Tutorial</span>
+          <span class="etiqueta">Entrega final</span>
         </div>
-        <h1>Oficina de ajustes</h1>
-        <p class="subtitulo">Cada grupo traz o projeto, a gente abre o capô junto e aperta os parafusos.</p>
+        <h1>Do VS Code ao ar</h1>
+        <p class="subtitulo">Hoje a sua página ganha um endereço na internet. De verdade, para mandar para quem você quiser.</p>
 
       </div>
     </section>
@@ -88,15 +89,15 @@
         <div class="resumo">
           <div class="cartao">
             <span class="olho">Objetivo do dia</span>
-            <p>Revisar o projeto integrador com a professora e sair com a lista do que falta, por ordem de prioridade.</p>
+            <p>Publicar a sua primeira página no GitHub Pages e conhecer a entrega final.</p>
           </div>
           <div class="cartao">
             <span class="olho">Antes da aula</span>
-            <p>Trazer o projeto publicado no GitHub Pages e a lista de dúvidas do grupo.</p>
+            <p>Ter uma conta no <a href="https://github.com/signup">github.com</a> e saber a senha. Ainda não tem? Crie no começo da aula.</p>
           </div>
           <div class="cartao">
             <span class="olho">Como conta ponto</span>
-            <p>Acompanhamento do projeto integrador. A nota vem na apresentação final.</p>
+            <p>A página publicada hoje é o primeiro degrau da entrega final individual (7,0 pontos, apresentada na aula 17).</p>
           </div>
         </div>
       </div>
@@ -105,53 +106,211 @@
     <div class="bloco">
       <div class="envolve aula-corpo">
 
-        <!-- ===================== ROTEIRO DO ENCONTRO ===================== -->
-        <section class="parte" id="roteiro">
+        <!-- ===================== PROBLEMA ===================== -->
+        <section class="parte" id="problema">
           <div class="cab">
-            <span class="olho">R1 · roteiro</span>
-            <h2>Como vai ser o encontro</h2>
+            <span class="olho">P1 · o problema</span>
+            <h2>No seu computador, só você vê</h2>
+            <p>Até hoje, as suas páginas abriam com um endereço como <code>file:///C:/Users/…/index.html</code>. Esse endereço só existe no seu computador: mande para um amigo e ele vê um erro.</p>
+            <p>Pense num bolo: no seu computador, ele está na sua cozinha. Para todo mundo provar, ele precisa ir para a <strong>vitrine de uma padaria</strong>, com endereço na rua. O <strong>GitHub</strong> é a padaria, e o <strong>GitHub Pages</strong> é a vitrine: ele mostra de graça páginas em HTML, CSS e JavaScript, num endereço como <code>https://seu-usuario.github.io/minha-pagina/</code>.</p>
           </div>
-          <ol class="log">
-          <li class="commit"><div class="commit-linha"><h3>Raio-X do projeto</h3><span class="hash">R1</span></div><p>Cada grupo mostra em dois minutos o que já funciona, o que está quebrado e o que ainda nem começou.</p></li>
-          <li class="commit"><div class="commit-linha"><h3>Mentoria por grupo</h3><span class="hash">R2</span></div><p>A professora passa em cada grupo. Vocês saem com uma lista de ajustes por prioridade: primeiro o que quebra, depois o que falta, por último o enfeite.</p></li>
-          <li class="commit"><div class="commit-linha"><h3>Mão na massa</h3><span class="hash">R3</span></div><p>Hora de corrigir: funcionalidades, README, publicação no GitHub Pages e acessibilidade.</p></li>
-          <li class="commit"><div class="commit-linha"><h3>Revisão com IA</h3><span class="hash">R4</span></div><p>Peça ao Copilot uma revisão do código e decida em grupo o que aceitar. Quem assina o código são vocês.</p></li>
-          </ol>
         </section>
 
-        <!-- ===================== CASO DE USO ===================== -->
-        <section class="parte" id="caso">
+        <!-- ===================== TUTORIAL ===================== -->
+        <section class="parte" id="tutorial">
           <div class="cab">
-            <span class="olho">CU1 · caso de uso</span>
-            <h2>O caso de uso principal do seu projeto</h2>
+            <span class="olho">T1 · tutorial</span>
+            <h2>Mão na massa: a sua página no ar em 6 passos</h2>
+            <p>Um passo de cada vez. No fim da aula, você sai com um link que abre no celular de qualquer pessoa.</p>
           </div>
-          <div class="cartao caso">
-            <p><strong>Ator:</strong> O usuário do projeto do grupo</p>
-            <p><strong>Objetivo:</strong> Fazer a tarefa mais importante do sistema, do começo ao fim.</p>
-            <h3>Fluxo principal</h3>
-            <ol>
-              <li>Escrevam quem é o ator e qual é o objetivo.</li>
-              <li>Listem os passos do fluxo principal.</li>
-              <li>Executem o projeto seguindo os passos, um por um.</li>
-              <li>Anotem onde travou: isso vai para a lista de ajustes.</li>
-            </ol>
-            <h3>E se...</h3>
-            <ul>
-              <li>Escrevam pelo menos dois "e se..." (dado errado, campo vazio, internet fora).</li>
-            </ul>
-            <h3>Para pensar</h3>
-            <ol>
-              <li>O fluxo principal funciona do começo ao fim, sem ajuda?</li>
-              <li>Qual "e se..." ainda quebra o projeto?</li>
-            </ol>
+
+          <!-- passo 1 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-1">
+            <div class="texto">
+              <span class="olho">Passo 1</span>
+              <h3>Monte a pasta no VS Code</h3>
+              <p>A página-modelo é um <strong>interruptor</strong>: o botão acende e apaga uma lâmpada, com um <code>if/else</code>. São os três arquivos de sempre, cada um com a sua função.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Crie uma pasta chamada <code>minha-pagina</code> e abra no VS Code: <strong>Arquivo › Abrir pasta</strong>.</li>
+                  <li>Crie os arquivos <code>index.html</code>, <code>estilo.css</code> e <code>script.js</code>, com esses nomes exatos, tudo em minúsculas.</li>
+                  <li>Copie os três arquivos daqui (botão <strong>⧉ Copiar o arquivo</strong> em cada aba) e salve cada um (<code>Ctrl + S</code>).</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Regra do GitHub Pages: a página inicial se chama <code>index.html</code>.</strong> É ela que abre quando alguém entra no seu link. Com outro nome (<code>pagina.html</code>, <code>Index.html</code>, <code>index.htm</code>), o link dá erro 404. Vale para qualquer site, não só para este.</p>
+            </div>
+            <div id="projeto-p1"></div>
           </div>
+
+          <!-- passo 2 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-2">
+            <div class="texto">
+              <span class="olho">Passo 2</span>
+              <h3>Teste no seu computador</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Abra o <code>index.html</code> com o <strong>Live Server</strong> (botão direito no arquivo › <em>Open with Live Server</em>) ou com dois cliques.</li>
+                  <li>Clique no botão: a lâmpada acende, o fundo clareia e o texto muda. Clique de novo: apaga.</li>
+                </ol>
+              </div>
+              <p class="dica"><strong>Regra de ouro:</strong> só publique o que já funciona no seu computador. Se aqui não funciona, lá também não vai funcionar.</p>
+            </div>
+          </div>
+
+          <!-- passo 3 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-3">
+            <div class="texto">
+              <span class="olho">Passo 3</span>
+              <h3>Crie o repositório no GitHub</h3>
+              <p>O repositório é a pasta do seu projeto lá no GitHub. As telas do GitHub são em inglês: os nomes dos botões estão em <strong>negrito</strong>, igualzinho ao que aparece.</p>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Entre no <a href="https://github.com">github.com</a> e clique no <strong>+</strong>, no alto da tela, e depois em <strong>New repository</strong>.</li>
+                  <li>Em <strong>Repository name</strong>, escreva <code>minha-pagina</code> (sem espaços nem acentos: o nome vai para o endereço).</li>
+                  <li>Deixe marcado <strong>Public</strong>. O GitHub Pages grátis só funciona com repositório público.</li>
+                  <li>Clique em <strong>Create repository</strong>.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- passo 4 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-4">
+            <div class="texto">
+              <span class="olho">Passo 4</span>
+              <h3>Envie os três arquivos</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>No repositório novo, clique no link <strong>uploading an existing file</strong>. Se o repositório já tiver arquivos, use <strong>Add file › Upload files</strong>.</li>
+                  <li>Arraste os <strong>três arquivos</strong> para a janela. Os arquivos, não a pasta <code>minha-pagina</code>!</li>
+                  <li>Espere aparecerem os três na lista e clique em <strong>Commit changes</strong>.</li>
+                </ol>
+              </div>
+              <p class="dica cuidado"><strong>Pegadinha clássica:</strong> arrastou a pasta inteira? Os arquivos ficam em <code>minha-pagina/index.html</code>, e o endereço da página muda. O <code>index.html</code> precisa aparecer logo na primeira tela do repositório.</p>
+            </div>
+          </div>
+
+          <!-- passo 5 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-5">
+            <div class="texto">
+              <span class="olho">Passo 5</span>
+              <h3>Ligue o GitHub Pages</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>No repositório, clique em <strong>Settings</strong> (a engrenagem, no alto).</li>
+                  <li>No menu da esquerda, clique em <strong>Pages</strong>.</li>
+                  <li>Em <strong>Source</strong>, deixe <strong>Deploy from a branch</strong>.</li>
+                  <li>Em <strong>Branch</strong>, escolha <strong>main</strong> e a pasta <strong>/ (root)</strong>. Clique em <strong>Save</strong>.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- passo 6 -->
+          <div class="conceito" style="grid-template-columns:1fr" id="passo-6">
+            <div class="texto">
+              <span class="olho">Passo 6</span>
+              <h3>Abra o seu link</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Espere 1 a 2 minutos. Na aba <strong>Actions</strong> do repositório, a tarefa <em>pages build and deployment</em> fica com o ✅ verde quando termina.</li>
+                  <li>Volte em <strong>Settings › Pages</strong>: lá em cima aparece <em>Your site is live at</em> e o seu link. Ele segue o modelo <code>https://seu-usuario.github.io/minha-pagina/</code>.</li>
+                  <li>Abra o link no computador e <strong>no celular</strong>. Clique no interruptor. 💡</li>
+                  <li>Mande o link para alguém. Parabéns: a sua página está na internet!</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- atualizar -->
+          <div class="conceito" style="grid-template-columns:1fr" id="atualizar">
+            <div class="texto">
+              <span class="olho">E depois?</span>
+              <h3>Mudou a página? Atualize assim</h3>
+              <div class="faca-assim">
+                <strong>Faça assim:</strong>
+                <ol>
+                  <li>Mude no VS Code e teste no seu computador.</li>
+                  <li>No repositório, <strong>Add file › Upload files</strong>, arraste os arquivos que mudaram (com o <strong>mesmo nome</strong>: eles substituem os antigos) e <strong>Commit changes</strong>.</li>
+                  <li>Espere o ✅ verde em <strong>Actions</strong> e recarregue a página com <code>Ctrl + Shift + R</code> (no Mac, <code>Cmd + Shift + R</code>).</li>
+                </ol>
+              </div>
+              <p class="dica"><strong>Já usa o Git no VS Code?</strong> Também vale: <code>git add .</code>, <code>git commit -m "…"</code> e <code>git push</code> fazem o mesmo que o upload.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ERROS COMUNS ===================== -->
+        <section class="parte" id="erros">
+          <div class="cab">
+            <span class="olho">C1 · deu ruim?</span>
+            <h2>Os erros mais comuns (e o conserto)</h2>
+          </div>
+          <div class="tabela-rola">
+            <table class="metodos">
+              <thead>
+                <tr><th scope="col">O que aconteceu</th><th scope="col">Por quê</th><th scope="col">Conserto</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Erro <strong>404</strong> no link</td><td>Não há <code>index.html</code> na primeira tela do repositório: o nome está diferente (<code>Index.html</code>, <code>index.htm</code>) ou os arquivos estão dentro de uma pasta.</td><td>Renomeie para <code>index.html</code> ou envie os arquivos soltos, sem a pasta.</td></tr>
+                <tr><td>A página aparece <strong>sem cor</strong></td><td>O nome no <code>&lt;link href="estilo.css"&gt;</code> não bate com o arquivo. No GitHub, <code>Estilo.css</code> e <code>estilo.css</code> são arquivos diferentes.</td><td>Use tudo em minúsculas, igualzinho nos dois lugares.</td></tr>
+                <tr><td>O botão <strong>não faz nada</strong></td><td>O <code>script.js</code> não carregou (nome diferente) ou o <code>&lt;script&gt;</code> está antes do botão.</td><td>Confira o nome e deixe o <code>&lt;script src="script.js"&gt;</code> no fim do <code>&lt;body&gt;</code>.</td></tr>
+                <tr><td><strong>Mudei e não mudou</strong></td><td>O GitHub ainda está publicando, ou o navegador mostrou a versão guardada.</td><td>Espere o ✅ em <strong>Actions</strong> e aperte <code>Ctrl + Shift + R</code>.</td></tr>
+                <tr><td>Não aparece a opção <strong>Pages</strong> ou ela pede pagamento</td><td>O repositório está como <strong>Private</strong>.</td><td><strong>Settings › General</strong>, lá no fim, <strong>Change visibility</strong> para <strong>Public</strong>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================== A ENTREGA FINAL ===================== -->
+        <section class="parte" id="entrega-final">
+          <div class="cab">
+            <span class="olho">F1 · a entrega final</span>
+            <h2>A sua página, do seu jeito</h2>
+            <p>Individual. A página de hoje é só o começo: troque o interruptor por um projeto seu, escolhendo uma das três ideias.</p>
+          </div>
+          <div class="cartoes-visuais">
+            <div class="cartao-visual">
+              <h3>🧰 Caixa de ferramentas</h3>
+              <p>De 1 a 3 mini-apps úteis: calculadora de IMC, gerador de senha, conversor de unidades, divisor da conta do bar…</p>
+            </div>
+            <div class="cartao-visual">
+              <h3>🏪 Um cliente fictício</h3>
+              <p>A página de um negócio inventado: cafeteria, pet shop, barbearia. Com cardápio, botões e um aviso de "aberto agora".</p>
+            </div>
+            <div class="cartao-visual">
+              <h3>🎮 Um jogo simples</h3>
+              <p>Adivinhe o número, pedra-papel-tesoura ou um quiz sobre um tema que você curte.</p>
+            </div>
+          </div>
+          <h3 style="margin-top:1.6rem">Os degraus da nota</h3>
+          <div class="tabela-rola">
+            <table class="metodos">
+              <thead>
+                <tr><th scope="col">Degrau</th><th scope="col">O que a sua página precisa ter</th><th scope="col">Pontos</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>🥉 Mínimo</td><td>a página inicial se chama <code>index.html</code>, com <code>estilo.css</code> e <code>script.js</code> separados; um botão que muda a página com <code>if/else</code>; o link no GitHub Pages funcionando</td><td>4,0</td></tr>
+                <tr><td>🥈 Intermediário</td><td>lê o que a pessoa digitou num campo e valida (campo vazio, letra no lugar de número)</td><td>+1,5</td></tr>
+                <tr><td>🥇 Completo</td><td>usa uma lista (array) com laço, ou guarda algo com <code>localStorage</code> (o recorde do jogo, o último cálculo)</td><td>+1,0</td></tr>
+                <tr><td>🎤 Apresentação</td><td>na aula 17, abre o link ao vivo e explica uma linha do código escolhida pela professora</td><td>+0,5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="dica"><strong>Vergonha de aparecer?</strong> Não precisa de foto nem de "sobre mim". Assine com o nome ou com um codinome: quem aparece é o projeto.</p>
         </section>
 
         <!-- ===================== ATIVIDADE ===================== -->
         <section class="parte" id="atividade">
           <div class="cab">
             <span class="olho">A1 · atividade</span>
-            <h2>Lista de ajustes do grupo</h2>
+            <h2>Checklist do dia</h2>
             <p>Para conferir no fim do encontro. O que você marcar fica salvo neste navegador.</p>
           </div>
 
@@ -161,14 +320,14 @@
               <span class="barra-progresso"><span></span></span>
             </div>
             <ol class="checklist" id="passos-aula-15">
-              <li><label><input type="checkbox"><span>Mostramos o raio-X do projeto para a professora.</span></label></li>
-              <li><label><input type="checkbox"><span>Anotamos a lista de ajustes por ordem de prioridade.</span></label></li>
-              <li><label><input type="checkbox"><span>Corrigimos o que estava quebrado.</span></label></li>
-              <li><label><input type="checkbox"><span>O link do GitHub Pages abre e funciona.</span></label></li>
-              <li><label><input type="checkbox"><span>O README explica o problema, a solução e como usar.</span></label></li>
-              <li><label><input type="checkbox"><span>Revisamos o código com o Copilot e decidimos o que aceitar.</span></label></li>
-              <li><label><input type="checkbox"><span>Dividimos as tarefas que faltam entre o grupo.</span></label></li>
-              <li><label><input type="checkbox"><span>Fizemos commit e push de tudo.</span></label></li>
+              <li><label><input type="checkbox"><span>Montei a pasta <code>minha-pagina</code> com os três arquivos, e a página inicial se chama <code>index.html</code>.</span></label></li>
+              <li><label><input type="checkbox"><span>Testei o interruptor no meu computador.</span></label></li>
+              <li><label><input type="checkbox"><span>Criei o repositório público no GitHub.</span></label></li>
+              <li><label><input type="checkbox"><span>Enviei os três arquivos (soltos, sem a pasta).</span></label></li>
+              <li><label><input type="checkbox"><span>Liguei o GitHub Pages.</span></label></li>
+              <li><label><input type="checkbox"><span>O meu link abre no computador e no celular.</span></label></li>
+              <li><label><input type="checkbox"><span>Escolhi qual das três ideias vou fazer na entrega final.</span></label></li>
+              <li><label><input type="checkbox"><span>Mandei o link da página para a professora.</span></label></li>
             </ol>
           </div>
         </section>
@@ -177,23 +336,23 @@
         <section class="parte" id="steam">
           <div class="cab">
             <span class="olho">S1 · conexão STEAM</span>
-            <h2>Bancada de testes</h2>
+            <h2>O interruptor de verdade</h2>
           </div>
           <div class="steam">
             <div class="cartao">
               <span class="letra">E</span>
               <h3>Engenharia</h3>
-              <p>Nenhuma placa sai da bancada sem teste. Software também não: testar, achar o defeito, corrigir e testar de novo é o ciclo de qualquer engenheiro.</p>
+              <p>No Arduino, um botão e um LED fazem exatamente o que o seu <code>if/else</code> faz: lê o botão, decide e acende ou apaga. A lógica é a mesma, só o "hardware" muda.</p>
             </div>
             <div class="cartao">
               <span class="letra">A</span>
               <h3>Artes</h3>
-              <p>O usuário julga pelo que vê. Cores com contraste, botões claros e textos curtos também são acabamento.</p>
+              <p>O fundo que clareia quando a luz acende é design de interação: a página responde ao gesto da pessoa.</p>
             </div>
             <div class="cartao">
-              <span class="letra">M</span>
-              <h3>Matemática</h3>
-              <p>Priorizar é comparar custo e impacto: o ajuste que dá mais resultado com menos esforço vai primeiro.</p>
+              <span class="letra">T</span>
+              <h3>Tecnologia</h3>
+              <p>Hospedar um site já foi caro e difícil. Hoje, um repositório público e três cliques põem a sua página no mundo.</p>
             </div>
           </div>
         </section>
@@ -203,7 +362,7 @@
           <div class="cab">
             <span class="olho">D1 · desafio extra</span>
             <h2>Terminou antes? Tem mais.</h2>
-            <p>Peça para alguém de outro grupo usar o projeto de vocês sem nenhuma explicação. Onde a pessoa travar é o próximo ajuste.</p>
+            <p>Conte quantas vezes a luz foi acesa e mostre na página ("Você acendeu a luz 3 vezes"). Depois, troque a lâmpada pelo começo do seu projeto da entrega final e publique de novo.</p>
           </div>
         </section>
 
@@ -214,22 +373,22 @@
             <h2>Para estudar e praticar</h2>
           </div>
           <div class="repos">
-            <a class="repo luz" href="https://docs.github.com/pt/pages">
+            <a class="repo luz" href="https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>GitHub Docs</span>
-              <h4>GitHub Pages</h4>
-              <p>Para conferir se a publicação está certinha.</p>
+              <h4>Criar um site do GitHub Pages</h4>
+              <p>O passo a passo oficial, em português.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/github.svg" alt="" width="20" height="20"></span>GitHub</span><span class="etiqueta">consulta</span></span>
             </a>
-            <a class="repo luz" href="https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes">
-              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>GitHub Docs</span>
-              <h4>Sobre os READMEs</h4>
-              <p>O que um bom README precisa ter.</p>
-              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/github.svg" alt="" width="20" height="20"></span>GitHub</span><span class="etiqueta">consulta</span></span>
+            <a class="repo luz" href="/curso-github/">
+              <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>curso-github</span>
+              <h4>Curso de GitHub da Stela</h4>
+              <p>Repositório, commit e publicação, com calma e no seu ritmo.</p>
+              <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/github.svg" alt="" width="20" height="20"></span>GitHub</span><span class="etiqueta">curso</span></span>
             </a>
             <a class="repo luz" href="../curso/">
               <span class="repo-nome"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-repo"/></svg>prog-web-js/curso</span>
               <h4>Curso interativo</h4>
-              <p>Os oito módulos, para revisar o que travar.</p>
+              <p>DOM, eventos e formulários, para revisar o que a sua página vai usar.</p>
               <span class="repo-pe"><span class="ling"><span class="tec" style="--t:1.45rem"><img src="../assets/img/tec/javascript.svg" alt="" width="20" height="20"></span>JavaScript</span><span class="etiqueta">revisar</span></span>
             </a>
           </div>
@@ -241,21 +400,21 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <div>
               <span class="olho">E1 · entrega</span>
-              <h3>Commit com os ajustes</h3>
-              <p>E a lista de ajustes do grupo no README ou nas issues do repositório. Na próxima aula tem ensaio da apresentação.</p>
+              <h3>O link da sua página no ar</h3>
+              <p>Mande para a professora o link do GitHub Pages (o que começa com <code>https://</code> e termina em <code>github.io/minha-pagina/</code>). Na próxima aula: oficina para transformar o interruptor no seu projeto.</p>
             </div>
           </div>
         </section>
 
         <nav class="nav-aulas" aria-label="Outras aulas">
           <!-- EDITE AQUI: use <a href="aula-NN.html"> quando a página da aula vizinha for liberada; <span> enquanto não for -->
-          <span class="anterior">
+          <a class="anterior" href="aula-14.html">
             <span class="olho">← aula anterior</span>
-            <strong>Aula 14: React, Node.js e GitHub Pages</strong>
-          </span>
+            <strong>Aula 14 (bônus): React e Node.js</strong>
+          </a>
           <a class="proxima" href="aula-16.html">
             <span class="olho">próxima aula →</span>
-            <strong>Aula 16: Projeto integrador: ajustes e ensaio</strong>
+            <strong>Aula 16: oficina da entrega final</strong>
           </a>
         </nav>
 
@@ -278,6 +437,8 @@
     <symbol id="ic-repo" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></symbol>
   </svg>
 
+  <script src="../curso/js/playground.js?v=6"></script>
+  <script src="../assets/js/aula-15-projetos.js?v=2"></script>
   <script src="../assets/js/aulas.js"></script>
   <script src="../assets/js/matrix.js?v=2"></script>
 </body>
